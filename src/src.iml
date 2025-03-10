@@ -8,5 +8,7 @@
     <orderEntry type="jdk" jdkName="openjdk-23 (2)" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jsoup-1.19.2" level="project" />
+    <orderEntry type="library" name="selenium-java-4.30" level="project" />
+    <orderEntry type="library" name="okhttp-5.0.0-alpha.15" level="project" />
   </component>
 </module>

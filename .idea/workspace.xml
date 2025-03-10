@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6682f5c-db8f-4be6-bb5e-c8a7ba008f06" name="Changes" comment="Set up Git">
-      <change afterPath="$PROJECT_DIR$/src/src.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="c6682f5c-db8f-4be6-bb5e-c8a7ba008f06" name="Changes" comment="Add API Kayak">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/okhttp_5_0_0_alpha_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/okhttp_5_0_0_alpha_15.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/selenium_java_4_29.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/selenium_java_4_30.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Destination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Itinerary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Itinerary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/KayakFlightScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/KayakFlightScraper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Price.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Price.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoogleMapScraper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnTheGo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OnTheGo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/src.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/KayakFlightScraper.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,36 +53,26 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.GoogleMapScraper.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nghkh/Downloads/jsoup-1.19.1.jar",
+    "last_opened_file_path": "C:/Users/ltp16/Downloads/okhttp-5.0.0-alpha.14.jar",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\InteProj\OnTheGo\src\src" />
       <recent name="C:\Users\nghkh\OnTheGo\src\src" />
       <recent name="C:\Users\nghkh\OnTheGo\src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="OnTheGo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="OnTheGo" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -129,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Classes Added" />
     <MESSAGE value="Set up Git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up Git" />
+    <MESSAGE value="Add API Kayak" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add API Kayak" />
   </component>
 </project>
