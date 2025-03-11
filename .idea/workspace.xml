@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6682f5c-db8f-4be6-bb5e-c8a7ba008f06" name="Changes" comment="Set up Git">
-      <change afterPath="$PROJECT_DIR$/src/src.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="c6682f5c-db8f-4be6-bb5e-c8a7ba008f06" name="Changes" comment="versioned file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Destination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Itinerary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Itinerary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/KayakFlightScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/KayakFlightScraper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Price.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Price.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnTheGo/src/src/GoogleMapScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OnTheGo/src/src/GoogleMapScraper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,38 +44,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nghkh/Downloads/jsoup-1.19.1.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nghkh/Downloads/jsoup-1.19.1.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nghkh\OnTheGo\src\src" />
       <recent name="C:\Users\nghkh\OnTheGo\src" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="OnTheGo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="OnTheGo" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -100,7 +81,23 @@
       <option name="project" value="LOCAL" />
       <updated>1741642024262</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <option name="closed" value="true" />
+      <created>1741651007498</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741651007498</updated>
+    </task>
+    <task id="LOCAL-00003" summary="versioned file">
+      <option name="closed" value="true" />
+      <created>1741651142717</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1741651142717</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,6 +126,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New Classes Added" />
     <MESSAGE value="Set up Git" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up Git" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="versioned file" />
+    <option name="LAST_COMMIT_MESSAGE" value="versioned file" />
   </component>
 </project>
