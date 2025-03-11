@@ -46,7 +46,7 @@ def search_pois(lat, lon, query_filter):
             }
             pois.append(poi)
         # Limit to the first 10 entries
-        return pois[:10]
+        return pois[:20]
     else:
         raise Exception(f"POI API error: {response.status_code}")
 
