@@ -115,7 +115,7 @@ def haversine(lat1, lon1, lat2, lon2):
 
 def main():
     destination = input("Enter destination: ")
-    poi_filter = input("Enter POI filter (e.g. restaurant, cafe, hotel, etc.) [default: restaurant]: ")
+    poi_filter = input("Enter POI filter (e.g. restaurant, cafe, hotel, etc.): ")
     if not poi_filter:
         poi_filter = "restaurant"
     try:
