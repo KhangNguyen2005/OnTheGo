@@ -2,8 +2,7 @@ import os
 from dotenv import load_dotenv
 import serpapi
 import requests
-import urllib.parse
-import csv
+import json
 
 load_dotenv()
 
@@ -14,17 +13,35 @@ client = serpapi.Client(api_key=serp_api_key)
 # Azure Maps Subscription Key (replace with your actual key if not using environment variables)
 SUBSCRIPTION_KEY = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
 
-def get_coordinates(destination):
-    """
-    Converts an address into latitude and longitude using Azure Maps Geocoding API.
-    """
-    address_url = "https://atlas.microsoft.com/search/address/json"
+# Simple mapping for common country names to ISO 3166-1 alpha-2 codes.
+country_mapping = {
+    "usa": "US",
+    "united states": "US",
+    "united states of america": "US",
+    "canada": "CA"
+    # Extend this mapping as needed.
+}
+
+def get_country_code(country):
+    # Convert user input to an ISO code if available.
+    return country_mapping.get(country.lower().strip(), country.upper())
+
+def get_coordinates(country, state, city=None, address=None):
+    country_code = get_country_code(country)
+    structured_url = "https://atlas.microsoft.com/search/address/structured/json"
     params = {
         "subscription-key": SUBSCRIPTION_KEY,
         "api-version": "1.0",
-        "query": destination
+        "countryCode": country_code,        # Required ISO country code.
+        "countrySubdivision": state         # Required state/province.
     }
-    response = requests.get(address_url, params=params)
+    if city:
+        params["municipality"] = city       # Optional: City
+    if address:
+        params["streetName"] = address      # Optional: Specific address or street name.
+
+    print("Searching with structured query parameters:", params)
+    response = requests.get(structured_url, params=params)
     if response.status_code == 200:
         data = response.json()
         if data.get("results"):
@@ -35,85 +52,59 @@ def get_coordinates(destination):
     else:
         raise Exception(f"Address API error: {response.status_code}")
 
-def generate_ll_param(lat, lon, zoom=20):
-    """
-    Formats the latitude and longitude into the format expected by the SerpAPI parameter.
-    For example: '@40.712776,-74.005974,20z'
-    """
+def generate_ll_param(lat, lon, zoom=25):
     return f"@{lat},{lon},{zoom}z"
 
-def export_to_csv(results):
-    """
-    Extracts key attributes from the SerpAPI results and exports them to CSV.
-    Expected attributes are:
-    position, title, rating, price, type, address, operating_hours, phone, website, description, payments.
-    """
-    # Define the CSV header.
-    fieldnames = ["position", "title", "rating", "price", "type", "address",
-                  "operating_hours", "phone", "website", "description", "payments"]
-
-    # Open the CSV file in write mode.
-    with open("export.csv", "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        
-        # Assuming the results contain a key "local_results" which is a list of places.
-        for place in results.get("local_results", []):
-            # Build a row dictionary.
-            row = {}
-            pos = place.get("position")
-            if pos:
-                if isinstance(pos, list):
-                    row["position"] = ", ".join(str(x) for x in pos)
-                else:
-                    row["position"] = str(pos)
-            else:
-                row["position"] = ""
-                
-            row["title"] = place.get("title", "")
-            row["rating"] = place.get("rating", "")
-            row["price"] = place.get("price", "")
-            row["type"] = place.get("type", "")
-            row["address"] = place.get("address", "")
-            row["operating_hours"] = place.get("operating_hours", "")
-            row["phone"] = place.get("phone", "")
-            row["website"] = place.get("website", "")
-            row["description"] = place.get("description", "")
-            
-            payments = place.get("payments", "")
-            if isinstance(payments, list):
-                row["payments"] = "; ".join(payments)
-            else:
-                row["payments"] = payments
-            writer.writerow(row)
-    print("Exported results to export.csv")
-
 def main():
-    # Get user input for destination and amenity type.
-    destination = input("Enter destination (address or location): ")
-    amenity = input("Enter type of amenity (e.g. restaurant, cafe, hotel): ")
-    if not amenity:
-        amenity = "restaurant"
+    # Required: country and state/province.
+    country = input("Enter country (required): ").strip()
+    state = input("Enter state or province (required): ").strip()
+    # Optional: city and specific address.
+    city = input("Enter city (optional): ").strip()
+    address = input("Enter specific address (optional): ").strip()
+
+    if not country or not state:
+        print("Error: Country and state/province are required fields.")
+        return
+
+    amenity = input("Enter type of amenity (e.g. restaurant, cafe, hotel): ") or "restaurant"
+    
     try:
-        # Get dynamic coordinates for the destination using Azure Maps.
-        lat, lon = get_coordinates(destination)
-        print(f"\nCoordinates for '{destination}': {lat}, {lon}")
+        lat, lon = get_coordinates(country, state, city, address)
+        full_location = f"{address + ', ' if address else ''}{city + ', ' if city else ''}{state}, {country}"
+        print(f"\nCoordinates for '{full_location}': {lat}, {lon}")
         ll_param = generate_ll_param(lat, lon)
         print(f"Formatted ll parameter: {ll_param}\n")
         
-        # Use SerpAPI to perform a Google Maps search with the dynamic parameters.
         params = {
-            'engine': 'google_maps',
-            'q': amenity,
-            'type': 'search',
-            'll': ll_param,
+            'engine': 'google_maps', 
+            'q': amenity, 
+            'type': 'search', 
+            'll': ll_param
         }
         results = client.search(params)
-        print("Search Results from SerpAPI:")
-        print(results)
         
-        # Export the search results to CSV.
-        export_to_csv(results)
+        if "places_results" in results:
+            locations = results["places_results"][:5]
+        elif "local_results" in results:
+            locations = results["local_results"][:5]
+        elif "results" in results:
+            locations = results["results"][:5]
+        else:
+            locations = []
+        
+        reduced_locations = []
+        for loc in locations:
+            reduced_locations.append({
+                "Name": loc.get("title"),
+                "Address": loc.get("address"),
+                "Rating": loc.get("rating"),
+                "Price": loc.get("price"),
+                "Opening Hour": loc.get("hours", loc.get("open_state"))
+            })
+        
+        print("Search Results from SerpAPI (limited to 5 locations):")
+        print(json.dumps(reduced_locations, indent=4))
     except Exception as e:
         print("Error:", e)
 
