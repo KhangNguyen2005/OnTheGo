@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Filter - OnTheGo</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    #dynamic-field-container, #filter-form {
+      margin-top: 20px;
+    }
+    #filter-form {
+      display: none;
+    }
+    #welcome-section {
+      text-align: center;
+      padding: 50px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  {% if table_html %}
+    <!-- When filtered results are available, only show them -->
+    <h2 class="mt-5">Filtered Results</h2>
+    <div>
+      {{ table_html | safe }}
+    </div>
+  {% else %}
+    <!-- Welcome Section and Filter Form (shown when no results yet) -->
+    <div id="welcome-section">
+      <h1>Welcome to OnTheGo</h1>
+      <p>Plan your perfect trip with our smart filter!</p>
+      <button id="start-btn" class="btn btn-lg btn-primary">Start</button>
+    </div>
+  
+    <form method="POST" id="filter-form">
+      <div id="dynamic-field-container"></div>
+      <!-- Hidden inputs will accumulate the filter values -->
+      <div id="hidden-fields"></div>
+      <button id="submit-btn" type="submit" class="btn btn-primary" style="display:none;">Apply Filters</button>
+    </form>
+  {% endif %}
+</div>
+
+<script>
+  // Columns to filter (as defined in travel_app.py)
+  const columns = JSON.parse('{{ columns | tojson | safe }}');
+  let currentIndex = 0;
+  // Define custom labels for the fields (update or add more as needed)
+  const customLabels = {
+    "Destination": "Where you want to travel?"
+    // For example:
+    // "Accommodation type": "Your desired accommodation",
+    // "Transportation type": "Preferred transportation mode"
+  };
+
+  // Function to render one input field at a time
+  function renderField() {
+    const container = document.getElementById('dynamic-field-container');
+    container.innerHTML = '';
+    
+    if (currentIndex < columns.length) {
+      const col = columns[currentIndex];
+      
+      // Create label (use custom label if available)
+      const label = document.createElement('label');
+      label.setAttribute('for', col);
+      label.textContent = customLabels[col] || col;
+      
+      // Create input field
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'form-control';
+      input.id = col;
+      input.placeholder = `Filter for ${customLabels[col] || col}`;
+      
+      // Create "Next" button to save current value and move on
+      const nextBtn = document.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'btn btn-secondary mt-2';
+      nextBtn.textContent = 'Next';
+      nextBtn.onclick = function() {
+        const value = input.value.trim();
+        const hiddenDiv = document.getElementById('hidden-fields');
+        // Create or update a hidden input for this column
+        let existing = document.getElementById(`hidden-${col}`);
+        if (existing) {
+          existing.value = value;
+        } else {
+          const hiddenInput = document.createElement('input');
+          hiddenInput.type = 'hidden';
+          hiddenInput.name = col;
+          hiddenInput.value = value;
+          hiddenInput.id = `hidden-${col}`;
+          hiddenDiv.appendChild(hiddenInput);
+        }
+        currentIndex++;
+        renderField();
+      };
+      
+      container.appendChild(label);
+      container.appendChild(input);
+      container.appendChild(nextBtn);
+    } else {
+      // All fields filled; hide dynamic fields and show the submit button
+      document.getElementById('dynamic-field-container').style.display = 'none';
+      document.getElementById('submit-btn').style.display = 'block';
+    }
+  }
+  
+  // When Start is clicked, hide the welcome section and show filter form
+  document.getElementById('start-btn').addEventListener('click', function() {
+    document.getElementById('welcome-section').style.display = 'none';
+    document.getElementById('filter-form').style.display = 'block';
+    renderField();
+  });
+</script>
+</body>
+</html>
+

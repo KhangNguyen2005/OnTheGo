@@ -1,11 +1,14 @@
+import os
 import pandas as pd
 from io import StringIO
 
-FILE_PATH = "Travel details dataset.csv"
+# Build an absolute file path relative to this file's location.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FILE_PATH = os.path.join(BASE_DIR, "export.csv")
 
 def load_data():
     """
-    Load travel details dataset while ignoring comment lines.
+    Load export CSV file while ignoring comment lines.
     """
     with open(FILE_PATH, "r", encoding="utf-8") as f:
         lines = f.readlines()
@@ -14,14 +17,14 @@ def load_data():
 
 def filter_trips_by_attributes(filters):
     """
-    Filter trips based on a dictionary of filters.
-    For each key (column), if a non-empty value is provided, the rows will be filtered accordingly.
-    For numeric columns, an equality match is attempted; for other types, a case-insensitive substring match is used.
+    Filter rows from export.csv based on a dictionary of filters.
+    For each key (column), if a non-empty value is provided:
+      - For numeric columns, an equality match is attempted.
+      - Otherwise, a case-insensitive substring match is used.
     """
     data = load_data()
     for col, val in filters.items():
         if val:
-            # Try numeric equality first
             try:
                 num_val = float(val)
                 data = data[data[col] == num_val]
@@ -30,14 +33,15 @@ def filter_trips_by_attributes(filters):
     return data
 
 def main():
-    df = load_data()
+    # Define the list of columns (attributes from export.csv) you want to filter.
+    filter_columns = ["position", "title", "rating", "price", "type", "address",
+                      "operating_hours", "phone", "website", "description"]
     filters = {}
-    # Prompt user to enter filter criteria for every attribute
-    for col in df.columns:
+    for col in filter_columns:
         user_input = input(f"Enter filter for '{col}' (press Enter to skip): ")
         filters[col] = user_input.strip()
-    filtered_trips = filter_trips_by_attributes(filters)
-    print(filtered_trips)
+    filtered_data = filter_trips_by_attributes(filters)
+    print(filtered_data)
 
 if __name__ == "__main__":
     main()

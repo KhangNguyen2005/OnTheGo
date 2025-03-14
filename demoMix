@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import serpapi
 import requests
 import urllib.parse
+import csv
 
 load_dotenv()
 
@@ -41,6 +42,52 @@ def generate_ll_param(lat, lon, zoom=20):
     """
     return f"@{lat},{lon},{zoom}z"
 
+def export_to_csv(results):
+    """
+    Extracts key attributes from the SerpAPI results and exports them to CSV.
+    Expected attributes are:
+    position, title, rating, price, type, address, operating_hours, phone, website, description, payments.
+    """
+    # Define the CSV header.
+    fieldnames = ["position", "title", "rating", "price", "type", "address",
+                  "operating_hours", "phone", "website", "description", "payments"]
+
+    # Open the CSV file in write mode.
+    with open("export.csv", "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+        
+        # Assuming the results contain a key "local_results" which is a list of places.
+        for place in results.get("local_results", []):
+            # Build a row dictionary.
+            row = {}
+            pos = place.get("position")
+            if pos:
+                if isinstance(pos, list):
+                    row["position"] = ", ".join(str(x) for x in pos)
+                else:
+                    row["position"] = str(pos)
+            else:
+                row["position"] = ""
+                
+            row["title"] = place.get("title", "")
+            row["rating"] = place.get("rating", "")
+            row["price"] = place.get("price", "")
+            row["type"] = place.get("type", "")
+            row["address"] = place.get("address", "")
+            row["operating_hours"] = place.get("operating_hours", "")
+            row["phone"] = place.get("phone", "")
+            row["website"] = place.get("website", "")
+            row["description"] = place.get("description", "")
+            
+            payments = place.get("payments", "")
+            if isinstance(payments, list):
+                row["payments"] = "; ".join(payments)
+            else:
+                row["payments"] = payments
+            writer.writerow(row)
+    print("Exported results to export.csv")
+
 def main():
     # Get user input for destination and amenity type.
     destination = input("Enter destination (address or location): ")
@@ -64,6 +111,9 @@ def main():
         results = client.search(params)
         print("Search Results from SerpAPI:")
         print(results)
+        
+        # Export the search results to CSV.
+        export_to_csv(results)
     except Exception as e:
         print("Error:", e)
 
