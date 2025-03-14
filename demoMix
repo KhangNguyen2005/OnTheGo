@@ -1,0 +1,71 @@
+import os
+from dotenv import load_dotenv
+import serpapi
+import requests
+import urllib.parse
+
+load_dotenv()
+
+# Load the SerpAPI key for Google Maps queries.
+serp_api_key = os.getenv('SERPAPI_KEY')
+client = serpapi.Client(api_key=serp_api_key)
+
+# Azure Maps Subscription Key (replace with your actual key if not using environment variables)
+SUBSCRIPTION_KEY = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
+
+def get_coordinates(destination):
+    """
+    Converts an address into latitude and longitude using Azure Maps Geocoding API.
+    """
+    address_url = "https://atlas.microsoft.com/search/address/json"
+    params = {
+        "subscription-key": SUBSCRIPTION_KEY,
+        "api-version": "1.0",
+        "query": destination
+    }
+    response = requests.get(address_url, params=params)
+    if response.status_code == 200:
+        data = response.json()
+        if data.get("results"):
+            position = data["results"][0]["position"]
+            return position["lat"], position["lon"]
+        else:
+            raise Exception("No matching address found.")
+    else:
+        raise Exception(f"Address API error: {response.status_code}")
+
+def generate_ll_param(lat, lon, zoom=20):
+    """
+    Formats the latitude and longitude into the format expected by the SerpAPI parameter.
+    For example: '@40.712776,-74.005974,20z'
+    """
+    return f"@{lat},{lon},{zoom}z"
+
+def main():
+    # Get user input for destination and amenity type.
+    destination = input("Enter destination (address or location): ")
+    amenity = input("Enter type of amenity (e.g. restaurant, cafe, hotel): ")
+    if not amenity:
+        amenity = "restaurant"
+    try:
+        # Get dynamic coordinates for the destination using Azure Maps.
+        lat, lon = get_coordinates(destination)
+        print(f"\nCoordinates for '{destination}': {lat}, {lon}")
+        ll_param = generate_ll_param(lat, lon)
+        print(f"Formatted ll parameter: {ll_param}\n")
+        
+        # Use SerpAPI to perform a Google Maps search with the dynamic parameters.
+        params = {
+            'engine': 'google_maps',
+            'q': amenity,
+            'type': 'search',
+            'll': ll_param,
+        }
+        results = client.search(params)
+        print("Search Results from SerpAPI:")
+        print(results)
+    except Exception as e:
+        print("Error:", e)
+
+if __name__ == "__main__":
+    main()
