@@ -13,6 +13,7 @@ def get_coordinates(destination):
         "query": destination
     }
     response = requests.get(address_url, params=params)
+    print("Geocoding response:", response.text)  # Debug print
     if response.status_code == 200:
         data = response.json()
         if data.get("results"):
@@ -34,6 +35,7 @@ def search_pois(lat, lon, query_filter):
         "limit": 20  # get more in case some entries lack additional details
     }
     response = requests.get(poi_url, params=params)
+    print("POI search response:", response.text)  # Debug print
     if response.status_code == 200:
         data = response.json()
         pois = []
@@ -42,13 +44,36 @@ def search_pois(lat, lon, query_filter):
                 "name": item.get("poi", {}).get("name", ""),
                 "address": item.get("address", {}).get("freeformAddress", ""),
                 "category": item.get("poi", {}).get("categories", [""])[0],
-                # "rating": item.get("rating", None)  # Note: Azure Maps may not provide rating info.
+                "lat": item.get("position", {}).get("lat", None),
+                "lon": item.get("position", {}).get("lon", None)
             }
             pois.append(poi)
         # Limit to the first 10 entries
-        return pois[:20]
+        return pois[:10]
     else:
         raise Exception(f"POI API error: {response.status_code}")
+
+def get_route_distance(origin_lat, origin_lon, dest_lat, dest_lon):
+    route_url = "https://atlas.microsoft.com/route/directions/json"
+    params = {
+        "subscription-key": SUBSCRIPTION_KEY,
+        "api-version": "1.0",
+        "query": f"{origin_lat},{origin_lon}:{dest_lat},{dest_lon}",
+        "travelMode": "driving"
+    }
+    response = requests.get(route_url, params=params)
+    print("Route response:", response.text)  # Debug print
+    if response.status_code == 200:
+        data = response.json()
+        if data.get("routes"):
+            # Extract the distance (meters) from the summary
+            distance = data["routes"][0]["summary"]["lengthInMeters"]
+            return distance
+        else:
+            print("Route response did not contain routes:", data)
+            raise Exception("No route found.")
+    else:
+        raise Exception(f"Route API error: {response.status_code}")
 
 def main():
     destination = input("Enter destination: ")
@@ -56,14 +81,28 @@ def main():
     if not poi_filter:
         poi_filter = "restaurant"
     try:
-        lat, lon = get_coordinates(destination)
-        print(f"Coordinates for '{destination}': {lat}, {lon}")
+        # Get user's coordinate for the destination
+        origin_lat, origin_lon = get_coordinates(destination)
+        print(f"Coordinates for '{destination}': {origin_lat}, {origin_lon}")
         
-        pois = search_pois(lat, lon, poi_filter)
+        pois = search_pois(origin_lat, origin_lon, poi_filter)
         if not pois:
             print("No POIs found for the selected filter.")
             return
         
+        # For each found POI, compute the driving distance from the user-specified destination.
+        for poi in pois:
+            if poi["lat"] is not None and poi["lon"] is not None:
+                try:
+                    distance = get_route_distance(origin_lat, origin_lon, poi["lat"], poi["lon"])
+                    poi["distance_meters"] = distance
+                except Exception as e:
+                    print(f"Error fetching route for {poi['name']}: {e}")
+                    poi["distance_meters"] = None
+            else:
+                poi["distance_meters"] = None
+        
+        # Export the results to CSV
         df = pd.DataFrame(pois)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         csv_filename = f'pois_{timestamp}.csv'
