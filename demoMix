@@ -2,7 +2,6 @@ import os
 from dotenv import load_dotenv
 import serpapi
 import requests
-import urllib.parse
 import json
 
 load_dotenv()
@@ -14,10 +13,35 @@ client = serpapi.Client(api_key=serp_api_key)
 # Azure Maps Subscription Key (replace with your actual key if not using environment variables)
 SUBSCRIPTION_KEY = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
 
-def get_coordinates(destination):
-    address_url = "https://atlas.microsoft.com/search/address/json"
-    params = {"subscription-key": SUBSCRIPTION_KEY, "api-version": "1.0", "query": destination}
-    response = requests.get(address_url, params=params)
+# Simple mapping for common country names to ISO 3166-1 alpha-2 codes.
+country_mapping = {
+    "usa": "US",
+    "united states": "US",
+    "united states of america": "US",
+    "canada": "CA"
+    # Extend this mapping as needed.
+}
+
+def get_country_code(country):
+    # Convert user input to an ISO code if available.
+    return country_mapping.get(country.lower().strip(), country.upper())
+
+def get_coordinates(country, state, city=None, address=None):
+    country_code = get_country_code(country)
+    structured_url = "https://atlas.microsoft.com/search/address/structured/json"
+    params = {
+        "subscription-key": SUBSCRIPTION_KEY,
+        "api-version": "1.0",
+        "countryCode": country_code,        # Required ISO country code.
+        "countrySubdivision": state         # Required state/province.
+    }
+    if city:
+        params["municipality"] = city       # Optional: City
+    if address:
+        params["streetName"] = address      # Optional: Specific address or street name.
+
+    print("Searching with structured query parameters:", params)
+    response = requests.get(structured_url, params=params)
     if response.status_code == 200:
         data = response.json()
         if data.get("results"):
@@ -32,15 +56,32 @@ def generate_ll_param(lat, lon, zoom=25):
     return f"@{lat},{lon},{zoom}z"
 
 def main():
-    destination = input("Enter destination (address or location): ")
+    # Required: country and state/province.
+    country = input("Enter country (required): ").strip()
+    state = input("Enter state or province (required): ").strip()
+    # Optional: city and specific address.
+    city = input("Enter city (optional): ").strip()
+    address = input("Enter specific address (optional): ").strip()
+
+    if not country or not state:
+        print("Error: Country and state/province are required fields.")
+        return
+
     amenity = input("Enter type of amenity (e.g. restaurant, cafe, hotel): ") or "restaurant"
+    
     try:
-        lat, lon = get_coordinates(destination)
-        print(f"\nCoordinates for '{destination}': {lat}, {lon}")
+        lat, lon = get_coordinates(country, state, city, address)
+        full_location = f"{address + ', ' if address else ''}{city + ', ' if city else ''}{state}, {country}"
+        print(f"\nCoordinates for '{full_location}': {lat}, {lon}")
         ll_param = generate_ll_param(lat, lon)
         print(f"Formatted ll parameter: {ll_param}\n")
         
-        params = {'engine': 'google_maps', 'q': amenity, 'type': 'search', 'll': ll_param}
+        params = {
+            'engine': 'google_maps', 
+            'q': amenity, 
+            'type': 'search', 
+            'll': ll_param
+        }
         results = client.search(params)
         
         if "places_results" in results:
