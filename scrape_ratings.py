@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # Replace with your actual Google API key
-GOOGLE_API_KEY = 'AIzaSyAuenwAmf9iWTMBoB8i9NsLa_liP7NZPYc'
+GOOGLE_API_KEY = ''
 
 def get_coordinates(destination):
     """
