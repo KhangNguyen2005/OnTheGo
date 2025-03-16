@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Location Search</title>
+    <!-- Include Leaflet CSS for the map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map { height: 400px; width: 100%; margin-bottom: 20px; }
+      table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; }
+      .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Location Search</h1>
+    
+    <!-- Display error messages if any -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="error">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+    <!-- Show the form if no results have been computed -->
+    {% if not locations %}
+    <form method="post">
+        <label for="country">Country (required):</label>
+        <input type="text" id="country" name="country" required><br><br>
+
+        <label for="state">State/Province (required):</label>
+        <input type="text" id="state" name="state" required><br><br>
+
+        <label for="city">City (optional):</label>
+        <input type="text" id="city" name="city"><br><br>
+
+        <label for="address">Address (optional):</label>
+        <input type="text" id="address" name="address"><br><br>
+
+        <label for="amenity">Amenity (e.g. restaurant, cafe, hotel):</label>
+        <input type="text" id="amenity" name="amenity" value="restaurant"><br><br>
+
+        <button type="submit">Search</button>
+    </form>
+    {% endif %}
+    
+    <!-- If results are available, display the map and table -->
+    {% if locations %}
+      <h2>Results for "{{ amenity }}" near "{{ full_location }}"</h2>
+      
+      <!-- Map Container -->
+      <div id="map"></div>
+      
+      <!-- Include Leaflet JavaScript -->
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+      <script>
+          var map = L.map('map').setView([{{ lat }}, {{ lon }}], 15);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: 'Map data © OpenStreetMap contributors'
+          }).addTo(map);
+          L.marker([{{ lat }}, {{ lon }}]).addTo(map)
+              .bindPopup('Location: {{ full_location }}')
+              .openPopup();
+      </script>
+      
+      <h3>Nearby Locations</h3>
+      {% if locations %}
+      <table>
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Rating</th>
+                  <th>Price</th>
+                  <th>Opening Hour</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for loc in locations %}
+              <tr>
+                  <td>{{ loc.Name }}</td>
+                  <td>{{ loc.Address }}</td>
+                  <td>{{ loc.Rating }}</td>
+                  <td>{{ loc.Price }}</td>
+                  <td>{{ loc["Opening Hour"] }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+      {% else %}
+          <p>No results found.</p>
+      {% endif %}
+      
+      <p><a href="{{ url_for('index') }}">Search Again</a></p>
+    {% endif %}
+</body>
+</html>
