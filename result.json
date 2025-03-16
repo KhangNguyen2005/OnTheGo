@@ -1,47 +1,47 @@
 [
     {
-        "Name": "Billy Can Can",
-        "Address": "2386 Victory Park Ln, Dallas, TX 75219",
-        "Rating": 4.7,
-        "Price": "$50\u2013100",
-        "Opening Hour": "Closed \u22c5 Opens 4:30\u202fPM",
-        "Latitude": 32.787112,
-        "Longitude": -96.8091455
-    },
-    {
-        "Name": "Dick's Last Resort - Dallas",
-        "Address": "2211 N Lamar St, Dallas, TX 75201",
-        "Rating": 4.2,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 32.7848448,
-        "Longitude": -96.8086605
-    },
-    {
-        "Name": "3Eleven Kitchen and Cocktails",
-        "Address": "311 N Market St # 100, Dallas, TX 75202",
-        "Rating": 4.8,
-        "Price": "$$",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 32.7812264,
-        "Longitude": -96.80700879999999
-    },
-    {
-        "Name": "Victory Social",
-        "Address": "2323 Victory Ave, Dallas, TX 75219",
-        "Rating": 4.6,
+        "Name": "Spitz - Sugarhouse",
+        "Address": "1201 Wilmington Ave #101, Salt Lake City, UT 84106",
+        "Rating": 4.4,
         "Price": "$10\u201320",
-        "Opening Hour": "Closed \u22c5 Opens 10:30\u202fAM",
-        "Latitude": 32.785517899999995,
-        "Longitude": -96.8103637
+        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Latitude": 40.7234196,
+        "Longitude": -111.85682279999999
     },
     {
-        "Name": "Mesero - Victory Park",
-        "Address": "2375 Victory Park Ln #180, Dallas, TX 75202",
-        "Rating": 4.5,
+        "Name": "The Dodo Restaurant",
+        "Address": "1355 E 2100 S, Salt Lake City, UT 84105",
+        "Rating": 4.4,
         "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
-        "Latitude": 32.7871196,
-        "Longitude": -96.8094734
+        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Latitude": 40.7261306,
+        "Longitude": -111.8520806
+    },
+    {
+        "Name": "Olive Garden Italian Restaurant",
+        "Address": "2272 S 1300 E, Salt Lake City, UT 84106",
+        "Rating": 4.4,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Latitude": 40.721522,
+        "Longitude": -111.85427899999999
+    },
+    {
+        "Name": "Dee's Family Restaurant",
+        "Address": "2104 S 700 E #1829, Salt Lake City, UT 84106",
+        "Rating": 4.4,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
+        "Latitude": 40.725149699999996,
+        "Longitude": -111.8716353
+    },
+    {
+        "Name": "Se\u00f1or Pollo Mexican Grill",
+        "Address": "2121 S McClelland St #104, Salt Lake City, UT 84106",
+        "Rating": 4.8,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
+        "Latitude": 40.7247619,
+        "Longitude": -111.8612165
     }
 ]

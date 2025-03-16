@@ -1,96 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azure Maps Interactive Recommendations</title>
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css">
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-    <style>
-        html, body { height: 100%; margin: 0; padding: 0; }
-        #mapDiv { width: 100%; height: 100vh; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azure Maps Hover Popup with Address Search</title>
+  <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
+  <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top bar for manual address input */
+    #topBar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+    }
+
+    /* The map container must be position: relative so that absolutely positioned items inside use it as reference */
+    #mapDiv {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
-    <div id="mapDiv"></div>
+  <!-- Top bar: manual input for address -->
+  <div id="topBar">
+    <input 
+      type="text" 
+      id="manualAddress" 
+      placeholder="Enter an address or city..." 
+      style="width: 300px; padding: 5px;"
+    />
+    <button onclick="searchByAddress()" style="padding: 5px 10px;">
+      Get Recommendations
+    </button>
+  </div>
 
-    <script>
-        let map, datasource;
+  <!-- Map container -->
+  <div id="mapDiv"></div>
 
-        function initMap() {
-            map = new atlas.Map('mapDiv', {
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
+  <script>
+    let map, datasource, symbolLayer;
+    // One popup used for hover display
+    let hoverPopup;
+
+    function initMap() {
+      map = new atlas.Map('mapDiv', {
+        authOptions: {
+          authType: 'subscriptionKey',
+          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
+        }
+      });
+
+      map.events.add('ready', function () {
+        datasource = new atlas.source.DataSource();
+        map.sources.add(datasource);
+
+        // Create a SymbolLayer that uses markerType to decide the icon color:
+        // "selected" gives blue pins and "recommended" gives red pins.
+        symbolLayer = new atlas.layer.SymbolLayer(datasource, null, {
+          iconOptions: {
+            image: [
+              'case',
+              ['==', ['get', 'markerType'], 'selected'],
+              'pin-round-blue',
+              'pin-round-red'
+            ],
+            allowOverlap: true
+          },
+          textOptions: {
+            textField: ['get', 'title'],
+            offset: [0, 1.2]
+          }
+        });
+        map.layers.add(symbolLayer);
+
+        // Create a single popup for hover events (it will be repositioned as needed)
+        hoverPopup = new atlas.Popup({
+          closeButton: false,
+          pixelOffset: [0, -30]
+        });
+
+        // When the user clicks on the map, set that point as the Selected Location
+        map.events.add('click', function (e) {
+          const coords = e.position; // [lng, lat]
+          // Clear previous features
+          datasource.clear();
+          // Close any open hover popup
+          hoverPopup.close();
+
+          // Add a blue pin for the Selected Location
+          datasource.add(new atlas.data.Feature(
+            new atlas.data.Point(coords),
+            { markerType: 'selected', title: 'Selected Location' }
+          ));
+
+          // Fetch recommendations from the server using the clicked coordinates
+          fetchRecommendations(coords[1], coords[0]);
+        });
+
+        // Hover events: Show popup only for recommended (red) pins
+        map.events.add('mouseenter', symbolLayer, function (e) {
+          if (e.shapes && e.shapes.length > 0) {
+            const shape = e.shapes[0];
+            const props = shape.getProperties();
+            if (props.markerType === 'recommended') {
+              const contentHTML = `
+                <div style="font-family: Arial, sans-serif;">
+                  <strong>${props.title || 'N/A'}</strong><br>
+                  Address: ${props.address || 'N/A'}<br>
+                  Rating: ${props.rating || 'N/A'}<br>
+                  Price: ${props.price || 'N/A'}<br>
+                  Hours: ${props.hours || 'N/A'}
+                </div>
+              `;
+              hoverPopup.setOptions({
+                content: contentHTML,
+                position: shape.getCoordinates()
+              });
+              hoverPopup.open(map);
+            }
+          }
+        });
+
+        // Close the hover popup when the mouse leaves a pin
+        map.events.add('mouseleave', symbolLayer, function () {
+          hoverPopup.close();
+        });
+      });
+    }
+
+    // -------------------------------------------------------------------
+    // getCoordinates: Try Address Search; if no result, fall back to Fuzzy Search.
+    // Returns a Promise resolving to {lat, lon} or null.
+    // -------------------------------------------------------------------
+    function getCoordinates(query) {
+      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
+      const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
+      
+      return fetch(addressUrl)
+        .then(resp => resp.json())
+        .then(data => {
+          if (data && data.results && data.results.length > 0) {
+            const best = data.results[0];
+            return { lat: best.position.lat, lon: best.position.lon };
+          } else {
+            // Fallback: try fuzzy search
+            const fuzzyUrl = `https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}&limit=1`;
+            return fetch(fuzzyUrl)
+              .then(resp2 => resp2.json())
+              .then(data2 => {
+                if (data2 && data2.results && data2.results.length > 0) {
+                  const best2 = data2.results[0];
+                  return { lat: best2.position.lat, lon: best2.position.lon };
                 }
-            });
+                return null;
+              });
+          }
+        })
+        .catch(err => {
+          console.error("Error during geocoding:", err);
+          return null;
+        });
+    }
 
-            map.events.add('ready', function () {
-                datasource = new atlas.source.DataSource();
-                map.sources.add(datasource);
+    // -------------------------------------------------------------------
+    // searchByAddress: Uses getCoordinates() to obtain lat/lon,
+    // then clears the map, places a blue "Selected Location" pin,
+    // and fetches recommendations.
+    // -------------------------------------------------------------------
+    function searchByAddress() {
+      const address = document.getElementById('manualAddress').value.trim();
+      if (!address) {
+        alert("Please enter an address or city.");
+        return;
+      }
+      
+      getCoordinates(address).then(result => {
+        if (result) {
+          const { lat, lon } = result;
+          console.log("Geocoded lat/lon:", lat, lon);
+          // Clear previous features and close hover popup
+          datasource.clear();
+          hoverPopup.close();
 
-                map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
-                    iconOptions: { image: 'pin-round-blue', allowOverlap: true },
-                    textOptions: { textField: ['get', 'title'], offset: [0, 1.2] }
-                }));
+          // Add the Selected Location marker (blue pin)
+          datasource.add(new atlas.data.Feature(
+            new atlas.data.Point([lon, lat]),
+            { markerType: 'selected', title: 'Selected Location' }
+          ));
 
-                map.events.add('click', function (e) {
-                    const coords = e.position;
-                    datasource.clear();
-                    datasource.add(new atlas.data.Feature(new atlas.data.Point(coords), { title: "Selected Location" }));
+          // Fetch recommendations from the server
+          fetchRecommendations(lat, lon);
 
-                    // Send coordinates to Flask to automatically trigger demoMix
-                    fetch('/demoMix', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ latitude: coords[1], longitude: coords[0] })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            console.error("Error:", data.error);
-                            return;
-                        }
+          // Center the map on the selected location
+          map.setCamera({ center: [lon, lat], zoom: 14 });
+        } else {
+          alert("No matching address found. Please refine your input.");
+        }
+      });
+    }
 
-                        // Add recommended locations to map
-                        data.forEach(item => {
-                            console.log("Adding recommendation:", item.Name, item.Latitude, item.Longitude);
-                            datasource.add(new atlas.data.Feature(
-                                new atlas.data.Point([item.Longitude, item.Latitude]),
-                                { title: item.Name, icon: 'pin-red' }
-                            ));
-                        });
-
-                        map.setCamera({
-                            bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
-                            padding: 50
-                        });
-                    })
-                    .catch(err => console.error("Error processing recommendations:", err));
-                });
-
-                // Pop-up for info
-                map.events.add('click', datasource, function (e) {
-                    if (e.shapes && e.shapes.length > 0) {
-                        let props = e.shapes[0].getProperties();
-                        let content = `
-                            <strong>${props.title}</strong><br>
-                            Address: ${props.address}<br>
-                            Rating: ${props.rating}<br>
-                            Price: ${props.price}<br>
-                            Hours: ${props.hours}
-                        `;
-                        popup.setOptions({
-                            position: e.shapes[0].getCoordinates(),
-                            content: content
-                        });
-                        popup.open(map);
-                    }
-                });
-            });
+    // -------------------------------------------------------------------
+    // fetchRecommendations: Calls the /demoMix endpoint (server) with lat/lon,
+    // then adds red pins for each recommended location.
+    // -------------------------------------------------------------------
+    function fetchRecommendations(lat, lon) {
+      fetch('/demoMix', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.error) {
+          console.error("Error from /demoMix:", data.error);
+          return;
         }
 
-        window.onload = initMap;
-    </script>
+        // For each recommended location, add a red pin
+        data.forEach(item => {
+          datasource.add(new atlas.data.Feature(
+            new atlas.data.Point([item.Longitude, item.Latitude]),
+            {
+              markerType: 'recommended',
+              title: item.Name || 'N/A',
+              address: item.Address || 'N/A',
+              rating: item.Rating || 'N/A',
+              price: item.Price || 'N/A',
+              hours: item["Opening Hour"] || 'N/A'
+            }
+          ));
+        });
+
+        // Adjust the map's camera to include all pins
+        map.setCamera({
+          bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
+          padding: 50
+        });
+      })
+      .catch(err => console.error("Error fetching recommendations:", err));
+    }
+
+    window.onload = initMap;
+  </script>
 </body>
 </html>
