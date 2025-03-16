@@ -1,47 +1,47 @@
 [
     {
-        "Name": "Spitz - Sugarhouse",
-        "Address": "1201 Wilmington Ave #101, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7234196,
-        "Longitude": -111.85682279999999
+        "Name": "Rock Creek Tavern",
+        "Address": "5500 Olney Laytonsville Rd, Olney, MD 20832",
+        "Rating": 4.3,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Latitude": 39.1828207,
+        "Longitude": -77.1104472
     },
     {
-        "Name": "The Dodo Restaurant",
-        "Address": "1355 E 2100 S, Salt Lake City, UT 84105",
+        "Name": "Jiang Court Asian Cuisine",
+        "Address": "18200 Georgia Ave suite F/G, Olney, MD 20832",
+        "Rating": 5,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Latitude": 39.1549633,
+        "Longitude": -77.06737439999999
+    },
+    {
+        "Name": "Red Hog Saloon",
+        "Address": "39209 221st St, Alpena, SD 57312",
+        "Rating": 4.5,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 9:30\u202fPM",
+        "Latitude": 44.18384,
+        "Longitude": -98.3703376
+    },
+    {
+        "Name": "Salt & Vine",
+        "Address": "3308 Olney Sandy Spring Rd, Olney, MD 20832",
+        "Rating": 4.5,
+        "Price": "$50\u2013100",
+        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Latitude": 39.1522061,
+        "Longitude": -77.0660639
+    },
+    {
+        "Name": "Copper Canyon Grill",
+        "Address": "100 Boardwalk Pl, Gaithersburg, MD 20878",
         "Rating": 4.4,
         "Price": "$20\u201330",
         "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7261306,
-        "Longitude": -111.8520806
-    },
-    {
-        "Name": "Olive Garden Italian Restaurant",
-        "Address": "2272 S 1300 E, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.721522,
-        "Longitude": -111.85427899999999
-    },
-    {
-        "Name": "Dee's Family Restaurant",
-        "Address": "2104 S 700 E #1829, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 40.725149699999996,
-        "Longitude": -111.8716353
-    },
-    {
-        "Name": "Se\u00f1or Pollo Mexican Grill",
-        "Address": "2121 S McClelland St #104, Salt Lake City, UT 84106",
-        "Rating": 4.8,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
-        "Latitude": 40.7247619,
-        "Longitude": -111.8612165
+        "Latitude": 39.117421,
+        "Longitude": -77.1990265
     }
 ]
