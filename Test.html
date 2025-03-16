@@ -54,8 +54,9 @@
 
                         // Add recommended locations to map
                         data.forEach(item => {
+                            console.log("Adding recommendation:", item.Name, item.Latitude, item.Longitude);
                             datasource.add(new atlas.data.Feature(
-                                new atlas.data.Point([item.Latitude, item.Longitude]),
+                                new atlas.data.Point([item.Longitude, item.Latitude]),
                                 { title: item.Name, icon: 'pin-red' }
                             ));
                         });
