@@ -6,69 +6,66 @@ import time
 
 app = Flask(__name__)
 
-# Paths
-DEMOMIX_PATH = "demoMix.py"  # Path to the demoMix script
-RESULT_JSON_PATH = "result.json"  # Path to the result.json file
+DEMOMIX_SCRIPT = "demoMix.py"
+RESULT_JSON = "result.json"
 
 @app.route('/')
-def serve_map():
+def serve_html():
+    # Serve your Test.html
     return send_from_directory('.', 'Test.html')
 
 @app.route('/demoMix', methods=['POST'])
 def run_demoMix():
-    """Handles coordinate input, logs coordinates, runs demoMix, and returns recommendations."""
+    """Receives lat, lon, amenity from the frontend, runs demoMix.py, returns recommendations."""
     data = request.json
-    latitude = data.get('latitude')
-    longitude = data.get('longitude')
+    lat = data.get('latitude')
+    lon = data.get('longitude')
+    amenity = data.get('amenity', 'restaurant')
 
-    if latitude is None or longitude is None:
-        return jsonify({"error": "Missing coordinates"}), 400
+    if lat is None or lon is None:
+        return jsonify({"error": "Missing lat/lon"}), 400
 
-    print(f"Received coordinates: Latitude={latitude}, Longitude={longitude}")
+    print(f"Received /demoMix: lat={lat}, lon={lon}, amenity={amenity}")
+
+    if not os.path.exists(DEMOMIX_SCRIPT):
+        return jsonify({"error": f"{DEMOMIX_SCRIPT} not found"}), 500
+
+    # Build the command to call demoMix.py
+    cmd = ["python", DEMOMIX_SCRIPT, str(lat), str(lon), amenity]
+    print("Executing:", " ".join(cmd))
 
     try:
-        # Check if demoMix.py exists
-        if not os.path.exists(DEMOMIX_PATH):
-            print("Error: demoMix.py not found")
-            return jsonify({"error": "demoMix.py not found"}), 500
-
-        # Construct command to run demoMix.py
-        command = ["python", DEMOMIX_PATH, str(latitude), str(longitude)]
-        print(f"Executing: {' '.join(command)}")
-
-        # Run demoMix.py and capture output
-        result = subprocess.run(command, capture_output=True, text=True, check=True)
-        print("demoMix Output:", result.stdout)
-
+        # Run the command & capture output
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        print("demoMix.py stdout:\n", result.stdout)
+        if result.stderr:
+            print("demoMix.py stderr:\n", result.stderr)
     except subprocess.CalledProcessError as e:
-        print("demoMix Error:", e.stderr)
-        return jsonify({"error": f"demoMix execution failed: {e.stderr}"}), 500
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"demoMix failed: {e.stderr}"}), 500
+    except Exception as ex:
+        return jsonify({"error": str(ex)}), 500
 
-    # Wait for result.json to be generated
-    timeout = 5
+    # Wait up to 5 seconds for result.json
     start_time = time.time()
-    while not os.path.exists(RESULT_JSON_PATH):
-        if time.time() - start_time > timeout:
-            print("Error: result.json not found after running demoMix.py")
+    timeout = 5
+    while not os.path.exists(RESULT_JSON):
+        if (time.time() - start_time) > timeout:
             return jsonify({"error": "result.json not found after running demoMix"}), 500
         time.sleep(0.5)
 
-    # Load result.json and return recommendations
+    # Load the JSON data from result.json
     try:
-        with open(RESULT_JSON_PATH, "r", encoding="utf-8") as file:
-            recommendations = json.load(file)
+        with open(RESULT_JSON, "r", encoding="utf-8") as f:
+            recommendations = json.load(f)
 
-        if not isinstance(recommendations, list):  # Ensure the structure is correct
-            print("Error: result.json does not contain a valid list")
-            return jsonify({"error": "Invalid data format in result.json"}), 500
+        # Must be a list for the front-end to handle
+        if not isinstance(recommendations, list):
+            return jsonify({"error": "Invalid format in result.json"}), 500
 
         return jsonify(recommendations)
 
     except json.JSONDecodeError:
-        print("Error: result.json contains invalid JSON")
-        return jsonify({"error": "Invalid JSON format in result.json"}), 500
+        return jsonify({"error": "Invalid JSON in result.json"}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

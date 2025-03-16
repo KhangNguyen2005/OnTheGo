@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Azure Maps Hover Popup with Address Search</title>
+  <title>Azure Maps: Address and Amenity Search</title>
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
   <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
   <style>
@@ -12,8 +12,7 @@
       margin: 0;
       padding: 0;
     }
-
-    /* Top bar for manual address input */
+    /* Top bar for user input */
     #topBar {
       position: absolute;
       top: 0;
@@ -24,7 +23,6 @@
       z-index: 9999;
       font-family: Arial, sans-serif;
     }
-
     /* The map container must be position: relative so that absolutely positioned items inside use it as reference */
     #mapDiv {
       position: relative;
@@ -34,15 +32,26 @@
   </style>
 </head>
 <body>
-  <!-- Top bar: manual input for address -->
+  <!-- Top bar: input for address and then amenity -->
   <div id="topBar">
     <input 
       type="text" 
-      id="manualAddress" 
+      id="addressInput" 
       placeholder="Enter an address or city..." 
       style="width: 300px; padding: 5px;"
     />
-    <button onclick="searchByAddress()" style="padding: 5px 10px;">
+    <button onclick="setLocation()" style="padding: 5px 10px;">
+      Set Location
+    </button>
+    <br>
+    <!-- Amenity input is hidden until a location is set -->
+    <input 
+      type="text" 
+      id="amenityInput" 
+      placeholder="Enter an amenity (e.g., coffee, arcade)..." 
+      style="width: 300px; padding: 5px; display: none; margin-top: 8px;"
+    />
+    <button id="amenityButton" onclick="searchByAmenity()" style="padding: 5px 10px; display: none; margin-top: 8px;">
       Get Recommendations
     </button>
   </div>
@@ -52,7 +61,6 @@
 
   <script>
     let map, datasource, symbolLayer;
-    // One popup used for hover display
     let hoverPopup;
 
     function initMap() {
@@ -67,8 +75,6 @@
         datasource = new atlas.source.DataSource();
         map.sources.add(datasource);
 
-        // Create a SymbolLayer that uses markerType to decide the icon color:
-        // "selected" gives blue pins and "recommended" gives red pins.
         symbolLayer = new atlas.layer.SymbolLayer(datasource, null, {
           iconOptions: {
             image: [
@@ -86,31 +92,28 @@
         });
         map.layers.add(symbolLayer);
 
-        // Create a single popup for hover events (it will be repositioned as needed)
         hoverPopup = new atlas.Popup({
           closeButton: false,
           pixelOffset: [0, -30]
         });
 
-        // When the user clicks on the map, set that point as the Selected Location
+        // Optionally allow the user to set a location by clicking the map.
         map.events.add('click', function (e) {
           const coords = e.position; // [lng, lat]
-          // Clear previous features
           datasource.clear();
-          // Close any open hover popup
           hoverPopup.close();
 
-          // Add a blue pin for the Selected Location
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point(coords),
             { markerType: 'selected', title: 'Selected Location' }
           ));
 
-          // Fetch recommendations from the server using the clicked coordinates
-          fetchRecommendations(coords[1], coords[0]);
+          map.setCamera({ center: coords, zoom: 14 });
+          // Reveal amenity input fields if not already visible.
+          document.getElementById('amenityInput').style.display = 'inline';
+          document.getElementById('amenityButton').style.display = 'inline';
         });
 
-        // Hover events: Show popup only for recommended (red) pins
         map.events.add('mouseenter', symbolLayer, function (e) {
           if (e.shapes && e.shapes.length > 0) {
             const shape = e.shapes[0];
@@ -134,17 +137,13 @@
           }
         });
 
-        // Close the hover popup when the mouse leaves a pin
         map.events.add('mouseleave', symbolLayer, function () {
           hoverPopup.close();
         });
       });
     }
 
-    // -------------------------------------------------------------------
-    // getCoordinates: Try Address Search; if no result, fall back to Fuzzy Search.
-    // Returns a Promise resolving to {lat, lon} or null.
-    // -------------------------------------------------------------------
+    // getCoordinates: Geocodes the provided query using Azure Maps services.
     function getCoordinates(query) {
       const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
       const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
@@ -175,13 +174,9 @@
         });
     }
 
-    // -------------------------------------------------------------------
-    // searchByAddress: Uses getCoordinates() to obtain lat/lon,
-    // then clears the map, places a blue "Selected Location" pin,
-    // and fetches recommendations.
-    // -------------------------------------------------------------------
-    function searchByAddress() {
-      const address = document.getElementById('manualAddress').value.trim();
+    // setLocation: Uses the address input to set the map's selected location.
+    function setLocation() {
+      const address = document.getElementById('addressInput').value.trim();
       if (!address) {
         alert("Please enter an address or city.");
         return;
@@ -191,36 +186,55 @@
         if (result) {
           const { lat, lon } = result;
           console.log("Geocoded lat/lon:", lat, lon);
-          // Clear previous features and close hover popup
+          // Clear previous features and close any popup.
           datasource.clear();
           hoverPopup.close();
-
-          // Add the Selected Location marker (blue pin)
+          
+          // Add a blue pin for the Selected Location.
+          const coords = [lon, lat];
           datasource.add(new atlas.data.Feature(
-            new atlas.data.Point([lon, lat]),
+            new atlas.data.Point(coords),
             { markerType: 'selected', title: 'Selected Location' }
           ));
 
-          // Fetch recommendations from the server
-          fetchRecommendations(lat, lon);
-
-          // Center the map on the selected location
-          map.setCamera({ center: [lon, lat], zoom: 14 });
+          // Center the map on the selected location.
+          map.setCamera({ center: coords, zoom: 14 });
+          
+          // Reveal the amenity input and button.
+          document.getElementById('amenityInput').style.display = 'inline';
+          document.getElementById('amenityButton').style.display = 'inline';
         } else {
           alert("No matching address found. Please refine your input.");
         }
       });
     }
 
-    // -------------------------------------------------------------------
-    // fetchRecommendations: Calls the /demoMix endpoint (server) with lat/lon,
-    // then adds red pins for each recommended location.
-    // -------------------------------------------------------------------
-    function fetchRecommendations(lat, lon) {
+    // searchByAmenity: Uses the amenity input to fetch recommendations.
+    function searchByAmenity() {
+      const amenity = document.getElementById('amenityInput').value.trim();
+      if (!amenity) {
+        alert("Please enter an amenity, e.g., coffee, arcade.");
+        return;
+      }
+
+      // Get coordinates from the selected location marker.
+      const selectedFeatures = datasource.getShapes().filter(shape => shape.getProperties().markerType === 'selected');
+      if (selectedFeatures.length === 0) {
+        alert("Please set a location first.");
+        return;
+      }
+      const coords = selectedFeatures[0].getCoordinates();
+
+      // Fetch recommendations using the determined coordinates and the amenity query.
+      fetchRecommendations(coords[1], coords[0], amenity);
+    }
+
+    // fetchRecommendations: Calls the /demoMix endpoint (server) with lat/lon and amenity query.
+    function fetchRecommendations(lat, lon, amenity) {
       fetch('/demoMix', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitude: lat, longitude: lon })
+        body: JSON.stringify({ latitude: lat, longitude: lon, amenity: amenity })
       })
       .then(resp => resp.json())
       .then(data => {
@@ -229,7 +243,7 @@
           return;
         }
 
-        // For each recommended location, add a red pin
+        // For each recommended location, add a red pin.
         data.forEach(item => {
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point([item.Longitude, item.Latitude]),
@@ -244,7 +258,7 @@
           ));
         });
 
-        // Adjust the map's camera to include all pins
+        // Adjust the map's camera to include all pins.
         map.setCamera({
           bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
           padding: 50

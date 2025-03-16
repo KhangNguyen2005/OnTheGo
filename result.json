@@ -1,47 +1,47 @@
 [
     {
-        "Name": "Spitz - Sugarhouse",
-        "Address": "1201 Wilmington Ave #101, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7234196,
-        "Longitude": -111.85682279999999
+        "Name": "The Kimball at Temple Square",
+        "Address": "150 N Main St, Salt Lake City, UT 84103",
+        "Rating": 4.3,
+        "Price": "$250",
+        "Opening Hour": null,
+        "Latitude": 40.772734,
+        "Longitude": -111.890422
     },
     {
-        "Name": "The Dodo Restaurant",
-        "Address": "1355 E 2100 S, Salt Lake City, UT 84105",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7261306,
-        "Longitude": -111.8520806
+        "Name": "Asher Adams, Autograph Collection",
+        "Address": "2 400 W, Salt Lake City, UT 84101",
+        "Rating": 4.1,
+        "Price": "$2,956",
+        "Opening Hour": null,
+        "Latitude": 40.7693908,
+        "Longitude": -111.90308979999999
     },
     {
-        "Name": "Olive Garden Italian Restaurant",
-        "Address": "2272 S 1300 E, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.721522,
-        "Longitude": -111.85427899999999
+        "Name": "Radisson Hotel Salt Lake City Downtown",
+        "Address": "215 W S Temple St, Salt Lake City, UT 84101",
+        "Rating": 4,
+        "Price": "$477",
+        "Opening Hour": null,
+        "Latitude": 40.768988,
+        "Longitude": -111.8978173
     },
     {
-        "Name": "Dee's Family Restaurant",
-        "Address": "2104 S 700 E #1829, Salt Lake City, UT 84106",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 40.725149699999996,
-        "Longitude": -111.8716353
+        "Name": "Quality Inn Downtown",
+        "Address": "616 S 200 W, Salt Lake City, UT 84101",
+        "Rating": 2.8,
+        "Price": "$99",
+        "Opening Hour": null,
+        "Latitude": 40.755741,
+        "Longitude": -111.897257
     },
     {
-        "Name": "Se\u00f1or Pollo Mexican Grill",
-        "Address": "2121 S McClelland St #104, Salt Lake City, UT 84106",
-        "Rating": 4.8,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
-        "Latitude": 40.7247619,
-        "Longitude": -111.8612165
+        "Name": "Radisson Hotel Salt Lake City Airport",
+        "Address": "2177 W North Temple St, Salt Lake City, UT 84116",
+        "Rating": 3.4,
+        "Price": "$150",
+        "Opening Hour": null,
+        "Latitude": 40.771147299999996,
+        "Longitude": -111.95255999999999
     }
 ]

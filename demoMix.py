@@ -2,60 +2,58 @@ import sys
 import os
 from dotenv import load_dotenv
 import serpapi
-import requests
 import json
 
-# Ensure correct number of arguments
-if len(sys.argv) != 3:
-    print('Usage: python demoMix.py <latitude> <longitude>')
+"""
+Usage: python demoMix.py <latitude> <longitude> [amenity]
+ - <latitude>, <longitude>: float
+ - [amenity]: optional, defaults to "restaurant"
+"""
+
+if len(sys.argv) < 3:
+    print('Usage: python demoMix.py <latitude> <longitude> [amenity]')
     sys.exit(1)
 
-# Retrieve coordinates from command-line arguments
-user_lat = float(sys.argv[1])
-user_lon = float(sys.argv[2])
+latitude = float(sys.argv[1])
+longitude = float(sys.argv[2])
+amenity = sys.argv[3] if len(sys.argv) >= 4 else "restaurant"
 
-print(f"Received coordinates: {user_lat}, {user_lon}")
-
-# Load environment variables
+# Load environment variables from .env (SERPAPI_KEY)
 load_dotenv()
 
-# Load the SerpAPI key for Google Maps queries
-serp_api_key = os.getenv('SERPAPI_KEY')
+serp_api_key = os.getenv('SERPAPI_KEY')  # e.g. "e183cd43fd..."
+if not serp_api_key:
+    print("Error: SERPAPI_KEY not found in environment variables.")
+    sys.exit(1)
+
+print(f"Received coordinates: {latitude}, {longitude}")
+print(f"Searching for amenity: {amenity}")
+
+# Create SerpAPI client
 client = serpapi.Client(api_key=serp_api_key)
 
-# Azure Maps Subscription Key
-SUBSCRIPTION_KEY = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
-
-def generate_ll_param(lat, lon, zoom=20):
+def generate_ll_param(lat, lon, zoom=16):
     """
-    Formats latitude and longitude into the format expected by the SerpAPI parameter.
-    Example: '@40.712776,-74.005974,20z'
+    Formats lat/lon for the SerpAPI request (google_maps engine).
+    Example: '@40.712776,-74.005974,16z'
     """
     return f"@{lat},{lon},{zoom}z"
 
 def main():
     try:
-        # Define amenity - default to "restaurant"
-        amenity = "restaurant"
-
-        # Use the coordinates from command-line arguments
-        latitude = user_lat
-        longitude = user_lon
-
-        # Format the latitude/longitude for the API request
         ll_param = generate_ll_param(latitude, longitude)
-        print(f"Searching for {amenity} near: {latitude}, {longitude}")
-
-        # Use SerpAPI to perform a Google Maps search with the dynamic parameters
+        # Prepare params for the Google Maps search
         params = {
             'engine': 'google_maps',
             'q': amenity,
             'type': 'search',
-            'll': ll_param,
+            'll': ll_param
         }
+
+        # Run the search
         results = client.search(params)
 
-        # Extract locations from the results
+        # Extract up to 5 places
         if "places_results" in results:
             locations = results["places_results"][:5]
         elif "local_results" in results:
@@ -65,21 +63,20 @@ def main():
         else:
             locations = []
 
-        # Process locations into a structured JSON format
-        reduced_locations = []
+        # Build a JSON structure for each place
+        output_data = []
         for loc in locations:
-            # Extract coordinates from "gps_coordinates"
-            gps = loc.get("gps_coordinates")
-            if gps:
-                lat = gps.get("latitude")
-                lon = gps.get("longitude")
-            else:
-                # Fallback: check if coordinates exist under geometry -> location
+            gps = loc.get("gps_coordinates") or {}
+            lat = gps.get("latitude")
+            lon = gps.get("longitude")
+
+            # Fallback if gps_coordinates is missing
+            if lat is None or lon is None:
                 geo = loc.get("geometry", {}).get("location", {})
                 lat = geo.get("lat")
                 lon = geo.get("lng")
 
-            reduced_locations.append({
+            output_data.append({
                 "Name": loc.get("title"),
                 "Address": loc.get("address"),
                 "Rating": loc.get("rating"),
@@ -89,12 +86,11 @@ def main():
                 "Longitude": lon
             })
 
-        # Write the results to a JSON file
-        output_filename = "result.json"
-        with open(output_filename, "w", encoding="utf-8") as json_file:
-            json.dump(reduced_locations, json_file, indent=4)
+        # Write the data to result.json
+        with open("result.json", "w", encoding="utf-8") as f:
+            json.dump(output_data, f, indent=4)
 
-        print(f"[INFO] Search results have been saved to {output_filename}")
+        print(f"[INFO] result.json saved with {len(output_data)} results.")
 
     except Exception as e:
         print(f"[ERROR] {e}")
