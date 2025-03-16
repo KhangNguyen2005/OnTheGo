@@ -68,6 +68,25 @@
                     })
                     .catch(err => console.error("Error processing recommendations:", err));
                 });
+
+                // Pop-up for info
+                map.events.add('click', datasource, function (e) {
+                    if (e.shapes && e.shapes.length > 0) {
+                        let props = e.shapes[0].getProperties();
+                        let content = `
+                            <strong>${props.title}</strong><br>
+                            Address: ${props.address}<br>
+                            Rating: ${props.rating}<br>
+                            Price: ${props.price}<br>
+                            Hours: ${props.hours}
+                        `;
+                        popup.setOptions({
+                            position: e.shapes[0].getCoordinates(),
+                            content: content
+                        });
+                        popup.open(map);
+                    }
+                });
             });
         }
 

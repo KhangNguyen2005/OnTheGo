@@ -1,47 +1,47 @@
 [
     {
-        "Name": "MI VIDA",
-        "Address": "98 District Square SW, Washington, DC 20024",
-        "Rating": 4.3,
-        "Price": "$30\u201350",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 38.879933,
-        "Longitude": -77.0258707
+        "Name": "Billy Can Can",
+        "Address": "2386 Victory Park Ln, Dallas, TX 75219",
+        "Rating": 4.7,
+        "Price": "$50\u2013100",
+        "Opening Hour": "Closed \u22c5 Opens 4:30\u202fPM",
+        "Latitude": 32.787112,
+        "Longitude": -96.8091455
     },
     {
-        "Name": "BISTRO DU JOUR",
-        "Address": "99 District Square SW, Washington, DC 20024",
+        "Name": "Dick's Last Resort - Dallas",
+        "Address": "2211 N Lamar St, Dallas, TX 75201",
         "Rating": 4.2,
+        "Price": "$20\u201330",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 32.7848448,
+        "Longitude": -96.8086605
+    },
+    {
+        "Name": "3Eleven Kitchen and Cocktails",
+        "Address": "311 N Market St # 100, Dallas, TX 75202",
+        "Rating": 4.8,
         "Price": "$$",
-        "Opening Hour": "Closed \u22c5 Opens 8\u202fAM",
-        "Latitude": 38.8795686,
-        "Longitude": -77.02542249999999
-    },
-    {
-        "Name": "La Vie",
-        "Address": "88 District Square SW Floor 4.6, Washington, DC 20024",
-        "Rating": 4.2,
-        "Price": "$100+",
         "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 38.8798849,
-        "Longitude": -77.02584809999999
+        "Latitude": 32.7812264,
+        "Longitude": -96.80700879999999
     },
     {
-        "Name": "Surfside Taco Stand",
-        "Address": "33 District Square SW, Washington, DC 20024",
-        "Rating": 4.3,
+        "Name": "Victory Social",
+        "Address": "2323 Victory Ave, Dallas, TX 75219",
+        "Rating": 4.6,
         "Price": "$10\u201320",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 38.8799138,
-        "Longitude": -77.0251096
+        "Opening Hour": "Closed \u22c5 Opens 10:30\u202fAM",
+        "Latitude": 32.785517899999995,
+        "Longitude": -96.8103637
     },
     {
-        "Name": "THE GRILL",
-        "Address": "99 Market Square SW, Washington, DC 20024",
-        "Rating": 4.1,
-        "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Latitude": 38.880731,
-        "Longitude": -77.026968
+        "Name": "Mesero - Victory Park",
+        "Address": "2375 Victory Park Ln #180, Dallas, TX 75202",
+        "Rating": 4.5,
+        "Price": "$20\u201330",
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Latitude": 32.7871196,
+        "Longitude": -96.8094734
     }
 ]

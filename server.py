@@ -7,8 +7,8 @@ import time
 app = Flask(__name__)
 
 # Paths
-DEMOMIX_PATH = "E:\\Workspace\\OnTheGo\\demoMix.py"  # Path to the demoMix script
-RESULT_JSON_PATH = "E:\\Workspace\\OnTheGo\\result.json"  # Path to the result.json file
+DEMOMIX_PATH = "demoMix.py"  # Path to the demoMix script
+RESULT_JSON_PATH = "result.json"  # Path to the result.json file
 
 @app.route('/')
 def serve_map():
