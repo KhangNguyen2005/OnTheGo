@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Maps Interactive Recommendations</title>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #mapDiv { width: 100%; height: 100vh; }
+    </style>
+</head>
+<body>
+    <div id="mapDiv"></div>
+
+    <script>
+        let map, datasource;
+
+        function initMap() {
+            map = new atlas.Map('mapDiv', {
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
+                }
+            });
+
+            map.events.add('ready', function () {
+                datasource = new atlas.source.DataSource();
+                map.sources.add(datasource);
+
+                map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+                    iconOptions: { image: 'pin-round-blue', allowOverlap: true },
+                    textOptions: { textField: ['get', 'title'], offset: [0, 1.2] }
+                }));
+
+                map.events.add('click', function (e) {
+                    const coords = e.position;
+                    datasource.clear();
+                    datasource.add(new atlas.data.Feature(new atlas.data.Point(coords), { title: "Selected Location" }));
+
+                    // Send coordinates to Flask to automatically trigger demoMix
+                    fetch('/demoMix', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ latitude: coords[1], longitude: coords[0] })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            console.error("Error:", data.error);
+                            return;
+                        }
+
+                        // Add recommended locations to map
+                        data.forEach(item => {
+                            datasource.add(new atlas.data.Feature(
+                                new atlas.data.Point([item.Latitude, item.Longitude]),
+                                { title: item.Name, icon: 'pin-red' }
+                            ));
+                        });
+
+                        map.setCamera({
+                            bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
+                            padding: 50
+                        });
+                    })
+                    .catch(err => console.error("Error processing recommendations:", err));
+                });
+            });
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
