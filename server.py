@@ -6,17 +6,18 @@ import time
 
 app = Flask(__name__)
 
-DEMOMIX_SCRIPT = "fetching_data.py"
+FETCHING_DATA_SCRIPT = "fetching_data.py"
 RESULT_JSON = "result.json"
 
 @app.route('/')
 def serve_html():
-    # Serve your Test.html
+    # Serve Test.html from the current directory
     return send_from_directory('.', 'Test.html')
 
-@app.route('/demoMix', methods=['POST'])
-def run_demoMix():
-    """Receives lat, lon, amenity from the frontend, runs demoMix.py, returns recommendations."""
+@app.route('/fetching_data', methods=['POST'])
+def run_fetching_data():
+    """Receives latitude, longitude, and amenity from the frontend,
+    runs fetching_data.py, and returns recommendations."""
     data = request.json
     lat = data.get('latitude')
     lon = data.get('longitude')
@@ -25,40 +26,36 @@ def run_demoMix():
     if lat is None or lon is None:
         return jsonify({"error": "Missing lat/lon"}), 400
 
-    print(f"Received /demoMix: lat={lat}, lon={lon}, amenity={amenity}")
+    print(f"Received /fetching_data: lat={lat}, lon={lon}, amenity={amenity}")
 
-    if not os.path.exists(DEMOMIX_SCRIPT):
-        return jsonify({"error": f"{DEMOMIX_SCRIPT} not found"}), 500
+    if not os.path.exists(FETCHING_DATA_SCRIPT):
+        return jsonify({"error": f"{FETCHING_DATA_SCRIPT} not found"}), 500
 
-    # Build the command to call demoMix.py
-    cmd = ["python", DEMOMIX_SCRIPT, str(lat), str(lon), amenity]
+    # Build the command to call fetching_data.py
+    cmd = ["python", FETCHING_DATA_SCRIPT, str(lat), str(lon), amenity]
     print("Executing:", " ".join(cmd))
 
     try:
-        # Run the command & capture output
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        print("demoMix.py stdout:\n", result.stdout)
+        print("fetching_data.py stdout:\n", result.stdout)
         if result.stderr:
-            print("demoMix.py stderr:\n", result.stderr)
+            print("fetching_data.py stderr:\n", result.stderr)
     except subprocess.CalledProcessError as e:
-        return jsonify({"error": f"demoMix failed: {e.stderr}"}), 500
+        return jsonify({"error": f"fetching_data failed: {e.stderr}"}), 500
     except Exception as ex:
         return jsonify({"error": str(ex)}), 500
 
-    # Wait up to 5 seconds for result.json
+    # Wait up to 5 seconds for result.json to appear
     start_time = time.time()
     timeout = 5
     while not os.path.exists(RESULT_JSON):
         if (time.time() - start_time) > timeout:
-            return jsonify({"error": "result.json not found after running demoMix"}), 500
+            return jsonify({"error": "result.json not found after running fetching_data"}), 500
         time.sleep(0.5)
 
-    # Load the JSON data from result.json
     try:
         with open(RESULT_JSON, "r", encoding="utf-8") as f:
             recommendations = json.load(f)
-
-        # Must be a list for the front-end to handle
         if not isinstance(recommendations, list):
             return jsonify({"error": "Invalid format in result.json"}), 500
 
