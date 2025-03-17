@@ -1,3 +1,4 @@
+.
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
 
         <button type="submit">Search</button>
     </form>
-    {% endif %}
+    <!-- {% endif %}
     
     <!-- If results are available, display the map and table -->
     {% if locations %}
@@ -55,7 +56,7 @@
       <div id="map"></div>
       
       <!-- Include Leaflet JavaScript -->
-      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+      <!-- <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
       <script>
           var map = L.map('map').setView([{{ lat }}, {{ lon }}], 15);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -64,7 +65,7 @@
           L.marker([{{ lat }}, {{ lon }}]).addTo(map)
               .bindPopup('Location: {{ full_location }}')
               .openPopup();
-      </script>
+      </script> -->
       
       <h3>Nearby Locations</h3>
       {% if locations %}
@@ -88,13 +89,14 @@
                   <td>{{ loc["Opening Hour"] }}</td>
               </tr>
               {% endfor %}
-          </tbody>
-      </table>
+          </tbody> --> -->
+      <!-- </table>
       {% else %}
           <p>No results found.</p>
       {% endif %}
       
       <p><a href="{{ url_for('index') }}">Search Again</a></p>
     {% endif %}
-</body>
-</html>
+</body> -->
+<!-- </html>
+ 
