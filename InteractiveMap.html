@@ -23,7 +23,7 @@
       z-index: 9999;
       font-family: Arial, sans-serif;
     }
-    /* The map container must be position: relative so that absolutely positioned items inside use it as reference */
+    /* The map container */
     #mapDiv {
       position: relative;
       width: 100%;
@@ -32,7 +32,7 @@
   </style>
 </head>
 <body>
-  <!-- Top bar: input for address and then amenity -->
+  <!-- Top bar: input for address and amenity -->
   <div id="topBar">
     <input 
       type="text" 
@@ -40,20 +40,15 @@
       placeholder="Enter an address or city..." 
       style="width: 300px; padding: 5px;"
     />
-    <button onclick="setLocation()" style="padding: 5px 10px;">
-      Set Location
-    </button>
+    <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
     <br>
-    <!-- Amenity input is hidden until a location is set -->
     <input 
       type="text" 
       id="amenityInput" 
       placeholder="Enter an amenity (e.g., coffee, arcade)..." 
       style="width: 300px; padding: 5px; display: none; margin-top: 8px;"
     />
-    <button id="amenityButton" onclick="searchByAmenity()" style="padding: 5px 10px; display: none; margin-top: 8px;">
-      Get Recommendations
-    </button>
+    <button id="amenityButton" onclick="searchByAmenity()" style="padding: 5px 10px; display: none; margin-top: 8px;">Get Recommendations</button>
   </div>
 
   <!-- Map container -->
@@ -67,7 +62,7 @@
       map = new atlas.Map('mapDiv', {
         authOptions: {
           authType: 'subscriptionKey',
-          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'
+          subscriptionKey: 'YOUR_SUBSCRIPTION_KEY' // Replace with your actual Azure Maps subscription key
         }
       });
 
@@ -97,7 +92,7 @@
           pixelOffset: [0, -30]
         });
 
-        // Optionally allow the user to set a location by clicking the map.
+        // Allow user to set a location by clicking the map
         map.events.add('click', function (e) {
           const coords = e.position; // [lng, lat]
           datasource.clear();
@@ -109,7 +104,6 @@
           ));
 
           map.setCamera({ center: coords, zoom: 14 });
-          // Reveal amenity input fields if not already visible.
           document.getElementById('amenityInput').style.display = 'inline';
           document.getElementById('amenityButton').style.display = 'inline';
         });
@@ -143,9 +137,9 @@
       });
     }
 
-    // getCoordinates: Geocodes the provided query using Azure Maps services.
+    // Geocode the provided address using Azure Maps
     function getCoordinates(query) {
-      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
+      const subKey = 'YOUR_SUBSCRIPTION_KEY'; // Replace with your Azure Maps subscription key
       const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
       
       return fetch(addressUrl)
@@ -174,7 +168,6 @@
         });
     }
 
-    // setLocation: Uses the address input to set the map's selected location.
     function setLocation() {
       const address = document.getElementById('addressInput').value.trim();
       if (!address) {
@@ -186,21 +179,17 @@
         if (result) {
           const { lat, lon } = result;
           console.log("Geocoded lat/lon:", lat, lon);
-          // Clear previous features and close any popup.
           datasource.clear();
           hoverPopup.close();
           
-          // Add a blue pin for the Selected Location.
           const coords = [lon, lat];
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point(coords),
             { markerType: 'selected', title: 'Selected Location' }
           ));
 
-          // Center the map on the selected location.
           map.setCamera({ center: coords, zoom: 14 });
           
-          // Reveal the amenity input and button.
           document.getElementById('amenityInput').style.display = 'inline';
           document.getElementById('amenityButton').style.display = 'inline';
         } else {
@@ -209,7 +198,6 @@
       });
     }
 
-    // searchByAmenity: Uses the amenity input to fetch recommendations.
     function searchByAmenity() {
       const amenity = document.getElementById('amenityInput').value.trim();
       if (!amenity) {
@@ -217,7 +205,6 @@
         return;
       }
 
-      // Get coordinates from the selected location marker.
       const selectedFeatures = datasource.getShapes().filter(shape => shape.getProperties().markerType === 'selected');
       if (selectedFeatures.length === 0) {
         alert("Please set a location first.");
@@ -225,13 +212,12 @@
       }
       const coords = selectedFeatures[0].getCoordinates();
 
-      // Fetch recommendations using the determined coordinates and the amenity query.
       fetchRecommendations(coords[1], coords[0], amenity);
     }
 
-    // fetchRecommendations: Calls the /demoMix endpoint (server) with lat/lon and amenity query.
     function fetchRecommendations(lat, lon, amenity) {
-      fetch('/demoMix', {
+      // Update the fetch call to point to the new /fetching_data endpoint
+      fetch('http://127.0.0.1:5000/fetching_data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ latitude: lat, longitude: lon, amenity: amenity })
@@ -239,11 +225,10 @@
       .then(resp => resp.json())
       .then(data => {
         if (data.error) {
-          console.error("Error from /demoMix:", data.error);
+          console.error("Error from /fetching_data:", data.error);
           return;
         }
 
-        // For each recommended location, add a red pin.
         data.forEach(item => {
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point([item.Longitude, item.Latitude]),
@@ -258,7 +243,6 @@
           ));
         });
 
-        // Adjust the map's camera to include all pins.
         map.setCamera({
           bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
           padding: 50
