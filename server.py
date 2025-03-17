@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 
-DEMOMIX_SCRIPT = "demoMix.py"
+DEMOMIX_SCRIPT = "fetching_data.py"
 RESULT_JSON = "result.json"
 
 @app.route('/')
