@@ -64,28 +64,5 @@ def run_fetching_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
 
-# New endpoint to generate an optimal route
-@app.route('/findRoute', methods=['POST'])
-def find_route():
-    """Finds the optimal route from the pinpointed location to the chosen recommendation."""
-    data = request.json
-    start_lat = data.get('start_lat')
-    start_lon = data.get('start_lon')
-    end_lat = data.get('end_lat')
-    end_lon = data.get('end_lon')
-    
-    if None in [start_lat, start_lon, end_lat, end_lon]:
-        return jsonify({"error": "Missing route coordinates"}), 400
-    
-    # Simulated route response (Replace with an actual API if needed)
-    route = {
-        "path": [
-            {"lat": start_lat, "lon": start_lon},
-            {"lat": (start_lat + end_lat) / 2, "lon": (start_lon + end_lon) / 2},  # Midpoint for simplicity
-            {"lat": end_lat, "lon": end_lon}
-        ]
-    }
-    return jsonify(route)
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
