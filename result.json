@@ -1,47 +1,47 @@
 [
     {
-        "Name": "Caffe Reggio",
-        "Address": "119 MacDougal St, New York, NY 10012",
-        "Rating": 4.3,
+        "Name": "R\u00eave Coffee Roasters",
+        "Address": "200-A Jefferson St, Lafayette, LA 70501",
+        "Rating": 4.7,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
+        "Latitude": 30.2274939,
+        "Longitude": -92.0160866
+    },
+    {
+        "Name": "Black Cafe",
+        "Address": "518 S Pierce St #100, Lafayette, LA 70501",
+        "Rating": 4.7,
         "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 3\u202fAM \u22c5 Reopens 9\u202fAM",
-        "Latitude": 40.7303079,
-        "Longitude": -74.0003706
+        "Opening Hour": "Closed \u22c5 Opens 6:30\u202fAM",
+        "Latitude": 30.2283573,
+        "Longitude": -92.0189755
     },
     {
-        "Name": "G.O.A.T. Cafe",
-        "Address": "124 E 14th St, New York, NY 10003",
-        "Rating": 4.2,
-        "Price": "$1\u201310",
+        "Name": "Mikos Java House",
+        "Address": "409 Lee Ave #3, Lafayette, LA 70501",
+        "Rating": null,
+        "Price": null,
         "Opening Hour": null,
-        "Latitude": 40.7337992,
-        "Longitude": -73.98889059999999
+        "Latitude": 30.224178,
+        "Longitude": -92.016314
     },
     {
-        "Name": "Greenhill coffee",
-        "Address": "421 2nd Ave, New York, NY 10010",
-        "Rating": 5,
+        "Name": "Carpe Diem Cafe & Wine Bar",
+        "Address": "812 Jefferson St, Lafayette, LA 70501",
+        "Rating": 4.6,
         "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
-        "Latitude": 40.7389145,
-        "Longitude": -73.9805403
+        "Opening Hour": "Closed \u22c5 Opens 8\u202fAM",
+        "Latitude": 30.2215942,
+        "Longitude": -92.01892439999999
     },
     {
-        "Name": "Absolute Coffee",
-        "Address": "259 Bleecker St, New York, NY 10014",
-        "Rating": 4.8,
-        "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
-        "Latitude": 40.731368599999996,
-        "Longitude": -74.0028134
-    },
-    {
-        "Name": "The Walkers Espresso",
-        "Address": "37 7th Ave, New York, NY 10011",
-        "Rating": 5,
-        "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 7:30\u202fAM",
-        "Latitude": 40.7376244,
-        "Longitude": -74.00014039999999
+        "Name": "Las tablas los santos el cocal",
+        "Address": "Lafayette, LA 70501",
+        "Rating": 1,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 30.224163599999997,
+        "Longitude": -92.01987179999999
     }
 ]

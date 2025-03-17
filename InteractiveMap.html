@@ -251,6 +251,44 @@
       .catch(err => console.error("Error fetching recommendations:", err));
     }
 
+    // Highlighting the path 
+    function highlightRoute(endLat, endLon) {
+      if (!selectedLocation) {
+        alert("Please select a pinpoint location first.");
+        return;
+      }
+
+      fetch('/findRoute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          start_lat: selectedLocation[1], 
+          start_lon: selectedLocation[0], 
+          end_lat: endLat, 
+          end_lon: endLon 
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (routeLayer) map.layers.remove(routeLayer);
+
+        const pathCoordinates = data.path.map(point => [point.lon, point.lat]);
+
+        const routeSource = new atlas.source.DataSource();
+        map.sources.add(routeSource);
+        routeSource.add(new atlas.data.LineString(pathCoordinates));
+
+        routeLayer = new atlas.layer.LineLayer(routeSource, null, { strokeColor: 'blue', strokeWidth: 3 });
+        map.layers.add(routeLayer);
+      });
+    }
+    
+    // Click to show the path
+    function onSpotClick(event) {
+      const endCoords = event.shapes[0].getCoordinates();
+      highlightRoute(endCoords[1], endCoords[0]);
+    }
+
     window.onload = initMap;
   </script>
 </body>
