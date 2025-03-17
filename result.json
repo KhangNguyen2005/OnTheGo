@@ -1,47 +1,47 @@
 [
     {
-        "Name": "The Kimball at Temple Square",
-        "Address": "150 N Main St, Salt Lake City, UT 84103",
+        "Name": "Caffe Reggio",
+        "Address": "119 MacDougal St, New York, NY 10012",
         "Rating": 4.3,
-        "Price": "$250",
-        "Opening Hour": null,
-        "Latitude": 40.772734,
-        "Longitude": -111.890422
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 3\u202fAM \u22c5 Reopens 9\u202fAM",
+        "Latitude": 40.7303079,
+        "Longitude": -74.0003706
     },
     {
-        "Name": "Asher Adams, Autograph Collection",
-        "Address": "2 400 W, Salt Lake City, UT 84101",
-        "Rating": 4.1,
-        "Price": "$2,956",
+        "Name": "G.O.A.T. Cafe",
+        "Address": "124 E 14th St, New York, NY 10003",
+        "Rating": 4.2,
+        "Price": "$1\u201310",
         "Opening Hour": null,
-        "Latitude": 40.7693908,
-        "Longitude": -111.90308979999999
+        "Latitude": 40.7337992,
+        "Longitude": -73.98889059999999
     },
     {
-        "Name": "Radisson Hotel Salt Lake City Downtown",
-        "Address": "215 W S Temple St, Salt Lake City, UT 84101",
-        "Rating": 4,
-        "Price": "$477",
-        "Opening Hour": null,
-        "Latitude": 40.768988,
-        "Longitude": -111.8978173
+        "Name": "Greenhill coffee",
+        "Address": "421 2nd Ave, New York, NY 10010",
+        "Rating": 5,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
+        "Latitude": 40.7389145,
+        "Longitude": -73.9805403
     },
     {
-        "Name": "Quality Inn Downtown",
-        "Address": "616 S 200 W, Salt Lake City, UT 84101",
-        "Rating": 2.8,
-        "Price": "$99",
-        "Opening Hour": null,
-        "Latitude": 40.755741,
-        "Longitude": -111.897257
+        "Name": "Absolute Coffee",
+        "Address": "259 Bleecker St, New York, NY 10014",
+        "Rating": 4.8,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
+        "Latitude": 40.731368599999996,
+        "Longitude": -74.0028134
     },
     {
-        "Name": "Radisson Hotel Salt Lake City Airport",
-        "Address": "2177 W North Temple St, Salt Lake City, UT 84116",
-        "Rating": 3.4,
-        "Price": "$150",
-        "Opening Hour": null,
-        "Latitude": 40.771147299999996,
-        "Longitude": -111.95255999999999
+        "Name": "The Walkers Espresso",
+        "Address": "37 7th Ave, New York, NY 10011",
+        "Rating": 5,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 7:30\u202fAM",
+        "Latitude": 40.7376244,
+        "Longitude": -74.00014039999999
     }
 ]

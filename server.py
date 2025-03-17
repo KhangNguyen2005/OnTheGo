@@ -12,7 +12,7 @@ RESULT_JSON = "result.json"
 @app.route('/')
 def serve_html():
     # Serve your Test.html
-    return send_from_directory('.', 'Test.html')
+    return send_from_directory('.', 'InteractiveMap.html')
 
 @app.route('/demoMix', methods=['POST'])
 def run_demoMix():

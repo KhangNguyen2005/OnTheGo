@@ -11,7 +11,7 @@ Usage: python demoMix.py <latitude> <longitude> [amenity]
 """
 
 if len(sys.argv) < 3:
-    print('Usage: python demoMix.py <latitude> <longitude> [amenity]')
+    print('Usage: python fetching_data.py <latitude> <longitude> [amenity]')
     sys.exit(1)
 
 latitude = float(sys.argv[1])
