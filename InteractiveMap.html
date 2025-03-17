@@ -62,7 +62,7 @@
       map = new atlas.Map('mapDiv', {
         authOptions: {
           authType: 'subscriptionKey',
-          subscriptionKey: 'YOUR_SUBSCRIPTION_KEY' // Replace with your actual Azure Maps subscription key
+          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk' // Replace with your actual Azure Maps subscription key
         }
       });
 
@@ -139,7 +139,7 @@
 
     // Geocode the provided address using Azure Maps
     function getCoordinates(query) {
-      const subKey = 'YOUR_SUBSCRIPTION_KEY'; // Replace with your Azure Maps subscription key
+      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'; // Replace with your Azure Maps subscription key
       const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
       
       return fetch(addressUrl)
