@@ -1,47 +1,47 @@
 [
     {
-        "Name": "R\u00eave Coffee Roasters",
-        "Address": "200-A Jefferson St, Lafayette, LA 70501",
-        "Rating": 4.7,
-        "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM",
-        "Latitude": 30.2274939,
-        "Longitude": -92.0160866
-    },
-    {
-        "Name": "Black Cafe",
-        "Address": "518 S Pierce St #100, Lafayette, LA 70501",
-        "Rating": 4.7,
+        "Name": "Emporium Arcade Bar",
+        "Address": "616 Divisadero St, San Francisco, CA 94117",
+        "Rating": 4.4,
         "Price": "$10\u201320",
-        "Opening Hour": "Closed \u22c5 Opens 6:30\u202fAM",
-        "Latitude": 30.2283573,
-        "Longitude": -92.0189755
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM",
+        "Latitude": 37.7753364,
+        "Longitude": -122.4376563
     },
     {
-        "Name": "Mikos Java House",
-        "Address": "409 Lee Ave #3, Lafayette, LA 70501",
-        "Rating": null,
+        "Name": "Free Gold Watch",
+        "Address": "1767 Waller St, San Francisco, CA 94117",
+        "Rating": 4.8,
         "Price": null,
-        "Opening Hour": null,
-        "Latitude": 30.224178,
-        "Longitude": -92.016314
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM Mon",
+        "Latitude": 37.7682,
+        "Longitude": -122.4527
     },
     {
-        "Name": "Carpe Diem Cafe & Wine Bar",
-        "Address": "812 Jefferson St, Lafayette, LA 70501",
+        "Name": "The Detour",
+        "Address": "2200A Market St, San Francisco, CA 94114",
+        "Rating": 4.5,
+        "Price": "$20\u201330",
+        "Opening Hour": "Closes soon \u22c5 12\u202fAM \u22c5 Opens 5\u202fPM Mon",
+        "Latitude": 37.7658439,
+        "Longitude": -122.43144339999999
+    },
+    {
+        "Name": "Joey the Cat's Arcade",
+        "Address": "3252 19th St, San Francisco, CA 94110",
         "Rating": 4.6,
-        "Price": "$1\u201310",
-        "Opening Hour": "Closed \u22c5 Opens 8\u202fAM",
-        "Latitude": 30.2215942,
-        "Longitude": -92.01892439999999
-    },
-    {
-        "Name": "Las tablas los santos el cocal",
-        "Address": "Lafayette, LA 70501",
-        "Rating": 1,
         "Price": null,
         "Opening Hour": null,
-        "Latitude": 30.224163599999997,
-        "Longitude": -92.01987179999999
+        "Latitude": 37.760631499999995,
+        "Longitude": -122.41616719999999
+    },
+    {
+        "Name": "Wreck Room",
+        "Address": "1390 California St, San Francisco, CA 94109",
+        "Rating": 4.4,
+        "Price": "$20\u201330",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM",
+        "Latitude": 37.7912215,
+        "Longitude": -122.4171643
     }
 ]
