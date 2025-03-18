@@ -1,47 +1,47 @@
 [
     {
-        "Name": "Emporium Arcade Bar",
-        "Address": "616 Divisadero St, San Francisco, CA 94117",
-        "Rating": 4.4,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 2\u202fAM",
-        "Latitude": 37.7753364,
-        "Longitude": -122.4376563
+        "Name": "Starbucks",
+        "Address": "535 NW 9th St, Oklahoma City, OK 73102",
+        "Rating": 4.2,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closes soon \u22c5 7\u202fPM \u22c5 Opens 6\u202fAM Tue",
+        "Latitude": 35.477437,
+        "Longitude": -97.522517
     },
     {
-        "Name": "Free Gold Watch",
-        "Address": "1767 Waller St, San Francisco, CA 94117",
-        "Rating": 4.8,
+        "Name": "West End Roastery",
+        "Address": "1530 W Main St, Oklahoma City, OK 73106",
+        "Rating": 4.2,
         "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM Mon",
-        "Latitude": 37.7682,
-        "Longitude": -122.4527
+        "Opening Hour": "Closes soon \u22c5 7\u202fPM \u22c5 Opens 8\u202fAM Tue",
+        "Latitude": 35.467660699999996,
+        "Longitude": -97.5404484
     },
     {
-        "Name": "The Detour",
-        "Address": "2200A Market St, San Francisco, CA 94114",
+        "Name": "Clarity Coffee",
+        "Address": "431 W Main St Suite A, Oklahoma City, OK 73102",
+        "Rating": 4.7,
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 6\u202fAM Tue",
+        "Latitude": 35.4679995,
+        "Longitude": -97.5202197
+    },
+    {
+        "Name": "Elemental Coffee",
+        "Address": "815 N Hudson Ave, Oklahoma City, OK 73102",
         "Rating": 4.5,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closes soon \u22c5 12\u202fAM \u22c5 Opens 5\u202fPM Mon",
-        "Latitude": 37.7658439,
-        "Longitude": -122.43144339999999
+        "Price": "$1\u201310",
+        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM Tue",
+        "Latitude": 35.475787,
+        "Longitude": -97.51947779999999
     },
     {
-        "Name": "Joey the Cat's Arcade",
-        "Address": "3252 19th St, San Francisco, CA 94110",
+        "Name": "Stitch Cafe",
+        "Address": "835 W Sheridan Ave #100, Oklahoma City, OK 73106",
         "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": null,
-        "Latitude": 37.760631499999995,
-        "Longitude": -122.41616719999999
-    },
-    {
-        "Name": "Wreck Room",
-        "Address": "1390 California St, San Francisco, CA 94109",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 2\u202fAM",
-        "Latitude": 37.7912215,
-        "Longitude": -122.4171643
+        "Price": "$10\u201320",
+        "Opening Hour": "Closed \u22c5 Opens 7\u202fAM Tue",
+        "Latitude": 35.4667104,
+        "Longitude": -97.5268924
     }
 ]

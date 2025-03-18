@@ -62,7 +62,7 @@
       map = new atlas.Map('mapDiv', {
         authOptions: {
           authType: 'subscriptionKey',
-          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk' // Replace with your actual Azure Maps subscription key
+          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk' 
         }
       });
 
@@ -134,12 +134,35 @@
         map.events.add('mouseleave', symbolLayer, function () {
           hoverPopup.close();
         });
+
+        // Clicking a recommended spot should only draw the route, NOT update the selected location
+        map.events.add('click', symbolLayer, function (e) {
+          if (e.shapes && e.shapes.length > 0) {
+            const shape = e.shapes[0];
+            const props = shape.getProperties();
+            
+            if (props.markerType === 'recommended') {
+              const destination = shape.getCoordinates();
+              
+              const selectedFeatures = datasource.getShapes().filter(shape => shape.getProperties().markerType === 'selected');
+              
+              if (selectedFeatures.length === 0) {
+                alert("Please select a starting location first.");
+                return;
+              }
+
+              const startLocation = selectedFeatures[0].getCoordinates();
+              
+              drawRoute(startLocation, destination);
+            }
+          }
+        });
       });
     }
 
     // Geocode the provided address using Azure Maps
     function getCoordinates(query) {
-      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'; // Replace with your Azure Maps subscription key
+      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'; 
       const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
       
       return fetch(addressUrl)
@@ -249,6 +272,37 @@
         });
       })
       .catch(err => console.error("Error fetching recommendations:", err));
+    }
+
+    function drawRoute(start, end) {
+      const key = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
+      const routeUrl = `https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=${key}&query=${start[1]},${start[0]}:${end[1]},${end[0]}`;
+
+      fetch(routeUrl)
+        .then(response => response.json())
+        .then(data => {
+          if (data.routes && data.routes.length > 0) {
+            const coordinates = data.routes[0].legs[0].points.map(p => [p.longitude, p.latitude]);
+
+            if (routeLayer) {
+              map.layers.remove(routeLayer);
+            }
+
+            const routeSource = new atlas.source.DataSource();
+            routeSource.add(new atlas.data.LineString(coordinates));
+            map.sources.add(routeSource);
+
+            routeLayer = new atlas.layer.LineLayer(routeSource, null, {
+              strokeColor: 'green',
+              strokeWidth: 5
+            });
+
+            map.layers.add(routeLayer);
+          } else {
+            alert("No route found.");
+          }
+        })
+        .catch(error => console.error("Error fetching route:", error));
     }
 
     window.onload = initMap;
