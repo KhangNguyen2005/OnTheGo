@@ -1,0 +1,102 @@
+[
+    {
+        "Address": "774 S 300 W, Salt Lake City, UT 84101",
+        "Distance (km)": 1.22,
+        "Latitude": 40.752289399999995,
+        "Longitude": -111.9001526,
+        "Name": "Roots Coffee Salt Lake City",
+        "Opening Hour": "Open \u22c5 Closes 6\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.8
+    },
+    {
+        "Address": "285 N 900 W, Salt Lake City, UT 84116",
+        "Distance (km)": 3.11,
+        "Latitude": 40.7756709,
+        "Longitude": -111.9172273,
+        "Name": "Culture Coffee",
+        "Opening Hour": "Open \u22c5 Closes 4\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.9
+    },
+    {
+        "Address": "1035 E 200 S, Salt Lake City, UT 84102",
+        "Distance (km)": 2.39,
+        "Latitude": 40.7652742,
+        "Longitude": -111.8612007,
+        "Name": "Coffee Noir",
+        "Opening Hour": "Open \u22c5 Closes 6\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.6
+    },
+    {
+        "Address": "80 S Main St, Salt Lake City, UT 84101",
+        "Distance (km)": 1.03,
+        "Latitude": 40.767375,
+        "Longitude": -111.89136599999999,
+        "Name": "Starbucks",
+        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4
+    },
+    {
+        "Address": "325 E 900 S, Salt Lake City, UT 84111",
+        "Distance (km)": 1.08,
+        "Latitude": 40.7501509,
+        "Longitude": -111.88152389999999,
+        "Name": "Loki Coffee - Salt Lake, Utah",
+        "Opening Hour": "Open \u22c5 Closes 5\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.7
+    },
+    {
+        "Address": "906 S 500 E, Salt Lake City, UT 84111",
+        "Distance (km)": 1.36,
+        "Latitude": 40.7494503,
+        "Longitude": -111.8772109,
+        "Name": "Beans & Brews Coffee House",
+        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.4
+    },
+    {
+        "Address": "412 S 700 W Suite 140, Salt Lake City, UT 84104",
+        "Distance (km)": 1.96,
+        "Latitude": 40.7601758,
+        "Longitude": -111.9113594,
+        "Name": "Kings Peak Coffee Roasters",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.8
+    },
+    {
+        "Address": "270 S 300 E, Salt Lake City, UT 84111",
+        "Distance (km)": 0.69,
+        "Latitude": 40.7633729,
+        "Longitude": -111.883033,
+        "Name": "Midway Coffee",
+        "Opening Hour": "Open \u22c5 Closes 4\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.8
+    },
+    {
+        "Address": "657 S Main St, Salt Lake City, UT 84111",
+        "Distance (km)": 0.46,
+        "Latitude": 40.7548447,
+        "Longitude": -111.8906937,
+        "Name": "Millcreek Coffee Roasters",
+        "Opening Hour": "Open \u22c5 Closes 5\u202fPM",
+        "Price": "$10\u201320",
+        "Rating": 4.7
+    },
+    {
+        "Address": "268 S State St, Salt Lake City, UT 84111",
+        "Distance (km)": 0.52,
+        "Latitude": 40.7631684,
+        "Longitude": -111.88847299999999,
+        "Name": "Beans & Brews Coffee House",
+        "Opening Hour": "Open \u22c5 Closes 7\u202fPM",
+        "Price": "$1\u201310",
+        "Rating": 4.3
+    }
+]
