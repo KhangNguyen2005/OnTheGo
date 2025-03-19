@@ -1,9 +1,10 @@
 import sys
 import os
-from dotenv import load_dotenv
-import serpapi
+import math
 import json
 import traceback
+from dotenv import load_dotenv
+import serpapi
 
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
@@ -31,6 +32,18 @@ client = serpapi.Client(api_key=serp_api_key)
 def generate_ll_param(lat, lon, zoom=16):
     return f"@{lat},{lon},{zoom}z"
 
+def haversine(lat1, lon1, lat2, lon2):
+    """Calculate the great circle distance between two points 
+    on the earth (specified in decimal degrees)."""
+    R = 6371  # Earth radius in kilometers
+    phi1 = math.radians(lat1)
+    phi2 = math.radians(lat2)
+    d_phi = math.radians(lat2 - lat1)
+    d_lambda = math.radians(lon2 - lon1)
+    a = math.sin(d_phi / 2)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
+
 def main():
     try:
         ll_param = generate_ll_param(latitude, longitude)
@@ -42,10 +55,11 @@ def main():
         }
 
         results = client.search(params)
+        # Try to get the list of locations from one of the possible keys
         locations = results.get("places_results") or results.get("local_results") or results.get("results") or []
-        locations = locations[:5]
-
-        output_data = []
+        
+        # Filter locations to only include those within 20km
+        filtered_locations = []
         for loc in locations:
             gps = loc.get("gps_coordinates", {})
             lat_val = gps.get("latitude")
@@ -54,20 +68,30 @@ def main():
                 geo = loc.get("geometry", {}).get("location", {})
                 lat_val = geo.get("lat")
                 lon_val = geo.get("lng")
-            output_data.append({
-                "Name": loc.get("title"),
-                "Address": loc.get("address"),
-                "Rating": loc.get("rating"),
-                "Price": loc.get("price"),
-                "Opening Hour": loc.get("hours", loc.get("open_state")),
-                "Latitude": lat_val,
-                "Longitude": lon_val
-            })
+            # If we still don't have coordinates, skip the result
+            if lat_val is None or lon_val is None:
+                continue
+
+            distance = haversine(latitude, longitude, lat_val, lon_val)
+            if distance <= 20:
+                filtered_locations.append({
+                    "Name": loc.get("title"),
+                    "Address": loc.get("address"),
+                    "Rating": loc.get("rating"),
+                    "Price": loc.get("price"),
+                    "Opening Hour": loc.get("hours", loc.get("open_state")),
+                    "Latitude": lat_val,
+                    "Longitude": lon_val,
+                    "Distance (km)": round(distance, 2)
+                })
+
+        # Limit to 10 results if necessary
+        output_data = filtered_locations[:10]
 
         with open("result.json", "w", encoding="utf-8") as f:
             json.dump(output_data, f, indent=4)
 
-        print(f"[INFO] result.json saved with {len(output_data)} results.")
+        print(f"[INFO] result.json saved with {len(output_data)} results within 20km radius.")
     except Exception as e:
         print(f"[ERROR] {e}")
         traceback.print_exc()

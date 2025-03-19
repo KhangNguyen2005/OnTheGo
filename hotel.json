@@ -1,47 +1,102 @@
 [
     {
-        "Name": "Hampton Inn San Francisco/Daly City",
-        "Address": "2700 Junipero Serra Blvd, Daly City, CA 94015",
-        "Rating": 4.5,
-        "Price": "$179",
+        "Name": "Mai House Saigon Hotel",
+        "Address": "1-3-5, Ng\u00f4 Th\u1eddi Nhi\u1ec7m, Ph\u01b0\u1eddng V\u00f5 Th\u1ecb S\u00e1u, Qu\u1eadn 3, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4.7,
+        "Price": "$117",
         "Opening Hour": null,
-        "Latitude": 37.690965999999996,
-        "Longitude": -122.47173959999999
+        "Latitude": 10.782094299999999,
+        "Longitude": 106.6915855,
+        "Distance (km)": 1.2
     },
     {
-        "Name": "Alpine Inn & Suites",
-        "Address": "560 Carter St, Daly City, CA 94014",
-        "Rating": 3.8,
-        "Price": "$91",
+        "Name": "The Odys Boutique Hotel",
+        "Address": "65-67-69, Nguy\u1ec5n Th\u00e1i B\u00ecnh, Ph\u01b0\u1eddng Nguy\u1ec5n Th\u00e1i B\u00ecnh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
+        "Rating": 4.4,
+        "Price": "$52",
         "Opening Hour": null,
-        "Latitude": 37.7084331,
-        "Longitude": -122.42495029999999
+        "Latitude": 10.7695077,
+        "Longitude": 106.70005809999999,
+        "Distance (km)": 0.79
     },
     {
-        "Name": "Sunset Edwardian Bed and Breakfast at Golden Gate Park",
-        "Address": "1471 18th Ave, San Francisco, CA 94122",
+        "Name": "Hotel Indigo Saigon the City, an IHG Hotel",
+        "Address": "9 - 11 L\u00fd T\u1ef1 Tr\u1ecdng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 4.7,
+        "Price": "$181",
+        "Opening Hour": null,
+        "Latitude": 10.782260299999999,
+        "Longitude": 106.7051709,
+        "Distance (km)": 0.78
+    },
+    {
+        "Name": "M Hotel Saigon",
+        "Address": "39 \u0110. T\u00f4n Th\u1ea5t Thi\u1ec7p, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4.4,
+        "Price": "$123",
+        "Opening Hour": null,
+        "Latitude": 10.7731627,
+        "Longitude": 106.7018605,
+        "Distance (km)": 0.39
+    },
+    {
+        "Name": "La Siesta Premium Saigon",
+        "Address": "180 - 188 L\u00fd T\u1ef1 Tr\u1ecdng, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 4.9,
+        "Price": "$162",
+        "Opening Hour": null,
+        "Latitude": 10.773074099999999,
+        "Longitude": 106.69575499999999,
+        "Distance (km)": 0.69
+    },
+    {
+        "Name": "Northern Charm Hotel",
+        "Address": "12 L\u00fd T\u1ef1 Tr\u1ecdng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4,
+        "Price": "$68",
+        "Opening Hour": null,
+        "Latitude": 10.7820133,
+        "Longitude": 106.704611,
+        "Distance (km)": 0.73
+    },
+    {
+        "Name": "Amanaki Saigon Boutique Hotel",
+        "Address": "65 H\u1ed3 T\u00f9ng M\u1eadu, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
         "Rating": 4.8,
-        "Price": "$78",
+        "Price": "$68",
         "Opening Hour": null,
-        "Latitude": 37.7604268,
-        "Longitude": -122.47605739999999
+        "Latitude": 10.771728,
+        "Longitude": 106.7039109,
+        "Distance (km)": 0.62
     },
     {
-        "Name": "Stanyan Park Hotel",
-        "Address": "750 Stanyan St, San Francisco, CA 94117",
-        "Rating": 4.1,
-        "Price": "$198",
+        "Name": "Signature by M Village Hai B\u00e0 Tr\u01b0ng",
+        "Address": "74 Hai B\u00e0 Tr\u01b0ng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 4.8,
+        "Price": "$90",
         "Opening Hour": null,
-        "Latitude": 37.7681367,
-        "Longitude": -122.4531289
+        "Latitude": 10.7779549,
+        "Longitude": 106.70367929999999,
+        "Distance (km)": 0.34
     },
     {
-        "Name": "Mirage Inn & Suites",
-        "Address": "2600 Sloat Blvd, San Francisco, CA 94116",
-        "Rating": 2.9,
-        "Price": "$145",
+        "Name": "Adora Art Hotel",
+        "Address": "189-191 L\u00fd T\u1ef1 Tr\u1ecdng, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
+        "Rating": 4,
+        "Price": "$81",
         "Opening Hour": null,
-        "Latitude": 37.735709,
-        "Longitude": -122.502364
+        "Latitude": 10.773110899999999,
+        "Longitude": 106.69605759999999,
+        "Distance (km)": 0.66
+    },
+    {
+        "Name": "Au Lac Boutique Hotel",
+        "Address": "93 H\u1ed3 T\u00f9ng M\u1eadu, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 4,
+        "Price": "$180",
+        "Opening Hour": null,
+        "Latitude": 10.7722599,
+        "Longitude": 106.70343539999999,
+        "Distance (km)": 0.55
     }
 ]

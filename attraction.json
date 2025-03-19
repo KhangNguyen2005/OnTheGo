@@ -1,47 +1,102 @@
 [
     {
-        "Name": "Billy Goat Hill",
-        "Address": "2442 Castro St, San Francisco, CA 94131",
-        "Rating": 4.5,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 37.741346199999995,
-        "Longitude": -122.4331318
-    },
-    {
-        "Name": "Tank Hill Park",
-        "Address": "Twin Peaks Blvd, San Francisco, CA 94114",
-        "Rating": 4.8,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 37.7599053,
-        "Longitude": -122.447707
-    },
-    {
-        "Name": "Burnside Mural and Steps",
-        "Address": "59 Burnside Ave, San Francisco, CA 94131",
-        "Rating": 4.8,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 37.7346925,
-        "Longitude": -122.4383421
-    },
-    {
-        "Name": "PIER 39",
-        "Address": "The Embarcadero, San Francisco, CA 94133",
+        "Name": "Boat Tour Ho Chi Minh",
+        "Address": "Chung C\u01b0 Copac Block A, 4A1, Khu ph\u1ed1 1, Qu\u1eadn 4, H\u1ed3 Ch\u00ed Minh, Vietnam",
         "Rating": 4.6,
         "Price": null,
-        "Opening Hour": "Closes soon \u22c5 10\u202fPM \u22c5 Opens 10\u202fAM Wed",
-        "Latitude": 37.808673,
-        "Longitude": -122.409821
+        "Opening Hour": null,
+        "Latitude": 10.7650208,
+        "Longitude": 106.71039329999999,
+        "Distance (km)": 1.64
     },
     {
-        "Name": "Kite Hill",
-        "Address": "Yukon & 19th Street, San Francisco, CA 94114",
+        "Name": "Statue of Ho Chi Minh",
+        "Address": "110 Nguy\u00ea\u0303n Hu\u00ea\u0323, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.7760193,
+        "Longitude": 106.70154889999999,
+        "Distance (km)": 0.08
+    },
+    {
+        "Name": "Bui Vien Walking Street",
+        "Address": "\u0110. B\u00f9i Vi\u1ec7n, Ph\u01b0\u1eddng Ph\u1ea1m Ng\u0169 L\u00e3o, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4.3,
+        "Price": "$$",
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.7674231,
+        "Longitude": 106.6939905,
+        "Distance (km)": 1.27
+    },
+    {
+        "Name": "H\u1ebbm 144 Pasteur",
+        "Address": "144 Pasteur, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.7751222,
+        "Longitude": 106.7007646,
+        "Distance (km)": 0.16
+    },
+    {
+        "Name": "Nguy\u1ec5n Thi\u1ec7n Thu\u1eadt Town",
+        "Address": "QM9H+H4H, H\u1ebbm 145/12 Nguy\u1ec5n Thi\u1ec7n Thu\u1eadt, Ph\u01b0\u1eddng 1, Qu\u1eadn 3, H\u1ed3 Ch\u00ed Minh, Vietnam",
         "Rating": 4.7,
         "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 37.758283299999995,
-        "Longitude": -122.4415667
+        "Opening Hour": null,
+        "Latitude": 10.7689843,
+        "Longitude": 106.6778405,
+        "Distance (km)": 2.66
+    },
+    {
+        "Name": "Littte Tokyo 2",
+        "Address": "Ph\u1ea1m Vi\u1ebft Ch\u00e1nh, Ph\u01b0\u1eddng 19, B\u00ecnh Th\u1ea1nh, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 3.5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.790201999999999,
+        "Longitude": 106.7106822,
+        "Distance (km)": 1.85
+    },
+    {
+        "Name": "Nexus Square",
+        "Address": "3A T\u00f4n \u0110\u1ee9c Th\u1eafng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 4.9,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.7792935,
+        "Longitude": 106.7069721,
+        "Distance (km)": 0.72
+    },
+    {
+        "Name": "Sam \"Samica\" Bower Monument",
+        "Address": "2b T\u00f4n Th\u1ea5t \u0110\u1ea1m, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.7711233,
+        "Longitude": 106.70327019999999,
+        "Distance (km)": 0.65
+    },
+    {
+        "Name": "Mekong Cruises",
+        "Address": "67 Th\u1ee7 Khoa Hu\u00e2n, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Rating": 5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 10.774524999999999,
+        "Longitude": 106.6962951,
+        "Distance (km)": 0.56
+    },
+    {
+        "Name": "Toplight",
+        "Address": "Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 10.770805099999999,
+        "Longitude": 106.697499,
+        "Distance (km)": 0.74
     }
 ]
