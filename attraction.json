@@ -1,0 +1,47 @@
+[
+    {
+        "Name": "Billy Goat Hill",
+        "Address": "2442 Castro St, San Francisco, CA 94131",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
+        "Latitude": 37.741346199999995,
+        "Longitude": -122.4331318
+    },
+    {
+        "Name": "Tank Hill Park",
+        "Address": "Twin Peaks Blvd, San Francisco, CA 94114",
+        "Rating": 4.8,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
+        "Latitude": 37.7599053,
+        "Longitude": -122.447707
+    },
+    {
+        "Name": "Burnside Mural and Steps",
+        "Address": "59 Burnside Ave, San Francisco, CA 94131",
+        "Rating": 4.8,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 37.7346925,
+        "Longitude": -122.4383421
+    },
+    {
+        "Name": "PIER 39",
+        "Address": "The Embarcadero, San Francisco, CA 94133",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Closes soon \u22c5 10\u202fPM \u22c5 Opens 10\u202fAM Wed",
+        "Latitude": 37.808673,
+        "Longitude": -122.409821
+    },
+    {
+        "Name": "Kite Hill",
+        "Address": "Yukon & 19th Street, San Francisco, CA 94114",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
+        "Latitude": 37.758283299999995,
+        "Longitude": -122.4415667
+    }
+]

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Azure Maps: Address and Amenity Search</title>
+  <title>Azure Maps: Single Location + Restaurant/Hotel + Custom Query</title>
+  <!-- Azure Maps CSS/JS -->
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
   <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
   <style>
@@ -12,7 +13,6 @@
       margin: 0;
       padding: 0;
     }
-    /* Top bar for user input */
     #topBar {
       position: absolute;
       top: 0;
@@ -23,60 +23,101 @@
       z-index: 9999;
       font-family: Arial, sans-serif;
     }
-    /* The map container */
     #mapDiv {
       position: relative;
       width: 100%;
       height: 100vh;
     }
+    .inline-block {
+      display: inline-block;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
-  <!-- Top bar: input for address and amenity -->
+  <!-- Top bar for user inputs -->
   <div id="topBar">
-    <input 
-      type="text" 
-      id="addressInput" 
-      placeholder="Enter an address or city..." 
-      style="width: 300px; padding: 5px;"
-    />
-    <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
-    <br>
-    <input 
-      type="text" 
-      id="amenityInput" 
-      placeholder="Enter an amenity (e.g., coffee, arcade)..." 
-      style="width: 300px; padding: 5px; display: none; margin-top: 8px;"
-    />
-    <button id="amenityButton" onclick="searchByAmenity()" style="padding: 5px 10px; display: none; margin-top: 8px;">Get Recommendations</button>
+    <!-- Address input and button to set location -->
+    <div class="inline-block">
+      <input 
+        type="text" 
+        id="addressInput" 
+        placeholder="Enter an address or city..." 
+        style="width: 280px; padding: 5px;"
+      />
+      <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
+    </div>
+
+    <!-- Custom query input + button -->
+    <div class="inline-block" style="margin-left: 20px;">
+      <input 
+        type="text" 
+        id="customQueryInput" 
+        placeholder="Enter a custom search (e.g., coffee)..." 
+        style="width: 280px; padding: 5px;"
+      />
+      <button onclick="searchCustomQuery()" style="padding: 5px 10px;">Search</button>
+    </div>
+
+    <!-- Buttons for Restaurants, Accommodation, and Recommendations -->
+    <div class="inline-block" style="margin-left: 20px;">
+      <button onclick="showRestaurants()" style="padding: 5px 10px;">Restaurants</button>
+      <button onclick="showHotels()" style="padding: 5px 10px; margin-left:10px;">Accommodation</button>
+      <button onclick="showAttractions()" style="padding: 5px 10px; margin-left:10px;">Recommendations</button>
+    </div>
   </div>
 
   <!-- Map container -->
   <div id="mapDiv"></div>
 
   <script>
-    let map, datasource, symbolLayer;
-    let hoverPopup;
+    // Azure Maps key
+    const AZURE_MAPS_KEY = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
+
+    let map, datasource, symbolLayer, hoverPopup;
+    // Global variables to store fetched data
+    let restaurantData = [];
+    let hotelData = [];
+
+    // Clear all markers from the datasource.
+    function clearAllMarkers() {
+      datasource.clear();
+    }
+
+    // Remove only non-selected markers (keeps the selected marker intact).
+    function clearNonSelectedMarkers() {
+      const shapes = datasource.getShapes();
+      shapes.forEach(shape => {
+        if (shape.getProperties().markerType !== 'selected') {
+          datasource.remove(shape);
+        }
+      });
+    }
 
     function initMap() {
       map = new atlas.Map('mapDiv', {
         authOptions: {
           authType: 'subscriptionKey',
-          subscriptionKey: '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk' 
+          subscriptionKey: AZURE_MAPS_KEY
         }
       });
 
-      map.events.add('ready', function () {
+      map.events.add('ready', () => {
+        // Create a data source and add it to the map
         datasource = new atlas.source.DataSource();
         map.sources.add(datasource);
 
+        // Create a SymbolLayer with marker expressions:
         symbolLayer = new atlas.layer.SymbolLayer(datasource, null, {
           iconOptions: {
             image: [
               'case',
-              ['==', ['get', 'markerType'], 'selected'],
-              'pin-round-blue',
-              'pin-round-red'
+                ['==', ['get', 'markerType'], 'selected'], 'pin-round-blue',
+                ['==', ['get', 'markerType'], 'restaurant'], 'pin-round-red',
+                ['==', ['get', 'markerType'], 'hotel'], 'pin-round-red',
+                ['==', ['get', 'markerType'], 'attraction'], 'pin-round-red',
+                ['==', ['get', 'markerType'], 'custom'], 'pin-round-red',
+                'pin-round-darkblue'
             ],
             allowOverlap: true
           },
@@ -87,32 +128,33 @@
         });
         map.layers.add(symbolLayer);
 
+        // Create a popup for marker hover
         hoverPopup = new atlas.Popup({
           closeButton: false,
           pixelOffset: [0, -30]
         });
+        map.popups.add(hoverPopup);
 
-        // Allow user to set a location by clicking the map
-        map.events.add('click', function (e) {
+        // Allow user to set location by clicking on the map.
+        map.events.add('click', function(e) {
           const coords = e.position; // [lng, lat]
-          datasource.clear();
+          clearAllMarkers(); // Remove all markers so that only one selected marker exists.
           hoverPopup.close();
 
+          // Add a "selected" marker (blue)
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point(coords),
             { markerType: 'selected', title: 'Selected Location' }
           ));
-
           map.setCamera({ center: coords, zoom: 14 });
-          document.getElementById('amenityInput').style.display = 'inline';
-          document.getElementById('amenityButton').style.display = 'inline';
         });
 
-        map.events.add('mouseenter', symbolLayer, function (e) {
+        // Show popup on hover (for non-selected markers)
+        map.events.add('mouseenter', symbolLayer, (e) => {
           if (e.shapes && e.shapes.length > 0) {
             const shape = e.shapes[0];
             const props = shape.getProperties();
-            if (props.markerType === 'recommended') {
+            if (['restaurant','hotel','custom','attraction'].includes(props.markerType)) {
               const contentHTML = `
                 <div style="font-family: Arial, sans-serif;">
                   <strong>${props.title || 'N/A'}</strong><br>
@@ -130,120 +172,202 @@
             }
           }
         });
-
-        map.events.add('mouseleave', symbolLayer, function () {
+        map.events.add('mouseleave', symbolLayer, () => {
           hoverPopup.close();
-        });
-
-        // Clicking a recommended spot should only draw the route, NOT update the selected location
-        map.events.add('click', symbolLayer, function (e) {
-          if (e.shapes && e.shapes.length > 0) {
-            const shape = e.shapes[0];
-            const props = shape.getProperties();
-            
-            if (props.markerType === 'recommended') {
-              const destination = shape.getCoordinates();
-              
-              const selectedFeatures = datasource.getShapes().filter(shape => shape.getProperties().markerType === 'selected');
-              
-              if (selectedFeatures.length === 0) {
-                alert("Please select a starting location first.");
-                return;
-              }
-
-              const startLocation = selectedFeatures[0].getCoordinates();
-              
-              drawRoute(startLocation, destination);
-            }
-          }
         });
       });
     }
 
-    // Geocode the provided address using Azure Maps
+    // Geocode an address/city using Azure Maps Search
     function getCoordinates(query) {
-      const subKey = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk'; 
-      const addressUrl = `https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}`;
-      
-      return fetch(addressUrl)
+      const url = `https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&subscription-key=${AZURE_MAPS_KEY}&query=${encodeURIComponent(query)}&limit=1`;
+      return fetch(url)
         .then(resp => resp.json())
         .then(data => {
           if (data && data.results && data.results.length > 0) {
             const best = data.results[0];
             return { lat: best.position.lat, lon: best.position.lon };
-          } else {
-            // Fallback: try fuzzy search
-            const fuzzyUrl = `https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&subscription-key=${subKey}&query=${encodeURIComponent(query)}&limit=1`;
-            return fetch(fuzzyUrl)
-              .then(resp2 => resp2.json())
-              .then(data2 => {
-                if (data2 && data2.results && data2.results.length > 0) {
-                  const best2 = data2.results[0];
-                  return { lat: best2.position.lat, lon: best2.position.lon };
-                }
-                return null;
-              });
           }
+          return null;
         })
         .catch(err => {
-          console.error("Error during geocoding:", err);
+          console.error("Error in getCoordinates:", err);
           return null;
         });
     }
 
+    // Called when the user clicks "Set Location"
     function setLocation() {
       const address = document.getElementById('addressInput').value.trim();
       if (!address) {
         alert("Please enter an address or city.");
         return;
       }
-      
       getCoordinates(address).then(result => {
-        if (result) {
-          const { lat, lon } = result;
-          console.log("Geocoded lat/lon:", lat, lon);
-          datasource.clear();
-          hoverPopup.close();
-          
-          const coords = [lon, lat];
-          datasource.add(new atlas.data.Feature(
-            new atlas.data.Point(coords),
-            { markerType: 'selected', title: 'Selected Location' }
-          ));
-
-          map.setCamera({ center: coords, zoom: 14 });
-          
-          document.getElementById('amenityInput').style.display = 'inline';
-          document.getElementById('amenityButton').style.display = 'inline';
-        } else {
+        if (!result) {
           alert("No matching address found. Please refine your input.");
+          return;
         }
+        // Clear all markers to ensure only one selected location exists.
+        clearAllMarkers();
+        hoverPopup.close();
+
+        const { lat, lon } = result;
+        const coords = [lon, lat];
+        // Add a blue "selected" marker
+        datasource.add(new atlas.data.Feature(
+          new atlas.data.Point(coords),
+          { markerType: 'selected', title: 'Selected Location' }
+        ));
+        map.setCamera({ center: coords, zoom: 14 });
+        // Fetch restaurant and hotel data (store globally but do not display markers yet)
+        fetchAndStoreRestaurantsHotels(lat, lon);
       });
     }
 
-    function searchByAmenity() {
-      const amenity = document.getElementById('amenityInput').value.trim();
-      if (!amenity) {
-        alert("Please enter an amenity, e.g., coffee, arcade.");
-        return;
-      }
-
-      const selectedFeatures = datasource.getShapes().filter(shape => shape.getProperties().markerType === 'selected');
-      if (selectedFeatures.length === 0) {
-        alert("Please set a location first.");
-        return;
-      }
-      const coords = selectedFeatures[0].getCoordinates();
-
-      fetchRecommendations(coords[1], coords[0], amenity);
+    // Fetch and store restaurant and hotel data from the backend.
+    function fetchAndStoreRestaurantsHotels(lat, lon) {
+      fetch('http://127.0.0.1:5000/search_location', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.error) {
+          console.error("Error from /search_location:", data.error);
+          return;
+        }
+        // Once location search is done, fetch restaurant and hotel JSON data.
+        loadRestaurantData();
+        loadHotelData();
+      })
+      .catch(err => console.error("Error calling /search_location:", err));
     }
 
-    function fetchRecommendations(lat, lon, amenity) {
-      // Update the fetch call to point to the new /fetching_data endpoint
+    // Load restaurant data from /restaurant_data endpoint.
+    function loadRestaurantData() {
+      fetch('http://127.0.0.1:5000/restaurant_data')
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /restaurant_data:", data.error);
+            return;
+          }
+          restaurantData = data;
+          console.log("Restaurant Data:", restaurantData);
+        })
+        .catch(err => console.error("Error loading restaurant data:", err));
+    }
+
+    // Load hotel data from /hotel_data endpoint.
+    function loadHotelData() {
+      fetch('http://127.0.0.1:5000/hotel_data')
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /hotel_data:", data.error);
+            return;
+          }
+          hotelData = data;
+          console.log("Hotel Data:", hotelData);
+        })
+        .catch(err => console.error("Error loading hotel data:", err));
+    }
+
+    // Helper function to automatically adjust the map view.
+    function autoAdjustMapView() {
+      const shapes = datasource.getShapes();
+      if (!shapes || shapes.length === 0) return;
+      
+      // Compute bounding box from all shapes.
+      const bbox = atlas.data.BoundingBox.fromData(shapes);
+      const width = bbox.east - bbox.west;
+      const height = bbox.north - bbox.south;
+      
+      // If the markers are very close together, use a fixed zoom level.
+      if (width < 0.01 && height < 0.01) {
+        const center = [(bbox.east + bbox.west) / 2, (bbox.north + bbox.south) / 2];
+        map.setCamera({ center: center, zoom: 15 });
+      } else {
+        // Otherwise, adjust camera to fit the bounds with padding.
+        map.setCamera({ bounds: bbox, padding: 50 });
+      }
+    }
+
+    // Button function: Show restaurant markers (red)
+    function showRestaurants() {
+      clearNonSelectedMarkers();
+      if (restaurantData.length === 0) {
+        console.warn("No restaurant data available.");
+      }
+      addMarkersToMap(restaurantData, 'restaurant');
+      // Auto-adjust the camera after adding restaurant markers.
+      autoAdjustMapView();
+    }
+
+    // Button function: Show hotel markers (red)
+    function showHotels() {
+      clearNonSelectedMarkers();
+      if (hotelData.length === 0) {
+        console.warn("No hotel data available.");
+      }
+      addMarkersToMap(hotelData, 'hotel');
+      // Auto-adjust the camera after adding hotel markers.
+      autoAdjustMapView();
+    }
+
+    // Button function: Show attraction markers (yellow) from recommendations
+    function showAttractions() {
+      clearNonSelectedMarkers();
+      const selectedFeature = datasource.getShapes().find(
+        shape => shape.getProperties().markerType === 'selected'
+      );
+      if (!selectedFeature) {
+        alert("Please pick or set a location first.");
+        return;
+      }
+      const [lng, lat] = selectedFeature.getCoordinates();
+      fetch('http://127.0.0.1:5000/attraction_data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: lng })
+      })
+      .then(resp => resp.json())
+      .then(data => {
+        if (data.error) {
+          console.error("Error from /attraction_data:", data.error);
+          return;
+        }
+        console.log("Attraction data:", data);
+        // Add attraction markers (yellow) using markerType 'attraction'
+        addMarkersToMap(data.recommendations, 'attraction');
+        // Auto-adjust the camera after adding attraction markers.
+        autoAdjustMapView();
+      })
+      .catch(err => console.error("Error fetching attraction data:", err));
+    }
+
+    // Called when user enters a custom query and clicks "Search"
+    function searchCustomQuery() {
+      const query = document.getElementById('customQueryInput').value.trim();
+      if (!query) {
+        alert("Please enter something to search, e.g., coffee or arcade.");
+        return;
+      }
+      const selectedFeature = datasource.getShapes().find(
+        shape => shape.getProperties().markerType === 'selected'
+      );
+      if (!selectedFeature) {
+        alert("Please pick or set a location first.");
+        return;
+      }
+      clearNonSelectedMarkers();
+      const [lng, lat] = selectedFeature.getCoordinates();
       fetch('http://127.0.0.1:5000/fetching_data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitude: lat, longitude: lon, amenity: amenity })
+        body: JSON.stringify({ latitude: lat, longitude: lng, amenity: query })
       })
       .then(resp => resp.json())
       .then(data => {
@@ -251,58 +375,38 @@
           console.error("Error from /fetching_data:", data.error);
           return;
         }
-
-        data.forEach(item => {
-          datasource.add(new atlas.data.Feature(
-            new atlas.data.Point([item.Longitude, item.Latitude]),
-            {
-              markerType: 'recommended',
-              title: item.Name || 'N/A',
-              address: item.Address || 'N/A',
-              rating: item.Rating || 'N/A',
-              price: item.Price || 'N/A',
-              hours: item["Opening Hour"] || 'N/A'
-            }
-          ));
-        });
-
-        map.setCamera({
-          bounds: atlas.data.BoundingBox.fromData(datasource.getShapes()),
-          padding: 50
-        });
+        console.log("Custom search data:", data);
+        // Add custom markers (red)
+        addMarkersToMap(data, 'custom');
+        // Auto-adjust the camera after adding custom markers.
+        autoAdjustMapView();
       })
-      .catch(err => console.error("Error fetching recommendations:", err));
+      .catch(err => console.error("Error searching custom query:", err));
     }
 
-    function drawRoute(start, end) {
-      const key = '9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk';
-      const routeUrl = `https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=${key}&query=${start[1]},${start[0]}:${end[1]},${end[0]}`;
-
-      fetch(routeUrl)
-        .then(response => response.json())
-        .then(data => {
-          if (data.routes && data.routes.length > 0) {
-            const coordinates = data.routes[0].legs[0].points.map(p => [p.longitude, p.latitude]);
-
-            if (routeLayer) {
-              map.layers.remove(routeLayer);
-            }
-
-            const routeSource = new atlas.source.DataSource();
-            routeSource.add(new atlas.data.LineString(coordinates));
-            map.sources.add(routeSource);
-
-            routeLayer = new atlas.layer.LineLayer(routeSource, null, {
-              strokeColor: 'green',
-              strokeWidth: 5
-            });
-
-            map.layers.add(routeLayer);
-          } else {
-            alert("No route found.");
+    // Helper function to add markers to the map
+    function addMarkersToMap(dataArray, markerType) {
+      if (!Array.isArray(dataArray) || dataArray.length === 0) {
+        console.warn(`No data for markerType=${markerType}.`);
+        return;
+      }
+      dataArray.forEach(item => {
+        if (!item.Longitude || !item.Latitude) {
+          console.warn("Skipping item with missing coords:", item);
+          return;
+        }
+        datasource.add(new atlas.data.Feature(
+          new atlas.data.Point([item.Longitude, item.Latitude]),
+          {
+            markerType: markerType,
+            title: item.Name || 'N/A',
+            address: item.Address || 'N/A',
+            rating: item.Rating || 'N/A',
+            price: item.Price || 'N/A',
+            hours: item["Opening Hour"] || 'N/A'
           }
-        })
-        .catch(error => console.error("Error fetching route:", error));
+        ));
+      });
     }
 
     window.onload = initMap;

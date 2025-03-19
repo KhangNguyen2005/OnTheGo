@@ -1,0 +1,47 @@
+[
+    {
+        "Name": "Hampton Inn San Francisco/Daly City",
+        "Address": "2700 Junipero Serra Blvd, Daly City, CA 94015",
+        "Rating": 4.5,
+        "Price": "$179",
+        "Opening Hour": null,
+        "Latitude": 37.690965999999996,
+        "Longitude": -122.47173959999999
+    },
+    {
+        "Name": "Alpine Inn & Suites",
+        "Address": "560 Carter St, Daly City, CA 94014",
+        "Rating": 3.8,
+        "Price": "$91",
+        "Opening Hour": null,
+        "Latitude": 37.7084331,
+        "Longitude": -122.42495029999999
+    },
+    {
+        "Name": "Sunset Edwardian Bed and Breakfast at Golden Gate Park",
+        "Address": "1471 18th Ave, San Francisco, CA 94122",
+        "Rating": 4.8,
+        "Price": "$78",
+        "Opening Hour": null,
+        "Latitude": 37.7604268,
+        "Longitude": -122.47605739999999
+    },
+    {
+        "Name": "Stanyan Park Hotel",
+        "Address": "750 Stanyan St, San Francisco, CA 94117",
+        "Rating": 4.1,
+        "Price": "$198",
+        "Opening Hour": null,
+        "Latitude": 37.7681367,
+        "Longitude": -122.4531289
+    },
+    {
+        "Name": "Mirage Inn & Suites",
+        "Address": "2600 Sloat Blvd, San Francisco, CA 94116",
+        "Rating": 2.9,
+        "Price": "$145",
+        "Opening Hour": null,
+        "Latitude": 37.735709,
+        "Longitude": -122.502364
+    }
+]
