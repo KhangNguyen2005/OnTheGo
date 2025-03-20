@@ -1,5 +1,8 @@
 import os
+<<<<<<< HEAD
 import json
+=======
+>>>>>>> 743bdd3 (AI integration)
 import argparse
 from dotenv import load_dotenv
 from openai import AzureOpenAI
