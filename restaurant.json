@@ -4,7 +4,7 @@
         "Address": "62 E Gallivan Ave, Salt Lake City, UT 84111",
         "Rating": 4.3,
         "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
         "Latitude": 40.7634979,
         "Longitude": -111.88937179999999,
         "Distance (km)": 0.57
@@ -14,89 +14,89 @@
         "Address": "645 S State St, Salt Lake City, UT 84111",
         "Rating": 4.6,
         "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Opening Hour": "Closed \u22c5 Opens 11:30\u202fAM",
         "Latitude": 40.755129,
         "Longitude": -111.88776299999999,
         "Distance (km)": 0.37
-    },
-    {
-        "Name": "Spitz - Salt Lake City",
-        "Address": "35 E Broadway, Salt Lake City, UT 84111",
-        "Rating": 4.5,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7630115,
-        "Longitude": -111.8899423,
-        "Distance (km)": 0.53
-    },
-    {
-        "Name": "Settebello Pizzeria Napoletana",
-        "Address": "260 S 200 W, Salt Lake City, UT 84101",
-        "Rating": 4.5,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.7634871,
-        "Longitude": -111.8970853,
-        "Distance (km)": 0.94
-    },
-    {
-        "Name": "Valter's Osteria",
-        "Address": "173 W Broadway, Salt Lake City, UT 84101",
-        "Rating": 4.6,
-        "Price": "$100+",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.762517599999995,
-        "Longitude": -111.896225,
-        "Distance (km)": 0.82
-    },
-    {
-        "Name": "The Other Place Restaurant",
-        "Address": "469 E 300 S, Salt Lake City, UT 84111",
-        "Rating": 4.6,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7630458,
-        "Longitude": -111.8773772,
-        "Distance (km)": 1.04
-    },
-    {
-        "Name": "Matteo Ristorante Italiano",
-        "Address": "77 W 200 S #100, Salt Lake City, UT 84101",
-        "Rating": 4.7,
-        "Price": "$50\u2013100",
-        "Opening Hour": "Open \u22c5 Closes 9:30\u202fPM",
-        "Latitude": 40.764692499999995,
-        "Longitude": -111.8935288,
-        "Distance (km)": 0.83
-    },
-    {
-        "Name": "Market Street Grill Downtown",
-        "Address": "48 W Market St, Salt Lake City, UT 84101",
-        "Rating": 4.3,
-        "Price": "$$$",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7618565,
-        "Longitude": -111.8926097,
-        "Distance (km)": 0.53
     },
     {
         "Name": "White Horse Spirits & Kitchen",
         "Address": "325 S Main St, Salt Lake City, UT 84111",
         "Rating": 4.6,
         "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 1\u202fAM",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
         "Latitude": 40.7621219,
         "Longitude": -111.8908482,
         "Distance (km)": 0.46
     },
     {
-        "Name": "The Copper Onion",
-        "Address": "111 E Broadway #170, Salt Lake City, UT 84111",
+        "Name": "Luna De Mar",
+        "Address": "300 S 200 E, Salt Lake City, UT 84111",
+        "Rating": 5,
+        "Price": "$1\u201310",
+        "Opening Hour": null,
+        "Latitude": 40.7625254,
+        "Longitude": -111.8855368,
+        "Distance (km)": 0.5
+    },
+    {
+        "Name": "Spitz - Salt Lake City",
+        "Address": "35 E Broadway, Salt Lake City, UT 84111",
+        "Rating": 4.5,
+        "Price": "$10\u201320",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 40.7630115,
+        "Longitude": -111.8899423,
+        "Distance (km)": 0.53
+    },
+    {
+        "Name": "London Belle",
+        "Address": "321 Main St, Salt Lake City, UT 84111",
         "Rating": 4.4,
+        "Price": "$$",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 5\u202fPM",
+        "Latitude": 40.7622007,
+        "Longitude": -111.8908302,
+        "Distance (km)": 0.47
+    },
+    {
+        "Name": "Market Street Grill Downtown",
+        "Address": "48 W Market St, Salt Lake City, UT 84101",
+        "Rating": 4.3,
+        "Price": "$$$",
+        "Opening Hour": "Closed \u22c5 Opens 8\u202fAM",
+        "Latitude": 40.7618565,
+        "Longitude": -111.8926097,
+        "Distance (km)": 0.53
+    },
+    {
+        "Name": "The Other Place Restaurant",
+        "Address": "469 E 300 S, Salt Lake City, UT 84111",
+        "Rating": 4.6,
+        "Price": "$10\u201320",
+        "Opening Hour": "Closed \u22c5 Opens 8\u202fAM",
+        "Latitude": 40.7630458,
+        "Longitude": -111.8773772,
+        "Distance (km)": 1.04
+    },
+    {
+        "Name": "Settebello Pizzeria Napoletana",
+        "Address": "260 S 200 W, Salt Lake City, UT 84101",
+        "Rating": 4.5,
+        "Price": "$20\u201330",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 40.7634871,
+        "Longitude": -111.8970853,
+        "Distance (km)": 0.94
+    },
+    {
+        "Name": "Caff\u00e9 Molise",
+        "Address": "404 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.5,
         "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.763038699999996,
-        "Longitude": -111.88715859999999,
-        "Distance (km)": 0.51
+        "Opening Hour": "Closed \u22c5 Opens 11:30\u202fAM",
+        "Latitude": 40.760428,
+        "Longitude": -111.8944516,
+        "Distance (km)": 0.57
     }
 ]

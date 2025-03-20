@@ -1,59 +1,49 @@
 [
     {
-        "Name": "Hyatt Regency Salt Lake City",
-        "Address": "170 S W Temple St, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$174",
-        "Opening Hour": null,
-        "Latitude": 40.7652413,
-        "Longitude": -111.8945128,
-        "Distance (km)": 0.92
-    },
-    {
         "Name": "The Little America Hotel - Salt Lake City",
         "Address": "500 Main St, Salt Lake City, UT 84101",
         "Rating": 4.4,
-        "Price": "$177",
+        "Price": "$123",
         "Opening Hour": null,
         "Latitude": 40.757795699999996,
         "Longitude": -111.8920217,
         "Distance (km)": 0.34
     },
     {
-        "Name": "The Grand America Hotel",
-        "Address": "555 Main St, Salt Lake City, UT 84111",
-        "Rating": 4.7,
-        "Price": "$275",
-        "Opening Hour": null,
-        "Latitude": 40.7573321,
-        "Longitude": -111.89074989999999,
-        "Distance (km)": 0.25
-    },
-    {
         "Name": "Salt Lake City Marriott City Center",
         "Address": "220 S State St, Salt Lake City, UT 84111",
         "Rating": 4.4,
-        "Price": "$199",
+        "Price": "$188",
         "Opening Hour": null,
         "Latitude": 40.764347,
         "Longitude": -111.8885574,
         "Distance (km)": 0.65
     },
     {
-        "Name": "Kimpton Hotel Monaco Salt Lake City",
-        "Address": "15 W 200 S, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$162",
+        "Name": "Holiday Inn Express Salt Lake City Downtown, an IHG Hotel",
+        "Address": "206 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.3,
+        "Price": "$149",
         "Opening Hour": null,
-        "Latitude": 40.7646936,
-        "Longitude": -111.89225599999999,
-        "Distance (km)": 0.77
+        "Latitude": 40.764613,
+        "Longitude": -111.894498,
+        "Distance (km)": 0.87
+    },
+    {
+        "Name": "Hyatt Regency Salt Lake City",
+        "Address": "170 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$172",
+        "Opening Hour": null,
+        "Latitude": 40.7652413,
+        "Longitude": -111.8945128,
+        "Distance (km)": 0.92
     },
     {
         "Name": "Hilton Salt Lake City Center",
         "Address": "255 S W Temple St, Salt Lake City, UT 84101",
         "Rating": 4.2,
-        "Price": "$183",
+        "Price": "$187",
         "Opening Hour": null,
         "Latitude": 40.763925,
         "Longitude": -111.893283,
@@ -70,31 +60,48 @@
         "Distance (km)": 0.83
     },
     {
-        "Name": "Holiday Inn Express Salt Lake City Downtown, an IHG Hotel",
-        "Address": "206 S W Temple St, Salt Lake City, UT 84101",
-        "Rating": 4.3,
-        "Price": "$151",
+        "Name": "Kimpton Hotel Monaco Salt Lake City",
+        "Address": "15 W 200 S, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$162",
         "Opening Hour": null,
-        "Latitude": 40.764613,
-        "Longitude": -111.894498,
-        "Distance (km)": 0.87
+        "Latitude": 40.7646936,
+        "Longitude": -111.89225599999999,
+        "Distance (km)": 0.77
     },
     {
-        "Name": "Crystal Inn Hotel & Suites Salt Lake City",
-        "Address": "230 W 500 S, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$120",
+        "Name": "The Grand America Hotel",
+        "Address": "555 Main St, Salt Lake City, UT 84111",
+        "Rating": 4.7,
+        "Price": "$271",
         "Opening Hour": null,
-        "Latitude": 40.7588808,
-        "Longitude": -111.897774,
-        "Distance (km)": 0.81
+        "Latitude": 40.7573321,
+        "Longitude": -111.89074989999999,
+        "Distance (km)": 0.25
+    },
+    {
+        "Name": "Sheraton Salt Lake City Hotel",
+        "Address": "150 W 500 S, Salt Lake City, UT 84101",
+        "Rating": 4.2,
+        "Price": "$136",
+        "Opening Hour": null,
+        "Latitude": 40.7589902,
+        "Longitude": -111.8959938,
+        "Distance (km)": 0.66
     },
     {
         "Name": "Hilton Garden Inn Salt Lake City Downtown",
         "Address": "250 W 600 S, Salt Lake City, UT 84101",
         "Rating": 4.4,
         "Price": "$128",
+        "Name": "Hilton Garden Inn Salt Lake City Downtown",
+        "Address": "250 W 600 S, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$128",
         "Opening Hour": null,
+        "Latitude": 40.7570263,
+        "Longitude": -111.89857099999999,
+        "Distance (km)": 0.89
         "Latitude": 40.7570263,
         "Longitude": -111.89857099999999,
         "Distance (km)": 0.89

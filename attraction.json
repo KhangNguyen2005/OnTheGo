@@ -1,15 +1,5 @@
 [
     {
-        "Name": "Washington Square Park",
-        "Address": "451 S State St, Salt Lake City, UT 84111",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.759046999999995,
-        "Longitude": -111.8876215,
-        "Distance (km)": 0.08
-    },
-    {
         "Name": "Mural \u201cLegends of Rock\u201d",
         "Address": "Salt Lake City, UT 84101",
         "Rating": 4.4,
@@ -20,11 +10,23 @@
         "Distance (km)": 1.47
     },
     {
+        "Name": "Washington Square Park",
+        "Address": "451 S State St, Salt Lake City, UT 84111",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 5\u202fAM",
+        "Latitude": 40.759046999999995,
+        "Longitude": -111.8876215,
+        "Distance (km)": 0.08
+    },
+    {
+        "Name": "Gilgal Sculpture Garden",
+        "Address": "749 E 500 S, Salt Lake City, UT 84102",
         "Name": "Gilgal Sculpture Garden",
         "Address": "749 E 500 S, Salt Lake City, UT 84102",
         "Rating": 4.3,
         "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM Fri",
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
         "Latitude": 40.758808599999995,
         "Longitude": -111.86937809999999,
         "Distance (km)": 1.58
@@ -33,48 +35,24 @@
         "Name": "Mural Artist: James Kirkland (Calling Our Ancestors)",
         "Address": "401 400 W, Salt Lake City, UT 84101",
         "Rating": 5,
+        "Name": "Mural Artist: James Kirkland (Calling Our Ancestors)",
+        "Address": "401 400 W, Salt Lake City, UT 84101",
+        "Rating": 5,
         "Price": null,
         "Opening Hour": "Open 24 hours",
         "Latitude": 40.760143899999996,
         "Longitude": -111.9022085,
         "Distance (km)": 1.2
-    },
-    {
-        "Name": "Memory Grove Park",
-        "Address": "300 N Canyon Rd, Salt Lake City, UT 84103",
-        "Rating": 4.8,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.777533299999995,
-        "Longitude": -111.8843194,
-        "Distance (km)": 2.14
-    },
-    {
-        "Name": "City Creek Park",
-        "Address": "350 State St, Salt Lake City, UT 84103",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.7721245,
-        "Longitude": -111.8877862,
-        "Distance (km)": 1.52
-    },
-    {
-        "Name": "Pony Express National Historic Trail",
-        "Address": "2423-2599 Sunnyside Ave S, Salt Lake City, UT 84108",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
-        "Latitude": 40.7522898,
-        "Longitude": -111.819925,
-        "Distance (km)": 5.79
+        "Latitude": 40.760143899999996,
+        "Longitude": -111.9022085,
+        "Distance (km)": 1.2
     },
     {
         "Name": "Tracy Aviary at Liberty Park",
         "Address": "589 E 1300 S, Salt Lake City, UT 84105",
         "Rating": 4.7,
         "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM Fri",
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
         "Latitude": 40.7438995,
         "Longitude": -111.87516629999999,
         "Distance (km)": 1.96
@@ -90,13 +68,43 @@
         "Distance (km)": 3.51
     },
     {
-        "Name": "Liberty Park",
-        "Address": "600 Harvey Milk Blvd, Salt Lake City, UT 84105",
+        "Name": "Free Art Supply Shop",
+        "Address": "177 E 900 S Suite G, Salt Lake City, UT 84111",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 40.7500675,
+        "Longitude": -111.885746,
+        "Distance (km)": 0.96
+    },
+    {
+        "Name": "Joseph Smith Sphinx",
+        "Address": "Gilgal Sculpture Garden, 749 E 500 S, Salt Lake City, UT 84102",
+        "Rating": 4.9,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 40.7592885,
+        "Longitude": -111.86935129999999,
+        "Distance (km)": 1.59
+    },
+    {
+        "Name": "This Is The Place Heritage Park",
+        "Address": "2601 Sunnyside Ave S, Salt Lake City, UT 84108",
         "Rating": 4.6,
         "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.745704499999995,
-        "Longitude": -111.8739202,
-        "Distance (km)": 1.86
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Latitude": 40.7520271,
+        "Longitude": -111.8162017,
+        "Distance (km)": 6.1
+    },
+    {
+        "Name": "Galaxy mural",
+        "Address": "505 S 200 E, Salt Lake City, UT 84111",
+        "Rating": 5,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 40.7582173,
+        "Longitude": -111.88514819999999,
+        "Distance (km)": 0.25
     }
 ]
