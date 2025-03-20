@@ -6,6 +6,7 @@ import time
 import sys
 import traceback
 from dotenv import load_dotenv
+<<<<<<< HEAD
 
 # Load environment variables
 BASE_DIR = os.environ.get("MY_APP_BASE_DIR", os.path.abspath(os.path.dirname(__file__)))
@@ -13,6 +14,15 @@ dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 
 app = Flask(__name__, template_folder=os.path.join(BASE_DIR, 'templates'))
+=======
+
+# Load environment variables
+BASE_DIR = os.environ.get("MY_APP_BASE_DIR", os.path.abspath(os.path.dirname(__file__)))
+dotenv_path = os.path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path)
+
+app = Flask(__name__)
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
 
 # File and script names using absolute paths.
 FETCHING_DATA_SCRIPT = os.path.join(BASE_DIR, "fetching_data.py")
@@ -195,7 +205,11 @@ def attraction_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in attraction.json"}), 500
 
+<<<<<<< HEAD
 
+=======
+# 8. Save filter results to result.json.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
 @app.route('/save_result', methods=['POST'])
 def save_result():
     data = request.get_json()
@@ -207,7 +221,11 @@ def save_result():
     except Exception as ex:
         return jsonify({"error": f"Error saving result.json: {str(ex)}"}), 500
 
+<<<<<<< HEAD
 
+=======
+# 9. New endpoint to save merged recommendation data into a separate file (location.json).
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
 @app.route('/save_location', methods=['POST'])
 def save_location():
     data = request.get_json()
@@ -219,22 +237,41 @@ def save_location():
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
+<<<<<<< HEAD
 
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
+=======
+# 10. New endpoint to process the location file with Azure OpenAI.
+@app.route('/process_locations', methods=['POST'])
+def process_locations():
+    try:
+        # Get the location data from the client
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
         location_data = request.get_json()
         if not location_data:
             return jsonify({"error": "No location data provided"}), 400
 
+<<<<<<< HEAD
         from openai import AzureOpenAI
 
+=======
+        # Import AzureOpenAI from openai package.
+        from openai import AzureOpenAI
+
+        # Instantiate the AzureOpenAI client with endpoint, api_key, and api_version.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
         client = AzureOpenAI(
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2024-03-01-preview"
         )
 
+<<<<<<< HEAD
+=======
+        # Prepare messages with a system instruction and the location data as user content.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
         messages = [
             {
                 "role": "system",
@@ -246,18 +283,30 @@ def process_locations():
             }
         ]
 
+<<<<<<< HEAD
+=======
+        # Send the chat request with response_format set to JSON mode.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
         response = client.chat.completions.create(
             model="gpt-4o",
             response_format={"type": "json_object"},
             messages=messages
         )
 
+<<<<<<< HEAD
+=======
+        # Get the output from the model.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
         output = response.choices[0].message.content
         return jsonify({"message": "Processing complete", "result": output})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
+<<<<<<< HEAD
 
+=======
+# 11. Start the Flask server with the correct host & port.
+>>>>>>> 8f2ba4c (Update to cope with adding location.json)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
