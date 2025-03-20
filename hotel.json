@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Mai House Saigon Hotel",
-        "Address": "1-3-5, Ng\u00f4 Th\u1eddi Nhi\u1ec7m, Ph\u01b0\u1eddng V\u00f5 Th\u1ecb S\u00e1u, Qu\u1eadn 3, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4.7,
-        "Price": "$117",
-        "Opening Hour": null,
-        "Latitude": 10.782094299999999,
-        "Longitude": 106.6915855,
-        "Distance (km)": 1.2
-    },
-    {
-        "Name": "The Odys Boutique Hotel",
-        "Address": "65-67-69, Nguy\u1ec5n Th\u00e1i B\u00ecnh, Ph\u01b0\u1eddng Nguy\u1ec5n Th\u00e1i B\u00ecnh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
-        "Rating": 4.4,
-        "Price": "$52",
-        "Opening Hour": null,
-        "Latitude": 10.7695077,
-        "Longitude": 106.70005809999999,
-        "Distance (km)": 0.79
-    },
-    {
-        "Name": "Hotel Indigo Saigon the City, an IHG Hotel",
-        "Address": "9 - 11 L\u00fd T\u1ef1 Tr\u1ecdng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
-        "Rating": 4.7,
-        "Price": "$181",
-        "Opening Hour": null,
-        "Latitude": 10.782260299999999,
-        "Longitude": 106.7051709,
-        "Distance (km)": 0.78
-    },
-    {
-        "Name": "M Hotel Saigon",
-        "Address": "39 \u0110. T\u00f4n Th\u1ea5t Thi\u1ec7p, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Name": "The Little America Hotel - Salt Lake City",
+        "Address": "500 Main St, Salt Lake City, UT 84101",
         "Rating": 4.4,
         "Price": "$123",
         "Opening Hour": null,
-        "Latitude": 10.7731627,
-        "Longitude": 106.7018605,
-        "Distance (km)": 0.39
-    },
-    {
-        "Name": "La Siesta Premium Saigon",
-        "Address": "180 - 188 L\u00fd T\u1ef1 Tr\u1ecdng, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
-        "Rating": 4.9,
-        "Price": "$162",
-        "Opening Hour": null,
-        "Latitude": 10.773074099999999,
-        "Longitude": 106.69575499999999,
-        "Distance (km)": 0.69
-    },
-    {
-        "Name": "Northern Charm Hotel",
-        "Address": "12 L\u00fd T\u1ef1 Tr\u1ecdng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4,
-        "Price": "$68",
-        "Opening Hour": null,
-        "Latitude": 10.7820133,
-        "Longitude": 106.704611,
-        "Distance (km)": 0.73
-    },
-    {
-        "Name": "Amanaki Saigon Boutique Hotel",
-        "Address": "65 H\u1ed3 T\u00f9ng M\u1eadu, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4.8,
-        "Price": "$68",
-        "Opening Hour": null,
-        "Latitude": 10.771728,
-        "Longitude": 106.7039109,
-        "Distance (km)": 0.62
-    },
-    {
-        "Name": "Signature by M Village Hai B\u00e0 Tr\u01b0ng",
-        "Address": "74 Hai B\u00e0 Tr\u01b0ng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
-        "Rating": 4.8,
-        "Price": "$90",
-        "Opening Hour": null,
-        "Latitude": 10.7779549,
-        "Longitude": 106.70367929999999,
+        "Latitude": 40.757795699999996,
+        "Longitude": -111.8920217,
         "Distance (km)": 0.34
     },
     {
-        "Name": "Adora Art Hotel",
-        "Address": "189-191 L\u00fd T\u1ef1 Tr\u1ecdng, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
-        "Rating": 4,
-        "Price": "$81",
+        "Name": "Salt Lake City Marriott City Center",
+        "Address": "220 S State St, Salt Lake City, UT 84111",
+        "Rating": 4.4,
+        "Price": "$188",
         "Opening Hour": null,
-        "Latitude": 10.773110899999999,
-        "Longitude": 106.69605759999999,
+        "Latitude": 40.764347,
+        "Longitude": -111.8885574,
+        "Distance (km)": 0.65
+    },
+    {
+        "Name": "Holiday Inn Express Salt Lake City Downtown, an IHG Hotel",
+        "Address": "206 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.3,
+        "Price": "$149",
+        "Opening Hour": null,
+        "Latitude": 40.764613,
+        "Longitude": -111.894498,
+        "Distance (km)": 0.87
+    },
+    {
+        "Name": "Hyatt Regency Salt Lake City",
+        "Address": "170 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$172",
+        "Opening Hour": null,
+        "Latitude": 40.7652413,
+        "Longitude": -111.8945128,
+        "Distance (km)": 0.92
+    },
+    {
+        "Name": "Hilton Salt Lake City Center",
+        "Address": "255 S W Temple St, Salt Lake City, UT 84101",
+        "Rating": 4.2,
+        "Price": "$187",
+        "Opening Hour": null,
+        "Latitude": 40.763925,
+        "Longitude": -111.893283,
+        "Distance (km)": 0.74
+    },
+    {
+        "Name": "Quality Inn Downtown",
+        "Address": "616 S 200 W, Salt Lake City, UT 84101",
+        "Rating": 2.8,
+        "Price": "$74",
+        "Opening Hour": null,
+        "Latitude": 40.755741,
+        "Longitude": -111.897257,
+        "Distance (km)": 0.83
+    },
+    {
+        "Name": "Kimpton Hotel Monaco Salt Lake City",
+        "Address": "15 W 200 S, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$162",
+        "Opening Hour": null,
+        "Latitude": 40.7646936,
+        "Longitude": -111.89225599999999,
+        "Distance (km)": 0.77
+    },
+    {
+        "Name": "The Grand America Hotel",
+        "Address": "555 Main St, Salt Lake City, UT 84111",
+        "Rating": 4.7,
+        "Price": "$271",
+        "Opening Hour": null,
+        "Latitude": 40.7573321,
+        "Longitude": -111.89074989999999,
+        "Distance (km)": 0.25
+    },
+    {
+        "Name": "Sheraton Salt Lake City Hotel",
+        "Address": "150 W 500 S, Salt Lake City, UT 84101",
+        "Rating": 4.2,
+        "Price": "$136",
+        "Opening Hour": null,
+        "Latitude": 40.7589902,
+        "Longitude": -111.8959938,
         "Distance (km)": 0.66
     },
     {
-        "Name": "Au Lac Boutique Hotel",
-        "Address": "93 H\u1ed3 T\u00f9ng M\u1eadu, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
-        "Rating": 4,
-        "Price": "$180",
+        "Name": "Hilton Garden Inn Salt Lake City Downtown",
+        "Address": "250 W 600 S, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$128",
         "Opening Hour": null,
-        "Latitude": 10.7722599,
-        "Longitude": 106.70343539999999,
-        "Distance (km)": 0.55
+        "Latitude": 40.7570263,
+        "Longitude": -111.89857099999999,
+        "Distance (km)": 0.89
     }
 ]

@@ -60,9 +60,9 @@ def search_location():
             return jsonify({"error": f"{RESULT_JSON} not found after fetching {amenity}"}), 500
 
         try:
-            os.rename(RESULT_JSON, outfile)
+            os.replace(RESULT_JSON, outfile)
         except Exception as ex:
-            return jsonify({"error": f"Failed to rename {RESULT_JSON} to {outfile}: {str(ex)}"}), 500
+            return jsonify({"error": f"Failed to replace {RESULT_JSON} to {outfile}: {str(ex)}"}), 500
 
         try:
             with open(outfile, "r", encoding="utf-8") as f:
@@ -182,9 +182,9 @@ def attraction_data():
         return jsonify({"error": "result.json not found after fetching attractions"}), 500
 
     try:
-        os.rename(RESULT_JSON, ATTRACTION_JSON)
+        os.replace(RESULT_JSON, ATTRACTION_JSON)
     except Exception as ex:
-        return jsonify({"error": f"Failed to rename result.json to {ATTRACTION_JSON}: {str(ex)}"}), 500
+        return jsonify({"error": f"Failed to replace result.json to {ATTRACTION_JSON}: {str(ex)}"}), 500
 
     try:
         with open(ATTRACTION_JSON, "r", encoding="utf-8") as f:

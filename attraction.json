@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Boat Tour Ho Chi Minh",
-        "Address": "Chung C\u01b0 Copac Block A, 4A1, Khu ph\u1ed1 1, Qu\u1eadn 4, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": null,
-        "Latitude": 10.7650208,
-        "Longitude": 106.71039329999999,
-        "Distance (km)": 1.64
-    },
-    {
-        "Name": "Statue of Ho Chi Minh",
-        "Address": "110 Nguy\u00ea\u0303n Hu\u00ea\u0323, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4.6,
+        "Name": "Mural \u201cLegends of Rock\u201d",
+        "Address": "Salt Lake City, UT 84101",
+        "Rating": 4.4,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 10.7760193,
-        "Longitude": 106.70154889999999,
+        "Latitude": 40.7655585,
+        "Longitude": -111.9028371,
+        "Distance (km)": 1.47
+    },
+    {
+        "Name": "Washington Square Park",
+        "Address": "451 S State St, Salt Lake City, UT 84111",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 5\u202fAM",
+        "Latitude": 40.759046999999995,
+        "Longitude": -111.8876215,
         "Distance (km)": 0.08
     },
     {
-        "Name": "Bui Vien Walking Street",
-        "Address": "\u0110. B\u00f9i Vi\u1ec7n, Ph\u01b0\u1eddng Ph\u1ea1m Ng\u0169 L\u00e3o, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Name": "Gilgal Sculpture Garden",
+        "Address": "749 E 500 S, Salt Lake City, UT 84102",
         "Rating": 4.3,
-        "Price": "$$",
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 10.7674231,
-        "Longitude": 106.6939905,
-        "Distance (km)": 1.27
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
+        "Latitude": 40.758808599999995,
+        "Longitude": -111.86937809999999,
+        "Distance (km)": 1.58
     },
     {
-        "Name": "H\u1ebbm 144 Pasteur",
-        "Address": "144 Pasteur, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 70000, Vietnam",
-        "Rating": 4.5,
+        "Name": "Mural Artist: James Kirkland (Calling Our Ancestors)",
+        "Address": "401 400 W, Salt Lake City, UT 84101",
+        "Rating": 5,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 10.7751222,
-        "Longitude": 106.7007646,
-        "Distance (km)": 0.16
+        "Latitude": 40.760143899999996,
+        "Longitude": -111.9022085,
+        "Distance (km)": 1.2
     },
     {
-        "Name": "Nguy\u1ec5n Thi\u1ec7n Thu\u1eadt Town",
-        "Address": "QM9H+H4H, H\u1ebbm 145/12 Nguy\u1ec5n Thi\u1ec7n Thu\u1eadt, Ph\u01b0\u1eddng 1, Qu\u1eadn 3, H\u1ed3 Ch\u00ed Minh, Vietnam",
+        "Name": "Tracy Aviary at Liberty Park",
+        "Address": "589 E 1300 S, Salt Lake City, UT 84105",
         "Rating": 4.7,
         "Price": null,
-        "Opening Hour": null,
-        "Latitude": 10.7689843,
-        "Longitude": 106.6778405,
-        "Distance (km)": 2.66
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
+        "Latitude": 40.7438995,
+        "Longitude": -111.87516629999999,
+        "Distance (km)": 1.96
     },
     {
-        "Name": "Littte Tokyo 2",
-        "Address": "Ph\u1ea1m Vi\u1ebft Ch\u00e1nh, Ph\u01b0\u1eddng 19, B\u00ecnh Th\u1ea1nh, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 3.5,
+        "Name": "Gravity Hill",
+        "Address": "688 Bonneville Blvd, Salt Lake City, UT 84103",
+        "Rating": 3.6,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 10.790201999999999,
-        "Longitude": 106.7106822,
-        "Distance (km)": 1.85
+        "Latitude": 40.789367,
+        "Longitude": -111.879533,
+        "Distance (km)": 3.51
     },
     {
-        "Name": "Nexus Square",
-        "Address": "3A T\u00f4n \u0110\u1ee9c Th\u1eafng, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Name": "Free Art Supply Shop",
+        "Address": "177 E 900 S Suite G, Salt Lake City, UT 84111",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": null,
+        "Latitude": 40.7500675,
+        "Longitude": -111.885746,
+        "Distance (km)": 0.96
+    },
+    {
+        "Name": "Joseph Smith Sphinx",
+        "Address": "Gilgal Sculpture Garden, 749 E 500 S, Salt Lake City, UT 84102",
         "Rating": 4.9,
         "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 10.7792935,
-        "Longitude": 106.7069721,
-        "Distance (km)": 0.72
+        "Opening Hour": null,
+        "Latitude": 40.7592885,
+        "Longitude": -111.86935129999999,
+        "Distance (km)": 1.59
     },
     {
-        "Name": "Sam \"Samica\" Bower Monument",
-        "Address": "2b T\u00f4n Th\u1ea5t \u0110\u1ea1m, B\u1ebfn Ngh\u00e9, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 5,
+        "Name": "This Is The Place Heritage Park",
+        "Address": "2601 Sunnyside Ave S, Salt Lake City, UT 84108",
+        "Rating": 4.6,
         "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 10.7711233,
-        "Longitude": 106.70327019999999,
-        "Distance (km)": 0.65
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Latitude": 40.7520271,
+        "Longitude": -111.8162017,
+        "Distance (km)": 6.1
     },
     {
-        "Name": "Mekong Cruises",
-        "Address": "67 Th\u1ee7 Khoa Hu\u00e2n, Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh 700000, Vietnam",
+        "Name": "Galaxy mural",
+        "Address": "505 S 200 E, Salt Lake City, UT 84111",
         "Rating": 5,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 10.774524999999999,
-        "Longitude": 106.6962951,
-        "Distance (km)": 0.56
-    },
-    {
-        "Name": "Toplight",
-        "Address": "Ph\u01b0\u1eddng B\u1ebfn Th\u00e0nh, Qu\u1eadn 1, H\u1ed3 Ch\u00ed Minh, Vietnam",
-        "Rating": 4.7,
         "Price": null,
         "Opening Hour": null,
-        "Latitude": 10.770805099999999,
-        "Longitude": 106.697499,
-        "Distance (km)": 0.74
+        "Latitude": 40.7582173,
+        "Longitude": -111.88514819999999,
+        "Distance (km)": 0.25
     }
 ]

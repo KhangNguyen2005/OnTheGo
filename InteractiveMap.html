@@ -1,60 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Azure Maps with Filters</title>
   <!-- Azure Maps CSS/JS -->
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
   <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
   <style>
-    html, body { height: 100%; margin: 0; padding: 0; }
-    #topBar { 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      width: 100%; 
-      background-color: rgba(255, 255, 255, 0.9); 
-      padding: 8px; 
-      z-index: 9999; 
-      font-family: Arial, sans-serif; 
-      display: flex; 
-      flex-wrap: wrap; 
-      align-items: center; 
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
-    #mapDiv { 
-      position: relative; 
-      width: 100%; 
-      height: 100vh; 
+
+    #topBar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px;
+      z-index: 9999;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .inline-block { 
-      display: inline-block; 
-      margin-top: 5px; 
-      margin-right: 20px; 
+
+    #mapDiv {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
-    .filter-chip { 
-      display: inline-block; 
-      background-color: #eee; 
-      border-radius: 16px; 
-      padding: 6px 12px; 
-      margin: 0 4px; 
-      font-size: 14px; 
-      position: relative; 
+
+    .inline-block {
+      display: inline-block;
+      margin-top: 5px;
+      margin-right: 20px;
     }
-    .filter-chip span.close-btn { 
-      cursor: pointer; 
-      margin-left: 8px; 
-      color: #999; 
-      font-weight: bold; 
+
+    .filter-chip {
+      display: inline-block;
+      background-color: #eee;
+      border-radius: 16px;
+      padding: 6px 12px;
+      margin: 0 4px;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .filter-chip span.close-btn {
+      cursor: pointer;
+      margin-left: 8px;
+      color: #999;
+      font-weight: bold;
     }
   </style>
 </head>
+
 <body>
   <!-- Top bar for user inputs -->
   <div id="topBar">
     <!-- Address input and button to set location -->
     <div class="inline-block">
-      <input type="text" id="addressInput" placeholder="Enter an address or city..." style="width: 280px; padding: 5px;" />
+      <input type="text" id="addressInput" placeholder="Enter an address or city..."
+        style="width: 280px; padding: 5px;" />
       <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
     </div>
     <!-- Buttons for Restaurants, Accommodation, and Recommendations -->
@@ -128,7 +141,7 @@
         map.popups.add(hoverPopup);
 
         // Allow user to set location by clicking on map.
-        map.events.add('click', function(e) {
+        map.events.add('click', function (e) {
           const coords = map.pixelToGeo(e.position);
           clearAllMarkers();
           hoverPopup.close();
@@ -149,7 +162,7 @@
           if (e.shapes && e.shapes.length > 0) {
             const shape = e.shapes[0];
             const props = shape.getProperties();
-            if (['restaurant','hotel','custom','attraction','filter'].includes(props.markerType)) {
+            if (['restaurant', 'hotel', 'custom', 'attraction', 'filter'].includes(props.markerType)) {
               const contentHTML = `
                 <div style="font-family: Arial, sans-serif;">
                   <strong>${props.title || 'N/A'}</strong><br>
@@ -199,31 +212,31 @@
       const url = `https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&subscription-key=${AZURE_MAPS_KEY}&query=${encodeURIComponent(query)}&limit=1`;
       return fetch(url)
         .then(resp => resp.json())
-        .then(data => { 
-          if (data && data.results && data.results.length > 0) { 
-            const best = data.results[0]; 
-            return { lat: best.position.lat, lon: best.position.lon }; 
-          } 
-          return null; 
+        .then(data => {
+          if (data && data.results && data.results.length > 0) {
+            const best = data.results[0];
+            return { lat: best.position.lat, lon: best.position.lon };
+          }
+          return null;
         })
-        .catch(err => { 
-          console.error("Error in getCoordinates:", err); 
-          return null; 
+        .catch(err => {
+          console.error("Error in getCoordinates:", err);
+          return null;
         });
     }
 
     function setLocation() {
       const address = document.getElementById('addressInput').value.trim();
-      if (!address) { 
-        alert("Please enter an address or city."); 
-        return; 
+      if (!address) {
+        alert("Please enter an address or city.");
+        return;
       }
       getCoordinates(address).then(result => {
-        if (!result) { 
-          alert("No matching address found. Please refine your input."); 
-          return; 
+        if (!result) {
+          alert("No matching address found. Please refine your input.");
+          return;
         }
-        clearAllMarkers(); 
+        clearAllMarkers();
         hoverPopup.close();
         // Clear filters so that results are refreshed.
         clearFilters();
@@ -253,41 +266,48 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ latitude: lat, longitude: lon })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) { 
-          console.error("Error from /search_location:", data.error); 
-          return; 
-        }
-        loadRestaurantData(); 
-        loadHotelData();
-      })
-      .catch(err => console.error("Error calling /search_location:", err));
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /search_location:", data.error);
+            return;
+          }
+          loadRestaurantData();
+          loadHotelData();
+        })
+        .catch(err => console.error("Error calling /search_location:", err));
     }
 
+    // Modified to return a promise so that data is freshly fetched on each click.
     function loadRestaurantData() {
-      fetch('http://127.0.0.1:5000/restaurant_data')
+      return fetch('http://127.0.0.1:5000/restaurant_data')
         .then(resp => resp.json())
-        .then(data => { 
-          if (data.error) { 
-            console.error("Error from /restaurant_data:", data.error); 
-            return; 
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /restaurant_data:", data.error);
+            restaurantData = [];
+          } else {
+            restaurantData = data;
+            console.log("Restaurant Data:", restaurantData);
           }
-          restaurantData = data; 
-          console.log("Restaurant Data:", restaurantData);
+          return restaurantData;
         })
-        .catch(err => console.error("Error loading restaurant data:", err));
+        .catch(err => {
+          console.error("Error loading restaurant data:", err);
+          restaurantData = [];
+          return restaurantData;
+        });
     }
 
     function loadHotelData() {
       fetch('http://127.0.0.1:5000/hotel_data')
         .then(resp => resp.json())
-        .then(data => { 
-          if (data.error) { 
-            console.error("Error from /hotel_data:", data.error); 
-            return; 
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /hotel_data:", data.error);
+            return;
           }
-          hotelData = data; 
+          hotelData = data;
           console.log("Hotel Data:", hotelData);
         })
         .catch(err => console.error("Error loading hotel data:", err));
@@ -318,13 +338,16 @@
       });
     }
 
+    // Modified to re-fetch restaurant data each time.
     function showRestaurants() {
       clearNonSelectedMarkers();
-      if (restaurantData.length === 0) {
-        console.warn("No restaurant data available.");
-      }
-      addMarkersToMap(restaurantData, 'restaurant');
-      autoAdjustMapView();
+      loadRestaurantData().then(() => {
+        if (restaurantData.length === 0) {
+          console.warn("No restaurant data available.");
+        }
+        addMarkersToMap(restaurantData, 'restaurant');
+        autoAdjustMapView();
+      });
     }
 
     function showHotels() {
@@ -339,9 +362,9 @@
     function showAttractions() {
       clearNonSelectedMarkers();
       const selectedFeature = datasource.getShapes().find(shape => shape.getProperties().markerType === 'selected');
-      if (!selectedFeature) { 
-        alert("Please pick or set a location first."); 
-        return; 
+      if (!selectedFeature) {
+        alert("Please pick or set a location first.");
+        return;
       }
       const [lng, lat] = selectedFeature.getCoordinates();
       fetch('http://127.0.0.1:5000/attraction_data', {
@@ -349,43 +372,43 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ latitude: lat, longitude: lng })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) { 
-          console.error("Error from /attraction_data:", data.error); 
-          return; 
-        }
-        console.log("Attraction data:", data);
-        // Store recommendations globally.
-        attractionData = data.recommendations;
-        addMarkersToMap(attractionData, 'attraction');
-        autoAdjustMapView();
-      })
-      .catch(err => console.error("Error fetching attraction data:", err));
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /attraction_data:", data.error);
+            return;
+          }
+          console.log("Attraction data:", data);
+          // Store recommendations globally.
+          attractionData = data.recommendations;
+          addMarkersToMap(attractionData, 'attraction');
+          autoAdjustMapView();
+        })
+        .catch(err => console.error("Error fetching attraction data:", err));
     }
 
     // =========================== FILTER SYSTEM ===========================
     function addFilter() {
       const filterName = document.getElementById('filterInput').value.trim();
-      if (!filterName) { 
-        alert("Please enter a filter name."); 
-        return; 
+      if (!filterName) {
+        alert("Please enter a filter name.");
+        return;
       }
-      if (userFilters.length >= 4) { 
-        alert("Maximum of 4 filters reached. Remove one before adding another."); 
-        return; 
+      if (userFilters.length >= 4) {
+        alert("Maximum of 4 filters reached. Remove one before adding another.");
+        return;
       }
-      if (userFilters.includes(filterName)) { 
-        alert("Filter already exists."); 
-        return; 
+      if (userFilters.includes(filterName)) {
+        alert("Filter already exists.");
+        return;
       }
       userFilters.push(filterName);
       createFilterChip(filterName);
 
       const selectedFeature = datasource.getShapes().find(shape => shape.getProperties().markerType === 'selected');
-      if (!selectedFeature) { 
-        alert("Please pick or set a location first. Filter data depends on location."); 
-        return; 
+      if (!selectedFeature) {
+        alert("Please pick or set a location first. Filter data depends on location.");
+        return;
       }
       const [lng, lat] = selectedFeature.getCoordinates();
       fetch('http://127.0.0.1:5000/fetching_data', {
@@ -393,20 +416,20 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ latitude: lat, longitude: lng, amenity: filterName })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        if (data.error) { 
-          console.error("Error from /fetching_data for filter:", filterName, data.error); 
-          return; 
-        }
-        // Append new filter data to filterData without removing existing filters.
-        filterData[filterName] = data;
-        addMarkersToMap(data, 'filter');
-        autoAdjustMapView();
-        // Update the saved result.json (union of all active filters).
-        updateResultJSON();
-      })
-      .catch(err => console.error("Error fetching data for filter:", filterName, err));
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /fetching_data for filter:", filterName, data.error);
+            return;
+          }
+          // Append new filter data to filterData without removing existing filters.
+          filterData[filterName] = data;
+          addMarkersToMap(data, 'filter');
+          autoAdjustMapView();
+          // Update the saved result.json (union of all active filters).
+          updateResultJSON();
+        })
+        .catch(err => console.error("Error fetching data for filter:", filterName, err));
       document.getElementById('filterInput').value = '';
     }
 
@@ -423,8 +446,8 @@
     function removeFilter(filterName) {
       userFilters = userFilters.filter(f => f !== filterName);
       const chip = document.getElementById(`chip-${filterName}`);
-      if (chip) { 
-        chip.parentNode.removeChild(chip); 
+      if (chip) {
+        chip.parentNode.removeChild(chip);
       }
       delete filterData[filterName];
       removeMarkersByFilter(filterName);
@@ -436,8 +459,8 @@
       const shapes = datasource.getShapes();
       shapes.forEach(shape => {
         const props = shape.getProperties();
-        if (props.markerType === 'filter' && props.title === filterName) { 
-          datasource.remove(shape); 
+        if (props.markerType === 'filter' && props.title === filterName) {
+          datasource.remove(shape);
         }
       });
     }
@@ -455,21 +478,21 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ results: merged })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        console.log("Updated filter results on server:", data);
-        // Refresh the filter markers.
-        clearNonSelectedMarkers();
-        if (merged.length > 0) { 
-          addMarkersToMap(merged, 'filter'); 
-        }
-        autoAdjustMapView();
-      })
-      .catch(err => console.error("Error updating filter results:", err));
+        .then(resp => resp.json())
+        .then(data => {
+          console.log("Updated filter results on server:", data);
+          // Refresh the filter markers.
+          clearNonSelectedMarkers();
+          if (merged.length > 0) {
+            addMarkersToMap(merged, 'filter');
+          }
+          autoAdjustMapView();
+        })
+        .catch(err => console.error("Error updating filter results:", err));
     }
 
     // ==================== GENERATE PLAN BUTTON (Saves merged data into location.json on the server) ====================
-    document.getElementById("generatePlan").addEventListener("click", function() {
+    document.getElementById("generatePlan").addEventListener("click", function () {
       let filterResults = [];
       for (let fName in filterData) {
         if (Array.isArray(filterData[fName])) {
@@ -478,23 +501,23 @@
       }
       // Combine data from restaurants, hotels, filters, and recommendations.
       let combinedData = [].concat(restaurantData, hotelData, filterResults, attractionData);
-      
+
       if (combinedData.length === 0) {
         alert("No recommendations available.");
         return;
       }
-      
+
       fetch('http://127.0.0.1:5000/save_location', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ results: combinedData })
       })
-      .then(resp => resp.json())
-      .then(data => {
-        console.log("Server response:", data);
-        alert("Merged recommendations have been saved as location.json on the server.");
-      })
-      .catch(err => console.error("Error saving merged recommendations:", err));
+        .then(resp => resp.json())
+        .then(data => {
+          console.log("Server response:", data);
+          alert("Merged recommendations have been saved as location.json on the server.");
+        })
+        .catch(err => console.error("Error saving merged recommendations:", err));
     });
 
     // Dummy implementation for showFilterLocations.
@@ -506,4 +529,5 @@
     window.onload = initMap;
   </script>
 </body>
+
 </html>
