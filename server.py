@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, render_template
 import json
 import subprocess
 import os
@@ -12,7 +12,7 @@ BASE_DIR = os.environ.get("MY_APP_BASE_DIR", os.path.abspath(os.path.dirname(__f
 dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.join(BASE_DIR, 'templates'))
 
 # File and script names using absolute paths.
 FETCHING_DATA_SCRIPT = os.path.join(BASE_DIR, "fetching_data.py")
@@ -22,10 +22,11 @@ RESULT_JSON = os.path.join(BASE_DIR, "result.json")   # Used for filter results 
 ATTRACTION_JSON = os.path.join(BASE_DIR, "attraction.json")
 LOCATION_JSON = os.path.join(BASE_DIR, "location.json")  # Used for merged recommendation data.
 
-# 1. Serve the InteractiveMap.html page.
+# 1. Serve the InteractiveMap.html page and inject the API key
 @app.route('/')
 def serve_html():
-    return send_from_directory(BASE_DIR, 'InteractiveMap.html')
+    api_key = os.getenv("AZURE_MAP_API")
+    return render_template('InteractiveMap.html', api_key=api_key)
 
 # Helper: wait for a file to exist with a timeout.
 def wait_for_file(filepath, timeout=5):
@@ -36,7 +37,8 @@ def wait_for_file(filepath, timeout=5):
         time.sleep(0.5)
     return True
 
-# 2. Automatically fetch restaurants & hotels when a location is selected.
+# ... (remaining routes unchanged below this line)
+
 @app.route('/search_location', methods=['POST'])
 def search_location():
     data = request.get_json()
@@ -72,7 +74,7 @@ def search_location():
 
     return jsonify({"message": "Location search completed", "results": results})
 
-# 3. Fetching data dynamically for custom queries.
+
 @app.route('/fetching_data', methods=['POST'])
 def run_fetching_data():
     data = request.json
@@ -111,7 +113,7 @@ def run_fetching_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
 
-# 4. Serve restaurant data.
+
 @app.route('/restaurant_data', methods=['GET'])
 def restaurant_data():
     try:
@@ -120,7 +122,7 @@ def restaurant_data():
     except FileNotFoundError:
         return jsonify({"error": "restaurant.json not found"}), 404
 
-# 5. Serve hotel data.
+
 @app.route('/hotel_data', methods=['GET'])
 def hotel_data():
     try:
@@ -129,7 +131,7 @@ def hotel_data():
     except FileNotFoundError:
         return jsonify({"error": "hotel.json not found"}), 404
 
-# 6. Handle user search queries & save recommendations in result.json.
+
 @app.route('/get_recommendations', methods=['POST'])
 def get_recommendations():
     data = request.get_json()
@@ -159,7 +161,7 @@ def get_recommendations():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
 
-# 7. New endpoint for Attractions (Recommendations).
+
 @app.route('/attraction_data', methods=['POST'])
 def attraction_data():
     data = request.get_json()
@@ -193,7 +195,7 @@ def attraction_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in attraction.json"}), 500
 
-# 8. Save filter results to result.json.
+
 @app.route('/save_result', methods=['POST'])
 def save_result():
     data = request.get_json()
@@ -205,7 +207,7 @@ def save_result():
     except Exception as ex:
         return jsonify({"error": f"Error saving result.json: {str(ex)}"}), 500
 
-# 9. New endpoint to save merged recommendation data into a separate file (location.json).
+
 @app.route('/save_location', methods=['POST'])
 def save_location():
     data = request.get_json()
@@ -217,26 +219,22 @@ def save_location():
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. New endpoint to process the location file with Azure OpenAI.
+
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
-        # Get the location data from the client
         location_data = request.get_json()
         if not location_data:
             return jsonify({"error": "No location data provided"}), 400
 
-        # Import AzureOpenAI from openai package.
         from openai import AzureOpenAI
 
-        # Instantiate the AzureOpenAI client with endpoint, api_key, and api_version.
         client = AzureOpenAI(
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2024-03-01-preview"
         )
 
-        # Prepare messages with a system instruction and the location data as user content.
         messages = [
             {
                 "role": "system",
@@ -248,20 +246,18 @@ def process_locations():
             }
         ]
 
-        # Send the chat request with response_format set to JSON mode.
         response = client.chat.completions.create(
             model="gpt-4o",
             response_format={"type": "json_object"},
             messages=messages
         )
 
-        # Get the output from the model.
         output = response.choices[0].message.content
         return jsonify({"message": "Processing complete", "result": output})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
-# 11. Start the Flask server with the correct host & port.
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
