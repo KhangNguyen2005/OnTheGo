@@ -1,55 +1,5 @@
 [
     {
-        "Name": "From Scratch",
-        "Address": "62 E Gallivan Ave, Salt Lake City, UT 84111",
-        "Rating": 4.3,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7634979,
-        "Longitude": -111.88937179999999,
-        "Distance (km)": 0.57
-    },
-    {
-        "Name": "The Bayou",
-        "Address": "645 S State St, Salt Lake City, UT 84111",
-        "Rating": 4.6,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.755129,
-        "Longitude": -111.88776299999999,
-        "Distance (km)": 0.37
-    },
-    {
-        "Name": "Spitz - Salt Lake City",
-        "Address": "35 E Broadway, Salt Lake City, UT 84111",
-        "Rating": 4.5,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7630115,
-        "Longitude": -111.8899423,
-        "Distance (km)": 0.53
-    },
-    {
-        "Name": "Settebello Pizzeria Napoletana",
-        "Address": "260 S 200 W, Salt Lake City, UT 84101",
-        "Rating": 4.5,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.7634871,
-        "Longitude": -111.8970853,
-        "Distance (km)": 0.94
-    },
-    {
-        "Name": "Valter's Osteria",
-        "Address": "173 W Broadway, Salt Lake City, UT 84101",
-        "Rating": 4.6,
-        "Price": "$100+",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.762517599999995,
-        "Longitude": -111.896225,
-        "Distance (km)": 0.82
-    },
-    {
         "Name": "The Other Place Restaurant",
         "Address": "469 E 300 S, Salt Lake City, UT 84111",
         "Rating": 4.6,
@@ -70,33 +20,83 @@
         "Distance (km)": 0.83
     },
     {
-        "Name": "Market Street Grill Downtown",
-        "Address": "48 W Market St, Salt Lake City, UT 84101",
-        "Rating": 4.3,
-        "Price": "$$$",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 40.7618565,
-        "Longitude": -111.8926097,
+        "Name": "Spitz - Salt Lake City",
+        "Address": "35 E Broadway, Salt Lake City, UT 84111",
+        "Rating": 4.5,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Latitude": 40.7630115,
+        "Longitude": -111.8899423,
         "Distance (km)": 0.53
     },
     {
-        "Name": "White Horse Spirits & Kitchen",
-        "Address": "325 S Main St, Salt Lake City, UT 84111",
+        "Name": "From Scratch",
+        "Address": "62 E Gallivan Ave, Salt Lake City, UT 84111",
+        "Rating": 4.3,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Latitude": 40.7634979,
+        "Longitude": -111.88937179999999,
+        "Distance (km)": 0.57
+    },
+    {
+        "Name": "Felt Bar & Eatery",
+        "Address": "341 S Main St STE 101, Salt Lake City, UT 84111",
+        "Rating": 4.8,
+        "Price": "$30\u201350",
+        "Opening Hour": "Open \u22c5 Closes 1\u202fAM",
+        "Latitude": 40.761822699999996,
+        "Longitude": -111.890594,
+        "Distance (km)": 0.43
+    },
+    {
+        "Name": "Zest Kitchen & Bar",
+        "Address": "275 S 200 W, Salt Lake City, UT 84101",
+        "Rating": 4.5,
+        "Price": "$20\u201330",
+        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
+        "Latitude": 40.763272,
+        "Longitude": -111.89645309999999,
+        "Distance (km)": 0.88
+    },
+    {
+        "Name": "Lake Effect",
+        "Address": "155 W 200 S, Salt Lake City, UT 84101",
+        "Rating": 4.4,
+        "Price": "$$",
+        "Opening Hour": "Open \u22c5 Closes 1\u202fAM",
+        "Latitude": 40.764762999999995,
+        "Longitude": -111.8958208,
+        "Distance (km)": 0.95
+    },
+    {
+        "Name": "The Bayou",
+        "Address": "645 S State St, Salt Lake City, UT 84111",
+        "Rating": 4.6,
+        "Price": "$20\u201330",
+        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
+        "Latitude": 40.755129,
+        "Longitude": -111.88776299999999,
+        "Distance (km)": 0.37
+    },
+    {
+        "Name": "Street Tacos SLC",
+        "Address": "243 W 400 S, Salt Lake City, UT 84101",
+        "Rating": 4.2,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 3\u202fAM",
+        "Latitude": 40.7602943,
+        "Longitude": -111.8984224,
+        "Distance (km)": 0.89
+    },
+    {
+        "Name": "Franklin Ave Cocktails & Kitchen",
+        "Address": "231 S Edison St, Salt Lake City, UT 84111",
         "Rating": 4.6,
         "Price": "$30\u201350",
         "Opening Hour": "Open \u22c5 Closes 1\u202fAM",
-        "Latitude": 40.7621219,
-        "Longitude": -111.8908482,
-        "Distance (km)": 0.46
-    },
-    {
-        "Name": "The Copper Onion",
-        "Address": "111 E Broadway #170, Salt Lake City, UT 84111",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.763038699999996,
-        "Longitude": -111.88715859999999,
-        "Distance (km)": 0.51
+        "Latitude": 40.76405,
+        "Longitude": -111.88635,
+        "Distance (km)": 0.64
     }
 ]
