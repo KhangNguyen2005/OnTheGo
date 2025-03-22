@@ -1,502 +1,202 @@
 [
     {
-        "Address": "9 Maiden Ln, New York, NY 10038",
-        "Distance (km)": 0.42,
-        "Latitude": 40.7096649,
-        "Longitude": -74.0093444,
-        "Name": "The Malt House",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 11\u202fAM",
-        "Price": "$$",
-        "Rating": 4.3
-    },
-    {
-        "Address": "259 Front St, New York, NY 10038",
-        "Distance (km)": 0.78,
-        "Latitude": 40.708233199999995,
-        "Longitude": -74.0005406,
-        "Name": "Cowgirl SeaHorse",
-        "Opening Hour": "Open \u22c5 Closes 4\u202fAM \u22c5 Reopens 11:30\u202fAM",
-        "Price": "$20\u201330",
-        "Rating": 4.3
-    },
-    {
-        "Address": "17 John St, New York, NY 10038",
-        "Distance (km)": 0.38,
-        "Latitude": 40.709864499999995,
-        "Longitude": -74.00874859999999,
-        "Name": "The Irish American Pub",
-        "Opening Hour": "Open \u22c5 Closes 4\u202fAM \u22c5 Reopens 10\u202fAM",
-        "Price": "$20\u201330",
-        "Rating": 4.4
-    },
-    {
-        "Address": "10 Pell St, New York, NY 10013",
-        "Distance (km)": 0.84,
-        "Latitude": 40.7148544,
-        "Longitude": -73.9976092,
-        "Name": "Famous Sichuan",
-        "Opening Hour": "Open \u22c5 Closes 3\u202fAM \u22c5 Reopens 11\u202fAM",
-        "Price": "$20\u201330",
-        "Rating": 4
-    },
-    {
-        "Address": "174 Grand St, New York, NY 10013",
-        "Distance (km)": 1.08,
-        "Latitude": 40.7196972,
-        "Longitude": -73.9978939,
-        "Name": "Onieal's",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 11:30\u202fAM",
-        "Price": "$$",
-        "Rating": 4.3
-    },
-    {
-        "Address": "250 Vesey St, New York, NY 10281",
-        "Distance (km)": 0.76,
-        "Latitude": 40.7137112,
-        "Longitude": -74.0162387,
-        "Name": "P.J. Clarke's On The Hudson",
-        "Opening Hour": "Closed \u22c5 Opens 11:30\u202fAM",
-        "Price": "$30\u201350",
-        "Rating": 4.3
-    },
-    {
-        "Address": "28 Cliff St, New York, NY 10038",
-        "Distance (km)": 0.59,
-        "Latitude": 40.708013699999995,
-        "Longitude": -74.0050629,
-        "Name": "Ryan Maguire's Bar & Restaurant",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 11\u202fAM",
-        "Price": "$20\u201330",
-        "Rating": 4.5
-    },
-    {
-        "Address": "120 Cedar St, New York, NY 10006",
-        "Distance (km)": 0.6,
-        "Latitude": 40.7095008,
-        "Longitude": -74.0126642,
-        "Name": "O'Hara's Restaurant and Pub",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Price": "$20\u201330",
-        "Rating": 4.6
-    },
-    {
-        "Address": "115 Broadway, New York, NY 10006",
-        "Distance (km)": 0.58,
-        "Latitude": 40.708881999999996,
-        "Longitude": -74.01143259999999,
-        "Name": "Trinity Place",
-        "Opening Hour": "Closed \u22c5 Opens 11:30\u202fAM",
-        "Price": "$$",
-        "Rating": 4.4
-    },
-    {
-        "Address": "120 Mulberry St, New York, NY 10013",
-        "Distance (km)": 0.94,
-        "Latitude": 40.7177496,
-        "Longitude": -73.9979524,
-        "Name": "Buona Notte",
-        "Opening Hour": "Closed \u22c5 Opens 12\u202fPM",
-        "Price": "$$",
-        "Rating": 4.5
-    },
-    {
-        "Address": "102 Greenwich St, New York, NY 10006",
-        "Distance (km)": 0.75,
-        "Latitude": 40.7084445,
-        "Longitude": -74.0136601,
-        "Name": "Tribeca Hotel FiDi",
-        "Opening Hour": null,
-        "Price": "$179",
-        "Rating": 4.2
-    },
-    {
-        "Address": "85 Flatbush Ave Ext, Brooklyn, NY 11201",
-        "Distance (km)": 2.66,
-        "Latitude": 40.6965685,
-        "Longitude": -73.984416,
-        "Name": "The Tillary Hotel Brooklyn",
-        "Opening Hour": null,
-        "Price": "$89",
-        "Rating": 3.8
-    },
-    {
-        "Address": "1 Dutch St, New York, NY 10038",
-        "Distance (km)": 0.42,
-        "Latitude": 40.709299099999996,
-        "Longitude": -74.0078252,
-        "Name": "One Dutch Hotel",
-        "Opening Hour": null,
-        "Price": "$184",
-        "Rating": 4.3
-    },
-    {
-        "Address": "55 Church St, New York, NY 10007",
-        "Distance (km)": 0.31,
-        "Latitude": 40.7113987,
-        "Longitude": -74.01022569999999,
-        "Name": "Millennium Downtown New York",
-        "Opening Hour": null,
-        "Price": "$196",
-        "Rating": 3.8
-    },
-    {
-        "Address": "86 Warren St, New York, NY 10007",
-        "Distance (km)": 0.39,
-        "Latitude": 40.7155632,
-        "Longitude": -74.010503,
-        "Name": "Warren Street Hotel",
-        "Opening Hour": null,
-        "Price": "$855",
-        "Rating": 4.7
-    },
-    {
-        "Address": "77 Walker St, New York, NY 10013",
-        "Distance (km)": 0.73,
-        "Latitude": 40.718417099999996,
-        "Longitude": -74.00228489999999,
-        "Name": "Walker Hotel Tribeca",
-        "Opening Hour": null,
-        "Price": "$144",
-        "Rating": 4.1
-    },
-    {
-        "Address": "50 Trinity Pl, New York, NY 10006",
-        "Distance (km)": 0.79,
-        "Latitude": 40.7076827,
-        "Longitude": -74.0133436,
-        "Name": "Hotel Indigo NYC Financial District, an IHG Hotel",
-        "Opening Hour": null,
-        "Price": "$195",
-        "Rating": 4.3
-    },
-    {
-        "Address": "95 W Broadway, New York, NY 10007",
-        "Distance (km)": 0.32,
-        "Latitude": 40.7156143,
-        "Longitude": -74.00896709999999,
-        "Name": "The Frederick Hotel",
-        "Opening Hour": null,
-        "Price": "$248",
-        "Rating": 4.2
-    },
-    {
-        "Address": "120 Lafayette St, New York, NY 10013",
-        "Distance (km)": 0.85,
-        "Latitude": 40.71873,
-        "Longitude": -74.000484,
-        "Name": "JG Sohotel",
-        "Opening Hour": null,
-        "Price": "$135",
-        "Rating": 4.4
-    },
-    {
-        "Address": "52 Mulberry St, New York, NY 10013",
-        "Distance (km)": 0.7,
-        "Latitude": 40.7153105,
-        "Longitude": -73.9994984,
-        "Name": "Hotel Mulberry",
-        "Opening Hour": null,
-        "Price": "$159",
-        "Rating": 4.3
-    },
-    {
-        "Address": "8 Mott St, New York, NY 10038",
-        "Distance (km)": 0.74,
-        "Latitude": 40.714017299999995,
-        "Longitude": -73.998571,
-        "Name": "Chinatown Fair Family Fun Center",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Price": null,
-        "Rating": 4.2
-    },
-    {
-        "Address": "6 St Marks Pl, New York, NY 10003",
-        "Distance (km)": 2.33,
-        "Latitude": 40.7291156,
-        "Longitude": -73.98953929999999,
-        "Name": "Barcade",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 2\u202fPM",
-        "Price": "$10\u201320",
-        "Rating": 4.3
-    },
-    {
-        "Address": "148 W 24th St, New York, NY 10011",
-        "Distance (km)": 3.63,
-        "Latitude": 40.7442657,
-        "Longitude": -73.9945268,
-        "Name": "Barcade",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 2\u202fPM",
-        "Price": "$20\u201330",
-        "Rating": 4.3
-    },
-    {
-        "Address": "163 Newark Ave, Jersey City, NJ 07302",
-        "Distance (km)": 3.3,
-        "Latitude": 40.7208836,
-        "Longitude": -74.0449561,
-        "Name": "Barcade",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 2\u202fPM",
-        "Price": "$20\u201330",
-        "Rating": 4.4
-    },
-    {
-        "Address": "388 Union Ave, Brooklyn, NY 11211",
-        "Distance (km)": 4.74,
-        "Latitude": 40.712072,
-        "Longitude": -73.95106299999999,
-        "Name": "Barcade",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 4\u202fPM",
-        "Price": "$10\u201320",
-        "Rating": 4.5
-    },
-    {
-        "Address": "1186 Broadway, Brooklyn, NY 11221",
-        "Distance (km)": 7.11,
-        "Latitude": 40.6923719,
-        "Longitude": -73.9274634,
-        "Name": "Wonderville",
-        "Opening Hour": "Closes soon \u22c5 2\u202fAM \u22c5 Reopens 5\u202fPM",
-        "Price": "$10\u201320",
-        "Rating": 4.8
-    },
-    {
-        "Address": "36-10 31st St, Astoria, NY 11106",
-        "Distance (km)": 8.1,
-        "Latitude": 40.7564985,
-        "Longitude": -73.9300879,
-        "Name": "Gaming City",
-        "Opening Hour": "Closed \u22c5 Opens 2\u202fPM",
-        "Price": null,
-        "Rating": 5
-    },
-    {
-        "Address": "50 Bowery, New York, NY 10013",
-        "Distance (km)": 0.93,
-        "Latitude": 40.7159481,
-        "Longitude": -73.9968282,
-        "Name": "OS NYC",
-        "Opening Hour": "Closed \u22c5 Opens 3\u202fPM",
-        "Price": "$20\u201330",
-        "Rating": 4.7
-    },
-    {
-        "Address": "381 1st St, Jersey City, NJ 07302",
-        "Distance (km)": 3.88,
-        "Latitude": 40.722435499999996,
-        "Longitude": -74.0516318,
-        "Name": "The Pixel Lab",
-        "Opening Hour": "Closed \u22c5 Opens 3\u202fPM",
-        "Price": null,
-        "Rating": 5
-    },
-    {
-        "Address": "531 E 5th St, New York, NY 10009",
-        "Distance (km)": 2.41,
-        "Latitude": 40.7243881,
-        "Longitude": -73.98286519999999,
-        "Name": "Ace Bar",
-        "Opening Hour": "Open \u22c5 Closes 4\u202fAM \u22c5 Reopens 3\u202fPM",
-        "Price": "$10\u201320",
-        "Rating": 4.1
-    },
-    {
-        "Address": "177 Prince St, New York, NY 10012",
-        "Distance (km)": 1.56,
-        "Latitude": 40.726448999999995,
-        "Longitude": -74.001798,
-        "Name": "The Museum of Interesting Things Secret Speakeasy",
-        "Opening Hour": null,
-        "Price": null,
-        "Rating": 4.5
-    },
-    {
-        "Address": "Georgetown Plaza, 60 E 8th St, New York, NY 10003",
-        "Distance (km)": 2.28,
-        "Latitude": 40.7305539,
-        "Longitude": -73.9930526,
-        "Name": "The Museum of Interesting Things (advance appt only)",
-        "Opening Hour": null,
-        "Price": null,
-        "Rating": 4.7
-    },
-    {
-        "Address": "4 Cortlandt Alley, New York, NY 10013",
-        "Distance (km)": 0.62,
-        "Latitude": 40.7174747,
-        "Longitude": -74.00271289999999,
-        "Name": "Mmuseumm",
-        "Opening Hour": null,
-        "Price": null,
-        "Rating": 4.6
-    },
-    {
-        "Address": "1 Bowling Green, New York, NY 10004",
-        "Distance (km)": 1.12,
-        "Latitude": 40.7043886,
-        "Longitude": -74.01398329999999,
-        "Name": "George Gustav Heye Center",
-        "Opening Hour": null,
-        "Price": null,
-        "Rating": 4.3
-    },
-    {
-        "Address": "180 Greenwich St, New York, NY 10007",
-        "Distance (km)": 0.54,
-        "Latitude": 40.7115776,
-        "Longitude": -74.0133362,
-        "Name": "9/11 Memorial & Museum",
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
-        "Price": null,
-        "Rating": 4.8
-    },
-    {
-        "Address": "103 Orchard St, New York, NY 10002",
-        "Distance (km)": 1.58,
-        "Latitude": 40.718818,
-        "Longitude": -73.9900876,
-        "Name": "Tenement Museum",
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
-        "Price": null,
-        "Rating": 4.6
-    },
-    {
-        "Address": "39 Battery Pl, New York, NY 10280",
-        "Distance (km)": 1.2,
-        "Latitude": 40.7057375,
-        "Longitude": -74.017749,
-        "Name": "The Skyscraper Museum",
-        "Opening Hour": "Closed \u22c5 Opens 12\u202fPM",
-        "Price": null,
-        "Rating": 4.1
-    },
-    {
-        "Address": "215 Centre St, New York, NY 10013",
-        "Distance (km)": 0.99,
-        "Latitude": 40.7193785,
-        "Longitude": -73.99905059999999,
-        "Name": "Museum of Chinese in America",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Price": null,
-        "Rating": 4.4
-    },
-    {
-        "Address": "100 Barclay St, New York, NY 10007",
-        "Distance (km)": 0.47,
-        "Latitude": 40.713570999999995,
-        "Longitude": -74.0127983,
-        "Name": "Museum & Chefs Table Arts Top Floor",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 5
-    },
-    {
-        "Address": "34-20 River Terrace, New York, NY 10282",
-        "Distance (km)": 0.86,
-        "Latitude": 40.7179205,
-        "Longitude": -74.01521369999999,
-        "Name": "Sculpture Park",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.8
-    },
-    {
-        "Address": "New York, NY 10020",
-        "Distance (km)": 5.62,
-        "Latitude": 40.7585013,
-        "Longitude": -73.978087,
-        "Name": "The Channel Gardens",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.6
-    },
-    {
-        "Address": "1-11 Thames St, New York, NY 10006",
-        "Distance (km)": 0.58,
-        "Latitude": 40.7089107,
-        "Longitude": -74.0114035,
-        "Name": "Trinity Place Skybridge",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.6
-    },
-    {
-        "Address": "113 Wooster St, New York, NY 10012",
-        "Distance (km)": 1.42,
-        "Latitude": 40.7247918,
-        "Longitude": -74.00062199999999,
-        "Name": "VaultLights",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": null
-    },
-    {
-        "Address": "28-20 Fulton St, New York, NY 10038",
-        "Distance (km)": 0.72,
-        "Latitude": 40.7070258,
-        "Longitude": -74.0040088,
-        "Name": "Seaport District",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.4
-    },
-    {
-        "Address": "Battery Park City Esplanade, New York, NY 10280",
-        "Distance (km)": 0.92,
-        "Latitude": 40.711479499999996,
-        "Longitude": -74.0180057,
-        "Name": "Battery Park City Promenade",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.7
-    },
-    {
-        "Address": "Hudson Tower Park, 328 Albany St, New York, NY 10280",
-        "Distance (km)": 0.94,
-        "Latitude": 40.7104688,
-        "Longitude": -74.0178628,
-        "Name": "Chess at the Boardwalk",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 5
-    },
-    {
-        "Address": "9 Jay St, New York, NY 10013",
-        "Distance (km)": 0.61,
-        "Latitude": 40.7182678,
-        "Longitude": -74.0094464,
-        "Name": "Staple Street Skybridge",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.4
-    },
-    {
-        "Address": "393 S End Ave, New York, NY 10280",
-        "Distance (km)": 0.8,
-        "Latitude": 40.7117091,
-        "Longitude": -74.0166011,
-        "Name": "Berlin Wall",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.1
-    },
-    {
-        "Address": "Warren St, New York, NY 10005",
-        "Distance (km)": 0.83,
-        "Latitude": 40.717071499999996,
-        "Longitude": -74.015524,
-        "Name": "Teardrop Park",
-        "Opening Hour": "Open 24 hours",
-        "Price": null,
-        "Rating": 4.7
-    },
-    {
-        "Address": "182 Canal St, New York, NY 10013",
+        "Address": "909 Franklin St, Houston, TX 77002",
         "Distance (km)": 0.9,
-        "Latitude": 40.7168232,
-        "Longitude": -73.9977634,
-        "Name": "Manhattan Chinatown \u66fc\u54c8\u9813\u83ef\u57e0",
-        "Opening Hour": null,
+        "Latitude": 29.7635455,
+        "Longitude": -95.360686,
+        "Name": "La Calle Tacos",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 9\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.4
+    },
+    {
+        "Address": "1010 Prairie St, Houston, TX 77002",
+        "Distance (km)": 0.76,
+        "Latitude": 29.760246799999997,
+        "Longitude": -95.36167619999999,
+        "Name": "Birria Los Primos",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.7
+    },
+    {
+        "Address": "1010 Prairie St, Houston, TX 77002",
+        "Distance (km)": 0.77,
+        "Latitude": 29.760375399999997,
+        "Longitude": -95.3615923,
+        "Name": "Wokker",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.2
+    },
+    {
+        "Address": "415 Milam St, Houston, TX 77002",
+        "Distance (km)": 0.6,
+        "Latitude": 29.7619112,
+        "Longitude": -95.3634041,
+        "Name": "Space City Birria",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.8
+    },
+    {
+        "Address": "1001 Texas St Suite 150, Houston, TX 77002",
+        "Distance (km)": 0.72,
+        "Latitude": 29.760042,
+        "Longitude": -95.362112,
+        "Name": "Little New Orleans",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 10\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.2
+    },
+    {
+        "Address": "407 Main St, Houston, TX 77002",
+        "Distance (km)": 0.78,
+        "Latitude": 29.7612067,
+        "Longitude": -95.36140329999999,
+        "Name": "Bungalow",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Price": "$100+",
+        "Rating": 4.5
+    },
+    {
+        "Address": "213 Milam St, Houston, TX 77002",
+        "Distance (km)": 0.78,
+        "Latitude": 29.763516199999998,
+        "Longitude": -95.362068,
+        "Name": "La Fisheria",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Price": "$30\u201350",
+        "Rating": 4.7
+    },
+    {
+        "Address": "1010 Prairie St, Houston, TX 77002",
+        "Distance (km)": 0.77,
+        "Latitude": 29.760375399999997,
+        "Longitude": -95.3615923,
+        "Name": "Underground Hall",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Price": "$10\u201320",
+        "Rating": 4.5
+    },
+    {
+        "Address": "410 Bagby St, Houston, TX 77002",
+        "Distance (km)": 0.47,
+        "Latitude": 29.7646083,
+        "Longitude": -95.3672727,
+        "Name": "Aquarium Restaurant",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Price": "$20\u201330",
+        "Rating": 4.4
+    },
+    {
+        "Address": "909 Texas St Suite E, Houston, TX 77002",
+        "Distance (km)": 0.65,
+        "Latitude": 29.760529199999997,
+        "Longitude": -95.36279689999999,
+        "Name": "Mamajuana Cafe",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 12\u202fPM",
         "Price": null,
+        "Rating": 4.5
+    },
+    {
+        "Address": "400 Dallas St, Houston, TX 77002",
+        "Distance (km)": 0.36,
+        "Latitude": 29.7578478,
+        "Longitude": -95.3710462,
+        "Name": "C. Baldwin, Curio Collection by Hilton",
+        "Opening Hour": null,
+        "Price": "$173",
+        "Rating": 3.9
+    },
+    {
+        "Address": "915 W Dallas St, Houston, TX 77019",
+        "Distance (km)": 0.86,
+        "Latitude": 29.7573758,
+        "Longitude": -95.3774402,
+        "Name": "Best Western Plus Downtown Inn & Suites",
+        "Opening Hour": null,
+        "Price": "$119",
+        "Rating": 4.6
+    },
+    {
+        "Address": "701 Texas Ave, Houston, TX 77002",
+        "Distance (km)": 0.46,
+        "Latitude": 29.761499999999998,
+        "Longitude": -95.3648,
+        "Name": "The Lancaster Hotel",
+        "Opening Hour": null,
+        "Price": "$201",
+        "Rating": 4.7
+    },
+    {
+        "Address": "1700 Smith St, Houston, TX 77002",
+        "Distance (km)": 0.9,
+        "Latitude": 29.753411099999997,
+        "Longitude": -95.37342249999999,
+        "Name": "The Whitehall",
+        "Opening Hour": null,
+        "Price": "$113",
+        "Rating": 4.4
+    },
+    {
+        "Address": "1085 Rusk St, Houston, TX 77002",
+        "Distance (km)": 0.7,
+        "Latitude": 29.7581031,
+        "Longitude": -95.36292619999999,
+        "Name": "Club Quarters Hotel Downtown, Houston",
+        "Opening Hour": null,
+        "Price": "$146",
+        "Rating": 3.9
+    },
+    {
+        "Address": "710 Crawford St, Houston, TX 77002",
+        "Distance (km)": 1.2,
+        "Latitude": 29.7556479,
+        "Longitude": -95.3586369,
+        "Name": "Hampton Inn Houston Downtown",
+        "Opening Hour": null,
+        "Price": "$182",
+        "Rating": 4.2
+    },
+    {
+        "Address": "1777 Walker St, Houston, TX 77010",
+        "Distance (km)": 1.31,
+        "Latitude": 29.7544464,
+        "Longitude": -95.3581201,
+        "Name": "Marriott Marquis Houston",
+        "Opening Hour": null,
+        "Price": "$709",
+        "Rating": 4.4
+    },
+    {
+        "Address": "1515 Dallas St, Houston, TX 77010",
+        "Distance (km)": 1.17,
+        "Latitude": 29.752999199999998,
+        "Longitude": -95.3613409,
+        "Name": "Embassy Suites by Hilton Houston Downtown",
+        "Opening Hour": null,
+        "Price": "$232",
         "Rating": 4.3
+    },
+    {
+        "Address": "220 Main St, Houston, TX 77002",
+        "Distance (km)": 0.86,
+        "Latitude": 29.762578299999998,
+        "Longitude": -95.36088509999999,
+        "Name": "Hotel ICON, Autograph Collection",
+        "Opening Hour": null,
+        "Price": "$217",
+        "Rating": 4.3
+    },
+    {
+        "Address": "1616 Main St, Houston, TX 77002",
+        "Distance (km)": 0.97,
+        "Latitude": 29.752092299999997,
+        "Longitude": -95.36915979999999,
+        "Name": "Holiday Inn Houston Downtown, an IHG Hotel",
+        "Opening Hour": null,
+        "Price": "$146",
+        "Rating": 4
     }
 ]

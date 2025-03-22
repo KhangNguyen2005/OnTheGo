@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Tongva Park",
-        "Address": "1615 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.5,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 34.0111203,
-        "Longitude": -118.4932405,
-        "Distance (km)": 0.16
-    },
-    {
-        "Name": "Black Kittens",
-        "Address": "321 Santa Monica Pier, Santa Monica, CA 90401",
-        "Rating": 5,
+        "Name": "Eleanor Tinsley Park",
+        "Address": "18-3600 Allen Pkwy, Houston, TX 77019",
+        "Rating": 4.7,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 34.0094128,
-        "Longitude": -118.4974503,
-        "Distance (km)": 0.57
+        "Latitude": 29.762276099999998,
+        "Longitude": -95.3792185,
+        "Distance (km)": 0.95
     },
     {
-        "Name": "Venice Boardwalk",
-        "Address": "Beach pavillion in, Los Angeles, CA",
-        "Rating": 4.5,
+        "Name": "Downtown Aquarium",
+        "Address": "410 Bagby St, Houston, TX 77002",
+        "Rating": 4.1,
         "Price": null,
-        "Opening Hour": "Open now",
-        "Latitude": 33.9909254,
-        "Longitude": -118.4774439,
-        "Distance (km)": 2.58
-    },
-    {
-        "Name": "Santa Monica Pier Carousel",
-        "Address": "1624 Ocean Front Walk, Santa Monica, CA 90401",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 7\u202fPM",
-        "Latitude": 34.010113,
-        "Longitude": -118.49612789999999,
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Latitude": 29.7642703,
+        "Longitude": -95.3673792,
         "Distance (km)": 0.44
     },
     {
-        "Name": "Palisades Park",
-        "Address": "Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.7,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 34.0230179,
-        "Longitude": -118.5094604,
-        "Distance (km)": 2.13
-    },
-    {
-        "Name": "The Golden Triangle",
-        "Address": "9800 Wilshire Blvd, Beverly Hills, CA 90212",
+        "Name": "Main Street Downtown",
+        "Address": "Main St &, Capitol St, Houston, TX",
         "Rating": 4.7,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 34.0672669,
-        "Longitude": -118.4007403,
-        "Distance (km)": 10.45
+        "Latitude": 29.759173099999998,
+        "Longitude": -95.3630927,
+        "Distance (km)": 0.65
     },
     {
-        "Name": "Fisherman's Village",
-        "Address": "13755 Fiji Way, Marina Del Rey, CA 90292",
-        "Rating": 4.4,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 33.9729002,
-        "Longitude": -118.4459588,
-        "Distance (km)": 5.96
-    },
-    {
-        "Name": "Ilkin's ocean view",
-        "Address": "CA-1, Santa Monica, CA 90401",
-        "Rating": 5,
-        "Price": null,
-        "Opening Hour": null,
-        "Latitude": 34.0166361,
-        "Longitude": -118.50158239999999,
-        "Distance (km)": 1.12
-    },
-    {
-        "Name": "Venice Breakwater",
-        "Address": "Ocean Front Walk, Venice, CA 90292",
-        "Rating": 4.8,
+        "Name": "Graffiti Park Downtown Houston",
+        "Address": "1503 Chartres St, Houston, TX 77003",
+        "Rating": 4.3,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 33.985193699999996,
-        "Longitude": -118.4769233,
-        "Distance (km)": 3.16
+        "Latitude": 29.747374299999997,
+        "Longitude": -95.3589463,
+        "Distance (km)": 1.81
     },
     {
-        "Name": "Santa Monica Pier",
-        "Address": "200 Santa Monica Pier, Santa Monica, CA 90401",
+        "Name": "Waugh Drive Bat Colony",
+        "Address": "Waugh Dr, Houston, TX 77002",
         "Rating": 4.6,
         "Price": null,
-        "Opening Hour": "Open now",
-        "Latitude": 34.008282099999995,
-        "Longitude": -118.4987585,
-        "Distance (km)": 0.73
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.761695399999997,
+        "Longitude": -95.39798429999999,
+        "Distance (km)": 2.75
+    },
+    {
+        "Name": "Houston Legendary Graffiti Building",
+        "Address": "2011 Leeland St, Houston, TX 77003",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.7473046,
+        "Longitude": -95.35936,
+        "Distance (km)": 1.79
+    },
+    {
+        "Name": "Mural Moo",
+        "Address": "816a Sabine St, Houston, TX 77007",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.7667881,
+        "Longitude": -95.3755137,
+        "Distance (km)": 0.88
+    },
+    {
+        "Name": "Hermann Square",
+        "Address": "900 Bagby St, Houston, TX 77002",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.7597222,
+        "Longitude": -95.3686111,
+        "Distance (km)": 0.15
+    },
+    {
+        "Name": "Ecosystem Restoration Art Mural",
+        "Address": "1699 Travis St, Houston, TX 77002",
+        "Rating": 3,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.752261299999997,
+        "Longitude": -95.36995139999999,
+        "Distance (km)": 0.95
+    },
+    {
+        "Name": "Hopare | Big Art Bigger Change | Mural",
+        "Address": "San Jacinto St &, Pease St, Houston, TX 77002",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 29.750511399999997,
+        "Longitude": -95.3673568,
+        "Distance (km)": 1.16
     }
 ]

@@ -1,102 +1,102 @@
 [
     {
-        "Name": "The Curious Palate",
-        "Address": "395 Santa Monica Pl 3rd Floor, Santa Monica, CA 90401",
+        "Name": "La Calle Tacos",
+        "Address": "909 Franklin St, Houston, TX 77002",
+        "Rating": 4.4,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 9\u202fAM",
+        "Latitude": 29.7635455,
+        "Longitude": -95.360686,
+        "Distance (km)": 0.9
+    },
+    {
+        "Name": "Birria Los Primos",
+        "Address": "1010 Prairie St, Houston, TX 77002",
         "Rating": 4.7,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 34.0141707,
-        "Longitude": -118.49351279999999,
-        "Distance (km)": 0.4
+        "Price": "$10\u201320",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Latitude": 29.760246799999997,
+        "Longitude": -95.36167619999999,
+        "Distance (km)": 0.76
     },
     {
-        "Name": "Massilia",
-        "Address": "1445 4th St, Santa Monica, CA 90401",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 12\u202fAM",
-        "Latitude": 34.0156275,
-        "Longitude": -118.49392359999999,
-        "Distance (km)": 0.57
+        "Name": "Wokker",
+        "Address": "1010 Prairie St, Houston, TX 77002",
+        "Rating": 4.2,
+        "Price": "$10\u201320",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Latitude": 29.760375399999997,
+        "Longitude": -95.3615923,
+        "Distance (km)": 0.77
     },
     {
-        "Name": "UOVO | Santa Monica",
-        "Address": "1320 2nd St Ste A, Santa Monica, CA 90401",
-        "Rating": 4.6,
-        "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 34.0157467,
-        "Longitude": -118.4982745,
-        "Distance (km)": 0.82
+        "Name": "Space City Birria",
+        "Address": "415 Milam St, Houston, TX 77002",
+        "Rating": 4.8,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Latitude": 29.7619112,
+        "Longitude": -95.3634041,
+        "Distance (km)": 0.6
     },
     {
-        "Name": "North Italia",
-        "Address": "1442 2nd St, Santa Monica, CA 90401",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 34.0138739,
-        "Longitude": -118.4962475,
-        "Distance (km)": 0.55
+        "Name": "Little New Orleans",
+        "Address": "1001 Texas St Suite 150, Houston, TX 77002",
+        "Rating": 4.2,
+        "Price": "$10\u201320",
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 10\u202fAM",
+        "Latitude": 29.760042,
+        "Longitude": -95.362112,
+        "Distance (km)": 0.72
     },
     {
-        "Name": "Meat On Ocean",
-        "Address": "1501 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.4,
+        "Name": "Bungalow",
+        "Address": "407 Main St, Houston, TX 77002",
+        "Rating": 4.5,
         "Price": "$100+",
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 34.0128189,
-        "Longitude": -118.49610089999999,
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 29.7612067,
+        "Longitude": -95.36140329999999,
+        "Distance (km)": 0.78
+    },
+    {
+        "Name": "La Fisheria",
+        "Address": "213 Milam St, Houston, TX 77002",
+        "Rating": 4.7,
+        "Price": "$30\u201350",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 29.763516199999998,
+        "Longitude": -95.362068,
+        "Distance (km)": 0.78
+    },
+    {
+        "Name": "Underground Hall",
+        "Address": "1010 Prairie St, Houston, TX 77002",
+        "Rating": 4.5,
+        "Price": "$10\u201320",
+        "Opening Hour": "Closes soon \u22c5 1\u202fAM \u22c5 Reopens 11\u202fAM",
+        "Latitude": 29.760375399999997,
+        "Longitude": -95.3615923,
+        "Distance (km)": 0.77
+    },
+    {
+        "Name": "Aquarium Restaurant",
+        "Address": "410 Bagby St, Houston, TX 77002",
+        "Rating": 4.4,
+        "Price": "$20\u201330",
+        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
+        "Latitude": 29.7646083,
+        "Longitude": -95.3672727,
         "Distance (km)": 0.47
     },
     {
-        "Name": "Sol Agave - santa monica",
-        "Address": "1733 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.6,
-        "Price": "$30\u201350",
-        "Opening Hour": "Open \u22c5 Closes 10:30\u202fPM",
-        "Latitude": 34.0092559,
-        "Longitude": -118.4917479,
-        "Distance (km)": 0.19
-    },
-    {
-        "Name": "Terrazza",
-        "Address": "1910 Ocean Way, Santa Monica, CA 90405",
-        "Rating": 4.3,
-        "Price": "$50\u2013100",
-        "Opening Hour": "Open \u22c5 Closes 9:30\u202fPM",
-        "Latitude": 34.0062134,
-        "Longitude": -118.49122609999999,
-        "Distance (km)": 0.53
-    },
-    {
-        "Name": "Ivy at the Shore",
-        "Address": "1535 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.3,
-        "Price": "$50\u2013100",
-        "Opening Hour": "Open \u22c5 Closes 9\u202fPM",
-        "Latitude": 34.0121969,
-        "Longitude": -118.4954205,
-        "Distance (km)": 0.39
-    },
-    {
-        "Name": "Urban Skillet",
-        "Address": "2307 Main St, Santa Monica, CA 90405",
-        "Rating": 4.6,
-        "Price": "$10\u201320",
-        "Opening Hour": "Open \u22c5 Closes 2\u202fAM",
-        "Latitude": 34.0048899,
-        "Longitude": -118.48614939999999,
-        "Distance (km)": 0.83
-    },
-    {
-        "Name": "True Food Kitchen",
-        "Address": "395 Santa Monica Pl Suite 172, Santa Monica, CA 90401",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 34.0130201,
-        "Longitude": -118.49454539999999,
-        "Distance (km)": 0.36
+        "Name": "Mamajuana Cafe",
+        "Address": "909 Texas St Suite E, Houston, TX 77002",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 2\u202fAM \u22c5 Reopens 12\u202fPM",
+        "Latitude": 29.760529199999997,
+        "Longitude": -95.36279689999999,
+        "Distance (km)": 0.65
     }
 ]

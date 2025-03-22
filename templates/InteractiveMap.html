@@ -99,9 +99,6 @@
   <script>
     // Azure Maps key
     const AZURE_MAPS_KEY = "{{ api_key }}";
-    // const AZURE_MAPS_KEY = "9FeaTsMg7fH5DgcchS5AtICBBNTWnuoBHNG4H0a3OLzkxTeY9lHnJQQJ99BCACYeBjF6fAFpAAAgAZMP2bXk";
-    
-
 
     let map, datasource, symbolLayer, hoverPopup;
     let restaurantData = [];
@@ -510,6 +507,7 @@
         return;
       }
 
+      // First, save the merged data on the server (e.g., to location.json)
       fetch('http://127.0.0.1:5000/save_location', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -518,7 +516,18 @@
         .then(resp => resp.json())
         .then(data => {
           console.log("Server response:", data);
-          alert("Merged recommendations have been saved as location.json on the server.");
+          // Now automatically trigger the upload to Cosmos DB
+          fetch('http://127.0.0.1:5000/upload_cosmos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({}) // Include any necessary parameters here
+          })
+          .then(resp => resp.json())
+          .then(uploadData => {
+            console.log("Cosmos upload response:", uploadData);
+            alert("Merged recommendations have been saved and uploaded to Cosmos DB.");
+          })
+          .catch(err => console.error("Error uploading to Cosmos DB:", err));
         })
         .catch(err => console.error("Error saving merged recommendations:", err));
     });

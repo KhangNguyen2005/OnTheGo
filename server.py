@@ -16,6 +16,7 @@ app = Flask(__name__)
 
 # File and script names using absolute paths.
 FETCHING_DATA_SCRIPT = os.path.join(BASE_DIR, "fetching_data.py")
+UPLOAD_COSMOS_SCRIPT = os.path.join(BASE_DIR, "upload_cosmos.py")
 RESTAURANT_JSON = os.path.join(BASE_DIR, "restaurant.json")
 HOTEL_JSON = os.path.join(BASE_DIR, "hotel.json")
 RESULT_JSON = os.path.join(BASE_DIR, "result.json")   # Used for filter results only.
@@ -37,7 +38,7 @@ def wait_for_file(filepath, timeout=5):
         time.sleep(0.5)
     return True
 
-# ... (remaining routes unchanged below this line)
+# ... (other routes unchanged)
 
 @app.route('/search_location', methods=['POST'])
 def search_location():
@@ -219,7 +220,21 @@ def save_location():
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. New endpoint to process the location file with Azure OpenAI.
+# 10. New endpoint to upload data to Cosmos DB using upload_cosmos.py.
+@app.route('/upload_cosmos', methods=['POST'])
+def upload_cosmos():
+    try:
+        if not os.path.exists(UPLOAD_COSMOS_SCRIPT):
+            return jsonify({"error": f"{UPLOAD_COSMOS_SCRIPT} not found"}), 500
+        cmd = [sys.executable, UPLOAD_COSMOS_SCRIPT]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        return jsonify({"message": "Upload to Cosmos DB successful", "output": result.stdout})
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": f"Error uploading to Cosmos DB: {e.stderr}"}), 500
+    except Exception as ex:
+        return jsonify({"error": str(ex)}), 500
+
+# 11. New endpoint to process the location file with Azure OpenAI.
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
@@ -264,6 +279,6 @@ def process_locations():
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
-# 11. Start the Flask server with the correct host & port.
+# 12. Start the Flask server with the correct host & port.
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Sonder The Beacon",
-        "Address": "1301 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4,
-        "Price": "$193",
-        "Opening Hour": null,
-        "Latitude": 34.0154358,
-        "Longitude": -118.49892969999999,
-        "Distance (km)": 0.85
-    },
-    {
-        "Name": "HI Los Angeles Santa Monica Hostel",
-        "Address": "1436 2nd St, Santa Monica, CA 90401",
-        "Rating": 4.4,
-        "Price": "$80",
-        "Opening Hour": null,
-        "Latitude": 34.013833999999996,
-        "Longitude": -118.4963621,
-        "Distance (km)": 0.55
-    },
-    {
-        "Name": "Ocean View Hotel",
-        "Address": "1447 Ocean Ave, Santa Monica, CA 90401",
-        "Rating": 4.1,
-        "Price": "$281",
-        "Opening Hour": null,
-        "Latitude": 34.01325,
-        "Longitude": -118.496484,
-        "Distance (km)": 0.53
-    },
-    {
-        "Name": "Sea Blue Hotel",
-        "Address": "1670 Ocean Ave, Santa Monica, CA 90401",
+        "Name": "C. Baldwin, Curio Collection by Hilton",
+        "Address": "400 Dallas St, Houston, TX 77002",
         "Rating": 3.9,
-        "Price": "$223",
+        "Price": "$173",
         "Opening Hour": null,
-        "Latitude": 34.009815599999996,
-        "Longitude": -118.4934483,
-        "Distance (km)": 0.22
+        "Latitude": 29.7578478,
+        "Longitude": -95.3710462,
+        "Distance (km)": 0.36
     },
     {
-        "Name": "The Huntley Hotel Santa Monica Beach",
-        "Address": "1111 2nd St, Santa Monica, CA 90401",
+        "Name": "Best Western Plus Downtown Inn & Suites",
+        "Address": "915 W Dallas St, Houston, TX 77019",
+        "Rating": 4.6,
+        "Price": "$119",
+        "Opening Hour": null,
+        "Latitude": 29.7573758,
+        "Longitude": -95.3774402,
+        "Distance (km)": 0.86
+    },
+    {
+        "Name": "The Lancaster Hotel",
+        "Address": "701 Texas Ave, Houston, TX 77002",
+        "Rating": 4.7,
+        "Price": "$201",
+        "Opening Hour": null,
+        "Latitude": 29.761499999999998,
+        "Longitude": -95.3648,
+        "Distance (km)": 0.46
+    },
+    {
+        "Name": "The Whitehall",
+        "Address": "1700 Smith St, Houston, TX 77002",
         "Rating": 4.4,
-        "Price": "$279",
+        "Price": "$113",
         "Opening Hour": null,
-        "Latitude": 34.0188422,
-        "Longitude": -118.5011584,
-        "Distance (km)": 1.25
+        "Latitude": 29.753411099999997,
+        "Longitude": -95.37342249999999,
+        "Distance (km)": 0.9
     },
     {
-        "Name": "Shore Hotel",
-        "Address": "1515 Ocean Ave, Santa Monica, CA 90401",
+        "Name": "Club Quarters Hotel Downtown, Houston",
+        "Address": "1085 Rusk St, Houston, TX 77002",
+        "Rating": 3.9,
+        "Price": "$146",
+        "Opening Hour": null,
+        "Latitude": 29.7581031,
+        "Longitude": -95.36292619999999,
+        "Distance (km)": 0.7
+    },
+    {
+        "Name": "Hampton Inn Houston Downtown",
+        "Address": "710 Crawford St, Houston, TX 77002",
         "Rating": 4.2,
-        "Price": "$351",
+        "Price": "$182",
         "Opening Hour": null,
-        "Latitude": 34.0125617,
-        "Longitude": -118.49548329999999,
-        "Distance (km)": 0.41
+        "Latitude": 29.7556479,
+        "Longitude": -95.3586369,
+        "Distance (km)": 1.2
     },
     {
-        "Name": "Santa Monica Hotel",
-        "Address": "2102 Lincoln Blvd, Santa Monica, CA 90405",
-        "Rating": 4,
-        "Price": "$153",
+        "Name": "Marriott Marquis Houston",
+        "Address": "1777 Walker St, Houston, TX 77010",
+        "Rating": 4.4,
+        "Price": "$709",
         "Opening Hour": null,
-        "Latitude": 34.0107031,
-        "Longitude": -118.4815299,
-        "Distance (km)": 0.92
+        "Latitude": 29.7544464,
+        "Longitude": -95.3581201,
+        "Distance (km)": 1.31
     },
     {
-        "Name": "Fairmont Miramar - Hotel & Bungalows",
-        "Address": "101 Wilshire Blvd, Santa Monica, CA 90401",
+        "Name": "Embassy Suites by Hilton Houston Downtown",
+        "Address": "1515 Dallas St, Houston, TX 77010",
         "Rating": 4.3,
-        "Price": "$524",
+        "Price": "$232",
         "Opening Hour": null,
-        "Latitude": 34.0179602,
-        "Longitude": -118.50169819999999,
-        "Distance (km)": 1.22
+        "Latitude": 29.752999199999998,
+        "Longitude": -95.3613409,
+        "Distance (km)": 1.17
     },
     {
-        "Name": "The Pierside Santa Monica",
-        "Address": "120 Colorado Ave, Santa Monica, CA 90401",
-        "Rating": 4.1,
-        "Price": "$312",
+        "Name": "Hotel ICON, Autograph Collection",
+        "Address": "220 Main St, Houston, TX 77002",
+        "Rating": 4.3,
+        "Price": "$217",
         "Opening Hour": null,
-        "Latitude": 34.011824,
-        "Longitude": -118.4941119,
-        "Distance (km)": 0.26
+        "Latitude": 29.762578299999998,
+        "Longitude": -95.36088509999999,
+        "Distance (km)": 0.86
     },
     {
-        "Name": "Ocean Lodge Santa Monica Beach Hotel",
-        "Address": "1667 Ocean Ave #1000, Santa Monica, CA 90401",
-        "Rating": 3.9,
-        "Price": "$169",
+        "Name": "Holiday Inn Houston Downtown, an IHG Hotel",
+        "Address": "1616 Main St, Houston, TX 77002",
+        "Rating": 4,
+        "Price": "$146",
         "Opening Hour": null,
-        "Latitude": 34.0102577,
-        "Longitude": -118.4929885,
-        "Distance (km)": 0.16
+        "Latitude": 29.752092299999997,
+        "Longitude": -95.36915979999999,
+        "Distance (km)": 0.97
     }
 ]
