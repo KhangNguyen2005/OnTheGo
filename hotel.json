@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Hilton Salt Lake City Center",
-        "Address": "255 S W Temple St, Salt Lake City, UT 84101",
+        "Name": "Sonder The Beacon",
+        "Address": "1301 Ocean Ave, Santa Monica, CA 90401",
+        "Rating": 4,
+        "Price": "$193",
+        "Opening Hour": null,
+        "Latitude": 34.0154358,
+        "Longitude": -118.49892969999999,
+        "Distance (km)": 0.85
+    },
+    {
+        "Name": "HI Los Angeles Santa Monica Hostel",
+        "Address": "1436 2nd St, Santa Monica, CA 90401",
+        "Rating": 4.4,
+        "Price": "$80",
+        "Opening Hour": null,
+        "Latitude": 34.013833999999996,
+        "Longitude": -118.4963621,
+        "Distance (km)": 0.55
+    },
+    {
+        "Name": "Ocean View Hotel",
+        "Address": "1447 Ocean Ave, Santa Monica, CA 90401",
+        "Rating": 4.1,
+        "Price": "$281",
+        "Opening Hour": null,
+        "Latitude": 34.01325,
+        "Longitude": -118.496484,
+        "Distance (km)": 0.53
+    },
+    {
+        "Name": "Sea Blue Hotel",
+        "Address": "1670 Ocean Ave, Santa Monica, CA 90401",
+        "Rating": 3.9,
+        "Price": "$223",
+        "Opening Hour": null,
+        "Latitude": 34.009815599999996,
+        "Longitude": -118.4934483,
+        "Distance (km)": 0.22
+    },
+    {
+        "Name": "The Huntley Hotel Santa Monica Beach",
+        "Address": "1111 2nd St, Santa Monica, CA 90401",
+        "Rating": 4.4,
+        "Price": "$279",
+        "Opening Hour": null,
+        "Latitude": 34.0188422,
+        "Longitude": -118.5011584,
+        "Distance (km)": 1.25
+    },
+    {
+        "Name": "Shore Hotel",
+        "Address": "1515 Ocean Ave, Santa Monica, CA 90401",
         "Rating": 4.2,
-        "Price": "$120",
+        "Price": "$351",
         "Opening Hour": null,
-        "Latitude": 40.763925,
-        "Longitude": -111.893283,
-        "Distance (km)": 0.74
+        "Latitude": 34.0125617,
+        "Longitude": -118.49548329999999,
+        "Distance (km)": 0.41
     },
     {
-        "Name": "Salt Lake City Marriott City Center",
-        "Address": "220 S State St, Salt Lake City, UT 84111",
-        "Rating": 4.4,
-        "Price": "$159",
+        "Name": "Santa Monica Hotel",
+        "Address": "2102 Lincoln Blvd, Santa Monica, CA 90405",
+        "Rating": 4,
+        "Price": "$153",
         "Opening Hour": null,
-        "Latitude": 40.764347,
-        "Longitude": -111.8885574,
-        "Distance (km)": 0.65
-    },
-    {
-        "Name": "Holiday Inn Express Salt Lake City Downtown, an IHG Hotel",
-        "Address": "206 S W Temple St, Salt Lake City, UT 84101",
-        "Rating": 4.3,
-        "Price": "$120",
-        "Opening Hour": null,
-        "Latitude": 40.764613,
-        "Longitude": -111.894498,
-        "Distance (km)": 0.87
-    },
-    {
-        "Name": "The Little America Hotel - Salt Lake City",
-        "Address": "500 Main St, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$124",
-        "Opening Hour": null,
-        "Latitude": 40.757795699999996,
-        "Longitude": -111.8920217,
-        "Distance (km)": 0.34
-    },
-    {
-        "Name": "Hyatt Regency Salt Lake City",
-        "Address": "170 S W Temple St, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$156",
-        "Opening Hour": null,
-        "Latitude": 40.7652413,
-        "Longitude": -111.8945128,
+        "Latitude": 34.0107031,
+        "Longitude": -118.4815299,
         "Distance (km)": 0.92
     },
     {
-        "Name": "DoubleTree Suites by Hilton Hotel Salt Lake City Downtown",
-        "Address": "110 W 600 S, Salt Lake City, UT 84101",
-        "Rating": 4.2,
-        "Price": "$112",
+        "Name": "Fairmont Miramar - Hotel & Bungalows",
+        "Address": "101 Wilshire Blvd, Santa Monica, CA 90401",
+        "Rating": 4.3,
+        "Price": "$524",
         "Opening Hour": null,
-        "Latitude": 40.756865999999995,
-        "Longitude": -111.894672,
-        "Distance (km)": 0.58
+        "Latitude": 34.0179602,
+        "Longitude": -118.50169819999999,
+        "Distance (km)": 1.22
     },
     {
-        "Name": "Kimpton Hotel Monaco Salt Lake City",
-        "Address": "15 W 200 S, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$146",
+        "Name": "The Pierside Santa Monica",
+        "Address": "120 Colorado Ave, Santa Monica, CA 90401",
+        "Rating": 4.1,
+        "Price": "$312",
         "Opening Hour": null,
-        "Latitude": 40.7646936,
-        "Longitude": -111.89225599999999,
-        "Distance (km)": 0.77
+        "Latitude": 34.011824,
+        "Longitude": -118.4941119,
+        "Distance (km)": 0.26
     },
     {
-        "Name": "Quality Inn Downtown",
-        "Address": "616 S 200 W, Salt Lake City, UT 84101",
-        "Rating": 2.8,
-        "Price": "$74",
+        "Name": "Ocean Lodge Santa Monica Beach Hotel",
+        "Address": "1667 Ocean Ave #1000, Santa Monica, CA 90401",
+        "Rating": 3.9,
+        "Price": "$169",
         "Opening Hour": null,
-        "Latitude": 40.755741,
-        "Longitude": -111.897257,
-        "Distance (km)": 0.83
-    },
-    {
-        "Name": "The Grand America Hotel",
-        "Address": "555 Main St, Salt Lake City, UT 84111",
-        "Rating": 4.7,
-        "Price": "$286",
-        "Opening Hour": null,
-        "Latitude": 40.7573321,
-        "Longitude": -111.89074989999999,
-        "Distance (km)": 0.25
-    },
-    {
-        "Name": "Crystal Inn Hotel & Suites Salt Lake City",
-        "Address": "230 W 500 S, Salt Lake City, UT 84101",
-        "Rating": 4.4,
-        "Price": "$100",
-        "Opening Hour": null,
-        "Latitude": 40.7588808,
-        "Longitude": -111.897774,
-        "Distance (km)": 0.81
+        "Latitude": 34.0102577,
+        "Longitude": -118.4929885,
+        "Distance (km)": 0.16
     }
 ]

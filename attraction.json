@@ -1,102 +1,102 @@
 [
     {
-        "Name": "Washington Square Park",
-        "Address": "451 S State St, Salt Lake City, UT 84111",
-        "Rating": 4.6,
+        "Name": "Tongva Park",
+        "Address": "1615 Ocean Ave, Santa Monica, CA 90401",
+        "Rating": 4.5,
         "Price": null,
         "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.759046999999995,
-        "Longitude": -111.8876215,
-        "Distance (km)": 0.08
+        "Latitude": 34.0111203,
+        "Longitude": -118.4932405,
+        "Distance (km)": 0.16
     },
     {
-        "Name": "Gilgal Sculpture Garden",
-        "Address": "749 E 500 S, Salt Lake City, UT 84102",
-        "Rating": 4.3,
-        "Price": null,
-        "Opening Hour": "Closes soon \u22c5 5\u202fPM \u22c5 Opens 9\u202fAM Sat",
-        "Latitude": 40.758808599999995,
-        "Longitude": -111.86937809999999,
-        "Distance (km)": 1.58
-    },
-    {
-        "Name": "Tracy Aviary at Liberty Park",
-        "Address": "589 E 1300 S, Salt Lake City, UT 84105",
-        "Rating": 4.7,
-        "Price": null,
-        "Opening Hour": "Closes soon \u22c5 5\u202fPM \u22c5 Opens 9\u202fAM Sat",
-        "Latitude": 40.7438995,
-        "Longitude": -111.87516629999999,
-        "Distance (km)": 1.96
-    },
-    {
-        "Name": "This Is The Place Heritage Park",
-        "Address": "2601 Sunnyside Ave S, Salt Lake City, UT 84108",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Closes soon \u22c5 5\u202fPM \u22c5 Opens 10\u202fAM Sat",
-        "Latitude": 40.7520271,
-        "Longitude": -111.8162017,
-        "Distance (km)": 6.1
-    },
-    {
-        "Name": "Mural Artist: James Kirkland (Calling Our Ancestors)",
-        "Address": "401 400 W, Salt Lake City, UT 84101",
+        "Name": "Black Kittens",
+        "Address": "321 Santa Monica Pier, Santa Monica, CA 90401",
         "Rating": 5,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 40.760143899999996,
-        "Longitude": -111.9022085,
-        "Distance (km)": 1.2
+        "Latitude": 34.0094128,
+        "Longitude": -118.4974503,
+        "Distance (km)": 0.57
     },
     {
-        "Name": "Memory Grove Park",
-        "Address": "300 N Canyon Rd, Salt Lake City, UT 84103",
-        "Rating": 4.8,
+        "Name": "Venice Boardwalk",
+        "Address": "Beach pavillion in, Los Angeles, CA",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Open now",
+        "Latitude": 33.9909254,
+        "Longitude": -118.4774439,
+        "Distance (km)": 2.58
+    },
+    {
+        "Name": "Santa Monica Pier Carousel",
+        "Address": "1624 Ocean Front Walk, Santa Monica, CA 90401",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 7\u202fPM",
+        "Latitude": 34.010113,
+        "Longitude": -118.49612789999999,
+        "Distance (km)": 0.44
+    },
+    {
+        "Name": "Palisades Park",
+        "Address": "Ocean Ave, Santa Monica, CA 90401",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
+        "Latitude": 34.0230179,
+        "Longitude": -118.5094604,
+        "Distance (km)": 2.13
+    },
+    {
+        "Name": "The Golden Triangle",
+        "Address": "9800 Wilshire Blvd, Beverly Hills, CA 90212",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 34.0672669,
+        "Longitude": -118.4007403,
+        "Distance (km)": 10.45
+    },
+    {
+        "Name": "Fisherman's Village",
+        "Address": "13755 Fiji Way, Marina Del Rey, CA 90292",
+        "Rating": 4.4,
         "Price": null,
         "Opening Hour": "Open \u22c5 Closes 10\u202fPM",
-        "Latitude": 40.777533299999995,
-        "Longitude": -111.8843194,
-        "Distance (km)": 2.14
+        "Latitude": 33.9729002,
+        "Longitude": -118.4459588,
+        "Distance (km)": 5.96
     },
     {
-        "Name": "City Creek Park",
-        "Address": "350 State St, Salt Lake City, UT 84103",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.7721245,
-        "Longitude": -111.8877862,
-        "Distance (km)": 1.52
-    },
-    {
-        "Name": "Liberty Park",
-        "Address": "600 Harvey Milk Blvd, Salt Lake City, UT 84105",
-        "Rating": 4.6,
-        "Price": null,
-        "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
-        "Latitude": 40.745704499999995,
-        "Longitude": -111.8739202,
-        "Distance (km)": 1.86
-    },
-    {
-        "Name": "Free Art Supply Shop",
-        "Address": "177 E 900 S Suite G, Salt Lake City, UT 84111",
-        "Rating": null,
+        "Name": "Ilkin's ocean view",
+        "Address": "CA-1, Santa Monica, CA 90401",
+        "Rating": 5,
         "Price": null,
         "Opening Hour": null,
-        "Latitude": 40.7500675,
-        "Longitude": -111.885746,
-        "Distance (km)": 0.96
+        "Latitude": 34.0166361,
+        "Longitude": -118.50158239999999,
+        "Distance (km)": 1.12
     },
     {
-        "Name": "Joseph Smith Sphinx",
-        "Address": "Gilgal Sculpture Garden, 749 E 500 S, Salt Lake City, UT 84102",
-        "Rating": 4.9,
+        "Name": "Venice Breakwater",
+        "Address": "Ocean Front Walk, Venice, CA 90292",
+        "Rating": 4.8,
         "Price": null,
-        "Opening Hour": null,
-        "Latitude": 40.7592885,
-        "Longitude": -111.86935129999999,
-        "Distance (km)": 1.59
+        "Opening Hour": "Open 24 hours",
+        "Latitude": 33.985193699999996,
+        "Longitude": -118.4769233,
+        "Distance (km)": 3.16
+    },
+    {
+        "Name": "Santa Monica Pier",
+        "Address": "200 Santa Monica Pier, Santa Monica, CA 90401",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Open now",
+        "Latitude": 34.008282099999995,
+        "Longitude": -118.4987585,
+        "Distance (km)": 0.73
     }
 ]
