@@ -1,102 +1,112 @@
 [
     {
-        "Name": "C. Baldwin, Curio Collection by Hilton",
-        "Address": "400 Dallas St, Houston, TX 77002",
-        "Rating": 3.9,
-        "Price": "$173",
-        "Opening Hour": null,
-        "Latitude": 29.7578478,
-        "Longitude": -95.3710462,
-        "Distance (km)": 0.36
-    },
-    {
-        "Name": "Best Western Plus Downtown Inn & Suites",
-        "Address": "915 W Dallas St, Houston, TX 77019",
-        "Rating": 4.6,
-        "Price": "$119",
-        "Opening Hour": null,
-        "Latitude": 29.7573758,
-        "Longitude": -95.3774402,
-        "Distance (km)": 0.86
-    },
-    {
-        "Name": "The Lancaster Hotel",
-        "Address": "701 Texas Ave, Houston, TX 77002",
-        "Rating": 4.7,
-        "Price": "$201",
-        "Opening Hour": null,
-        "Latitude": 29.761499999999998,
-        "Longitude": -95.3648,
-        "Distance (km)": 0.46
-    },
-    {
-        "Name": "The Whitehall",
-        "Address": "1700 Smith St, Houston, TX 77002",
-        "Rating": 4.4,
-        "Price": "$113",
-        "Opening Hour": null,
-        "Latitude": 29.753411099999997,
-        "Longitude": -95.37342249999999,
-        "Distance (km)": 0.9
-    },
-    {
-        "Name": "Club Quarters Hotel Downtown, Houston",
-        "Address": "1085 Rusk St, Houston, TX 77002",
-        "Rating": 3.9,
-        "Price": "$146",
-        "Opening Hour": null,
-        "Latitude": 29.7581031,
-        "Longitude": -95.36292619999999,
-        "Distance (km)": 0.7
-    },
-    {
-        "Name": "Hampton Inn Houston Downtown",
-        "Address": "710 Crawford St, Houston, TX 77002",
+        "Name": "The Bostonian Hotel Boston",
+        "Address": "26 North St, Boston, MA 02109",
         "Rating": 4.2,
-        "Price": "$182",
+        "Price": "$177",
         "Opening Hour": null,
-        "Latitude": 29.7556479,
-        "Longitude": -95.3586369,
-        "Distance (km)": 1.2
+        "Description": "26 North St, Boston, MA 02109, Hotel",
+        "Latitude": 42.3609819,
+        "Longitude": -71.05586439999999,
+        "Distance (km)": 0.32
     },
     {
-        "Name": "Marriott Marquis Houston",
-        "Address": "1777 Walker St, Houston, TX 77010",
+        "Name": "Meco Hotels",
+        "Address": "234 Friend St, Boston, MA 02114",
+        "Rating": 4.5,
+        "Price": "$110",
+        "Opening Hour": null,
+        "Description": "234 Friend St, Boston, MA 02114, Hotel",
+        "Latitude": 42.364340399999996,
+        "Longitude": -71.0611284,
+        "Distance (km)": 0.63
+    },
+    {
+        "Name": "citizenM Boston North Station hotel",
+        "Address": "70 Causeway St, Boston, MA 02114",
+        "Rating": 4.3,
+        "Price": "$177",
+        "Opening Hour": null,
+        "Description": "70 Causeway St, Boston, MA 02114, Hotel",
+        "Latitude": 42.365561799999995,
+        "Longitude": -71.0618501,
+        "Distance (km)": 0.78
+    },
+    {
+        "Name": "Harborside Inn",
+        "Address": "185 State St, Boston, MA 02109",
+        "Rating": 4.3,
+        "Price": "$167",
+        "Opening Hour": null,
+        "Description": "185 State St, Boston, MA 02109, Hotel",
+        "Latitude": 42.359238399999995,
+        "Longitude": -71.0528824,
+        "Distance (km)": 0.47
+    },
+    {
+        "Name": "Wyndham Boston Beacon Hill",
+        "Address": "5 Blossom St, Boston, MA 02114",
+        "Rating": 3.8,
+        "Price": "$178",
+        "Opening Hour": null,
+        "Description": "5 Blossom St, Boston, MA 02114, Hotel",
+        "Latitude": 42.361719,
+        "Longitude": -71.0667014,
+        "Distance (km)": 0.73
+    },
+    {
+        "Name": "Omni Parker House",
+        "Address": "60 School St, Boston, MA 02108",
+        "Rating": 4.1,
+        "Price": "$214",
+        "Opening Hour": null,
+        "Description": "60 School St, Boston, MA 02108, Hotel",
+        "Latitude": 42.3577637,
+        "Longitude": -71.06010599999999,
+        "Distance (km)": 0.18
+    },
+    {
+        "Name": "The Boxer Boston",
+        "Address": "107 Merrimac St, Boston, MA 02114",
+        "Rating": 4.1,
+        "Price": "$166",
+        "Opening Hour": null,
+        "Description": "107 Merrimac St, Boston, MA 02114, Hotel",
+        "Latitude": 42.3638797,
+        "Longitude": -71.06251569999999,
+        "Distance (km)": 0.63
+    },
+    {
+        "Name": "The Godfrey Hotel Boston",
+        "Address": "505 Washington St, Boston, MA 02111",
+        "Rating": 4.5,
+        "Price": "$206",
+        "Opening Hour": null,
+        "Description": "505 Washington St, Boston, MA 02111, Hotel",
+        "Latitude": 42.354720199999996,
+        "Longitude": -71.06152039999999,
+        "Distance (km)": 0.53
+    },
+    {
+        "Name": "Hotel Indigo Boston Garden, an IHG Hotel",
+        "Address": "280 Friend St, Boston, MA 02114",
+        "Rating": 4.1,
+        "Price": "$199",
+        "Opening Hour": null,
+        "Description": "280 Friend St, Boston, MA 02114, Hotel",
+        "Latitude": 42.3647851,
+        "Longitude": -71.0615984,
+        "Distance (km)": 0.69
+    },
+    {
+        "Name": "Boston Marriott Long Wharf",
+        "Address": "296 State St, Boston, MA 02109",
         "Rating": 4.4,
-        "Price": "$709",
+        "Price": "$366",
         "Opening Hour": null,
-        "Latitude": 29.7544464,
-        "Longitude": -95.3581201,
-        "Distance (km)": 1.31
-    },
-    {
-        "Name": "Embassy Suites by Hilton Houston Downtown",
-        "Address": "1515 Dallas St, Houston, TX 77010",
-        "Rating": 4.3,
-        "Price": "$232",
-        "Opening Hour": null,
-        "Latitude": 29.752999199999998,
-        "Longitude": -95.3613409,
-        "Distance (km)": 1.17
-    },
-    {
-        "Name": "Hotel ICON, Autograph Collection",
-        "Address": "220 Main St, Houston, TX 77002",
-        "Rating": 4.3,
-        "Price": "$217",
-        "Opening Hour": null,
-        "Latitude": 29.762578299999998,
-        "Longitude": -95.36088509999999,
-        "Distance (km)": 0.86
-    },
-    {
-        "Name": "Holiday Inn Houston Downtown, an IHG Hotel",
-        "Address": "1616 Main St, Houston, TX 77002",
-        "Rating": 4,
-        "Price": "$146",
-        "Opening Hour": null,
-        "Latitude": 29.752092299999997,
-        "Longitude": -95.36915979999999,
-        "Distance (km)": 0.97
+        "Description": "296 State St, Boston, MA 02109, Hotel",
+        "Latitude": 42.3599928,
+        "Longitude": -71.0510743,
+        "Distance (km)": 0.63
     }
 ]

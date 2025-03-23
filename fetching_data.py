@@ -10,7 +10,7 @@ dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
 if len(sys.argv) < 3:
-    print('Usage: python fetching_data.py <latitude> <longitude> [amenity]')
+    print('Usage: python fetching_data.py <latitude> <longitude> [search query]')
     sys.exit(1)
 
 try:
@@ -20,7 +20,8 @@ except ValueError as ve:
     print("[ERROR] Invalid latitude or longitude:", ve)
     sys.exit(1)
 
-amenity = sys.argv[3] if len(sys.argv) >= 4 else "restaurant"
+# Join all additional arguments into one query string to support both address and description.
+query = " ".join(sys.argv[3:]) if len(sys.argv) >= 4 else "restaurant"
 
 serp_api_key = os.getenv('SERPAPI_KEY')
 if not serp_api_key:
@@ -49,7 +50,7 @@ def main():
         ll_param = generate_ll_param(latitude, longitude)
         params = {
             'engine': 'google_maps',
-            'q': amenity,
+            'q': query,
             'type': 'search',
             'll': ll_param
         }
@@ -80,6 +81,8 @@ def main():
                     "Rating": loc.get("rating"),
                     "Price": loc.get("price"),
                     "Opening Hour": loc.get("hours", loc.get("open_state")),
+                    # NEW: Build Description as "address, type of amenity"
+                    "Description": (loc.get("address", "") + ", " + loc.get("type", "")).strip(),
                     "Latitude": lat_val,
                     "Longitude": lon_val,
                     "Distance (km)": round(distance, 2)

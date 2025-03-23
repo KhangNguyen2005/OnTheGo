@@ -1,102 +1,112 @@
 [
     {
-        "Name": "Eleanor Tinsley Park",
-        "Address": "18-3600 Allen Pkwy, Houston, TX 77019",
+        "Name": "The Innovation Trail",
+        "Address": "30 School St, Boston, MA 02108",
+        "Rating": 5,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "30 School St, Boston, MA 02108, Tourist attraction",
+        "Latitude": 42.3575947,
+        "Longitude": -71.0592341,
+        "Distance (km)": 0.16
+    },
+    {
+        "Name": "Fan Pier Park",
+        "Address": "1 Courthouse Wy, Boston, MA 02210",
+        "Rating": 4.8,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "1 Courthouse Wy, Boston, MA 02210, Tourist attraction",
+        "Latitude": 42.354875299999996,
+        "Longitude": -71.0462482,
+        "Distance (km)": 1.12
+    },
+    {
+        "Name": "Black Heritage Trail",
+        "Address": "46 Joy St, Boston, MA 02114",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM Tue",
+        "Description": "46 Joy St, Boston, MA 02114, Tourist attraction",
+        "Latitude": 42.3599907,
+        "Longitude": -71.065214,
+        "Distance (km)": 0.55
+    },
+    {
+        "Name": "Boston Sign",
+        "Address": "28 State St, Boston, MA 02109",
         "Rating": 4.7,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.762276099999998,
-        "Longitude": -95.3792185,
-        "Distance (km)": 0.95
+        "Description": "28 State St, Boston, MA 02109, Tourist attraction",
+        "Latitude": 42.359769899999996,
+        "Longitude": -71.0576758,
+        "Distance (km)": 0.12
     },
     {
-        "Name": "Downtown Aquarium",
-        "Address": "410 Bagby St, Houston, TX 77002",
-        "Rating": 4.1,
-        "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
-        "Latitude": 29.7642703,
-        "Longitude": -95.3673792,
-        "Distance (km)": 0.44
-    },
-    {
-        "Name": "Main Street Downtown",
-        "Address": "Main St &, Capitol St, Houston, TX",
-        "Rating": 4.7,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 29.759173099999998,
-        "Longitude": -95.3630927,
-        "Distance (km)": 0.65
-    },
-    {
-        "Name": "Graffiti Park Downtown Houston",
-        "Address": "1503 Chartres St, Houston, TX 77003",
-        "Rating": 4.3,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 29.747374299999997,
-        "Longitude": -95.3589463,
-        "Distance (km)": 1.81
-    },
-    {
-        "Name": "Waugh Drive Bat Colony",
-        "Address": "Waugh Dr, Houston, TX 77002",
+        "Name": "Boston Irish Famine Memorial",
+        "Address": "Boston, MA 02108",
         "Rating": 4.6,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.761695399999997,
-        "Longitude": -95.39798429999999,
-        "Distance (km)": 2.75
+        "Description": "Boston, MA 02108, Tourist attraction",
+        "Latitude": 42.357357,
+        "Longitude": -71.0586014,
+        "Distance (km)": 0.18
     },
     {
-        "Name": "Houston Legendary Graffiti Building",
-        "Address": "2011 Leeland St, Houston, TX 77003",
-        "Rating": 4.7,
+        "Name": "Harborwalk Lookout Terrace",
+        "Address": "25 Fan Pier Boulevard, Boston, MA 02210",
+        "Rating": 4.8,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.7473046,
-        "Longitude": -95.35936,
-        "Distance (km)": 1.79
+        "Description": "25 Fan Pier Boulevard, Boston, MA 02210, Tourist attraction",
+        "Latitude": 42.354721999999995,
+        "Longitude": -71.044459,
+        "Distance (km)": 1.26
     },
     {
-        "Name": "Mural Moo",
-        "Address": "816a Sabine St, Houston, TX 77007",
-        "Rating": null,
+        "Name": "Boston Waterfront",
+        "Address": "1 Marina Park Drive, Boston, MA 02210",
+        "Rating": 4.9,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.7667881,
-        "Longitude": -95.3755137,
-        "Distance (km)": 0.88
+        "Description": "1 Marina Park Drive, Boston, MA 02210, Tourist attraction",
+        "Latitude": 42.354529,
+        "Longitude": -71.043897,
+        "Distance (km)": 1.31
     },
     {
-        "Name": "Hermann Square",
-        "Address": "900 Bagby St, Houston, TX 77002",
-        "Rating": 4.5,
+        "Name": "Harborwalk",
+        "Address": "Boston, MA 02128",
+        "Rating": 4.8,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.7597222,
-        "Longitude": -95.3686111,
-        "Distance (km)": 0.15
+        "Description": "Boston, MA 02128, Tourist attraction",
+        "Latitude": 42.3622229,
+        "Longitude": -71.0508712,
+        "Distance (km)": 0.73
     },
     {
-        "Name": "Ecosystem Restoration Art Mural",
-        "Address": "1699 Travis St, Houston, TX 77002",
-        "Rating": 3,
+        "Name": "Chinatown Gate",
+        "Address": "John F Fitzgerald Surface Rd &, Beach St, Boston, MA 02111",
+        "Rating": 4.4,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Latitude": 29.752261299999997,
-        "Longitude": -95.36995139999999,
-        "Distance (km)": 0.95
+        "Description": "John F Fitzgerald Surface Rd &, Beach St, Boston, MA 02111, Tourist attraction",
+        "Latitude": 42.3512193,
+        "Longitude": -71.05976179999999,
+        "Distance (km)": 0.87
     },
     {
-        "Name": "Hopare | Big Art Bigger Change | Mural",
-        "Address": "San Jacinto St &, Pease St, Houston, TX 77002",
-        "Rating": null,
+        "Name": "Revolutionary Spaces",
+        "Address": "310 Washington St, Boston, MA 02109",
+        "Rating": 4.4,
         "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Latitude": 29.750511399999997,
-        "Longitude": -95.3673568,
-        "Distance (km)": 1.16
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Description": "310 Washington St, Boston, MA 02109, Tourist attraction",
+        "Latitude": 42.358705099999995,
+        "Longitude": -71.05757129999999,
+        "Distance (km)": 0.09
     }
 ]
