@@ -1,12 +1,5 @@
 import os
-<<<<<<< HEAD
-<<<<<<< HEAD
 import json
-=======
->>>>>>> 743bdd3 (AI integration)
-=======
-import json
->>>>>>> 00fc5a1 (New AI integration)
 import argparse
 from dotenv import load_dotenv
 from openai import AzureOpenAI
