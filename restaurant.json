@@ -1,16 +1,5 @@
 [
     {
-        "Name": "State Street Provisions",
-        "Address": "255 State St, Boston, MA 02109",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
-        "Description": "255 State St, Boston, MA 02109, American restaurant",
-        "Latitude": 42.3595128,
-        "Longitude": -71.05141689999999,
-        "Distance (km)": 0.6
-    },
-    {
         "Name": "Harvard Gardens",
         "Address": "316 Cambridge St, Boston, MA 02114",
         "Rating": 4.4,
@@ -75,38 +64,5 @@
         "Latitude": 42.3570616,
         "Longitude": -71.06011409999999,
         "Distance (km)": 0.25
-    },
-    {
-        "Name": "Theo's Cozy Corner Restaurant",
-        "Address": "162 Salem St, Boston, MA 02113",
-        "Rating": 4.7,
-        "Price": "$10\u201320",
-        "Opening Hour": "Closed \u22c5 Opens 6\u202fAM",
-        "Description": "162 Salem St, Boston, MA 02113, American restaurant",
-        "Latitude": 42.3660533,
-        "Longitude": -71.055026,
-        "Distance (km)": 0.84
-    },
-    {
-        "Name": "Bostonia Public House",
-        "Address": "131 State St, Boston, MA 02109",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
-        "Description": "131 State St, Boston, MA 02109, American restaurant",
-        "Latitude": 42.3591358,
-        "Longitude": -71.05440999999999,
-        "Distance (km)": 0.35
-    },
-    {
-        "Name": "Flavor Boom! Milk Street",
-        "Address": "155 Milk St, Boston, MA 02109",
-        "Rating": 4.8,
-        "Price": "$10\u201320",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Description": "155 Milk St, Boston, MA 02109, Fast food restaurant",
-        "Latitude": 42.3578526,
-        "Longitude": -71.0540633,
-        "Distance (km)": 0.4
     }
 ]

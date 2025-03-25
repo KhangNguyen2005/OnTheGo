@@ -30,7 +30,7 @@ def invoke_ai(query: str, stream: bool = False):
     completion = client.chat.completions.create(
         model=deployment,
         messages=messages,
-        max_tokens=800,
+        max_tokens=8000,
         temperature=0.7,
         top_p=0.95,
         frequency_penalty=0,
@@ -50,18 +50,40 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--query", 
-        help="Pass the query to test the chat model (e.g., 'Give me recommendation spots in California with location, name, price and ratings to a JSON file')", 
+        help=(
+            "Pass the query to test the chat model. For example: "
+            "'Give me recommendations from the restaurant data.'"
+        ), 
         type=str
     )
     parser.add_argument("--stream", help="Stream the output", action="store_true")
     args = parser.parse_args()
 
-    # If query is not provided as an argument, prompt the user.
+    # If query is not provided, prompt the user.
     if args.query:
         query = args.query
     else:
         query = input("Please enter your query: ")
 
-    response = invoke_ai(query, stream=args.stream)
+    # 1. Load the JSON file contents
+    try:
+        with open("restaurant.json", "r", encoding="utf-8") as f:
+            restaurant_data = json.load(f)
+        # Convert it to text
+        restaurant_text = json.dumps(restaurant_data, indent=2)
+    except FileNotFoundError:
+        # If for some reason the file doesn't exist, handle gracefully
+        restaurant_text = "No restaurant.json data found."
+
+    # 2. Append the JSON data to the query
+    query_with_json = (
+        f"Below is the content of restaurant.json:\n\n"
+        f"{restaurant_text}\n\n"
+        f"User's request: {query}"
+    )
+
+    # 3. Invoke the AI with the combined query
+    response = invoke_ai(query_with_json, stream=args.stream)
+
     if not args.stream:
         print(response)
