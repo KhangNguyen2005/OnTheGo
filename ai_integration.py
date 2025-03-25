@@ -1,12 +1,5 @@
 import os
-<<<<<<< HEAD
-<<<<<<< HEAD
 import json
-=======
->>>>>>> 743bdd3 (AI integration)
-=======
-import json
->>>>>>> 00fc5a1 (New AI integration)
 import argparse
 from dotenv import load_dotenv
 from openai import AzureOpenAI
@@ -28,16 +21,38 @@ def invoke_ai(query: str, stream: bool = False):
         api_version=api_version,
     )
 
+    # --- Load your JSON file here ---
+    with open("restaurant.json", "r", encoding="utf-8-sig") as f:
+        data = json.load(f)
+
+    # Convert JSON to a string for the prompt
+    data_str = json.dumps(data, indent=2)
+
     # Prepare the chat messages in the required format.
+    # You can place the data in a "system" message to instruct the model
+    # to use only the provided data. Alternatively, you can place it in
+    # a "user" message. This example uses a system message to set context.
     messages = [
-        {"role": "user", "content": query}
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant. You have access to the following JSON data:\n\n"
+                f"{data_str}\n\n"
+                "Only use this JSON data to answer the user's query. "
+                "If the answer cannot be found in the data, respond with an appropriate message."
+            )
+        },
+        {
+            "role": "user",
+            "content": query
+        }
     ]
 
     # Generate the chat completion using the deployment name as the model.
     completion = client.chat.completions.create(
         model=deployment,
         messages=messages,
-        max_tokens=800,
+        max_tokens=8000,
         temperature=0.7,
         top_p=0.95,
         frequency_penalty=0,
@@ -56,8 +71,12 @@ if __name__ == "__main__":
     # Parse command-line arguments.
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--query", 
-        help="Pass the query to test the chat model (e.g., 'Give me recommendation spots in California with location, name, price and ratings to a JSON file')", 
+        "--query",
+        help=(
+            "Pass the query to test the chat model "
+            "(e.g., 'Give me recommendation spots in California with location, name, "
+            "price and ratings to a JSON file')"
+        ),
         type=str
     )
     parser.add_argument("--stream", help="Stream the output", action="store_true")

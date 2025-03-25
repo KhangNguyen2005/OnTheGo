@@ -1,7 +1,18 @@
 [
     {
-        "Name": "Ca Dao Coffee & Breakfast",
-        "Address": "2 \u0110. Phan V\u0103n Tr\u1ecb, An Ph\u00fa, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1 794000, Vietnam",
+        "Name": "Theo's Cozy Corner Restaurant",
+        "Address": "162 Salem St, Boston, MA 02113",
+        "Rating": 4.7,
+        "Price": "$10\u201320",
+        "Opening Hour": "Closed \u22c5 Opens 6\u202fAM",
+        "Description": "162 Salem St, Boston, MA 02113, American restaurant",
+        "Latitude": 42.3660533,
+        "Longitude": -71.055026,
+        "Distance (km)": 0.84
+    },
+    {
+        "Name": "Flavor Boom! Milk Street",
+        "Address": "155 Milk St, Boston, MA 02109",
         "Rating": 4.8,
         "Price": "\u20ab1\u2013100,000",
         "Opening Hour": "Open \u22c5 Closes 11\u202fPM",
