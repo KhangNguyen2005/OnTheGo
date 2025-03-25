@@ -1,82 +1,5 @@
 [
     {
-        "Name": "State Street Provisions",
-        "Address": "255 State St, Boston, MA 02109",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
-        "Description": "255 State St, Boston, MA 02109, American restaurant",
-        "Latitude": 42.3595128,
-        "Longitude": -71.05141689999999,
-        "Distance (km)": 0.6
-    },
-    {
-        "Name": "Harvard Gardens",
-        "Address": "316 Cambridge St, Boston, MA 02114",
-        "Rating": 4.4,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Description": "316 Cambridge St, Boston, MA 02114, American restaurant",
-        "Latitude": 42.360930599999996,
-        "Longitude": -71.0689398,
-        "Distance (km)": 0.87
-    },
-    {
-        "Name": "French Quarter",
-        "Address": "545 Washington St, Boston, MA 02111",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Closed \u22c5 Opens 11:30\u202fAM",
-        "Description": "545 Washington St, Boston, MA 02111, Creole restaurant",
-        "Latitude": 42.353895,
-        "Longitude": -71.0623501,
-        "Distance (km)": 0.64
-    },
-    {
-        "Name": "Felcaro Pizzeria",
-        "Address": "280 Cambridge St, Boston, MA 02114",
-        "Rating": 3.8,
-        "Price": "$10\u201320",
-        "Opening Hour": "Closes soon \u22c5 2:30\u202fAM \u22c5 Reopens 11\u202fAM",
-        "Description": "280 Cambridge St, Boston, MA 02114, Pizza restaurant",
-        "Latitude": 42.360964599999996,
-        "Longitude": -71.0680488,
-        "Distance (km)": 0.8
-    },
-    {
-        "Name": "Emmets",
-        "Address": "6 Beacon St, Boston, MA 02108",
-        "Rating": 4.5,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Description": "6 Beacon St, Boston, MA 02108, Irish restaurant",
-        "Latitude": 42.3581498,
-        "Longitude": -71.061521,
-        "Distance (km)": 0.26
-    },
-    {
-        "Name": "Chart House",
-        "Address": "60 Long Wharf, Boston, MA 02110",
-        "Rating": 4.2,
-        "Price": "$50\u2013100",
-        "Opening Hour": "Closed \u22c5 Opens 11\u202fAM",
-        "Description": "60 Long Wharf, Boston, MA 02110, Seafood restaurant",
-        "Latitude": 42.3601688,
-        "Longitude": -71.0495078,
-        "Distance (km)": 0.76
-    },
-    {
-        "Name": "MAST'",
-        "Address": "45 Province St, Boston, MA 02108",
-        "Rating": 4.1,
-        "Price": "$20\u201330",
-        "Opening Hour": "Closed \u22c5 Opens 4\u202fPM",
-        "Description": "45 Province St, Boston, MA 02108, Italian restaurant",
-        "Latitude": 42.3570616,
-        "Longitude": -71.06011409999999,
-        "Distance (km)": 0.25
-    },
-    {
         "Name": "Theo's Cozy Corner Restaurant",
         "Address": "162 Salem St, Boston, MA 02113",
         "Rating": 4.7,
@@ -86,17 +9,6 @@
         "Latitude": 42.3660533,
         "Longitude": -71.055026,
         "Distance (km)": 0.84
-    },
-    {
-        "Name": "Bostonia Public House",
-        "Address": "131 State St, Boston, MA 02109",
-        "Rating": 4.4,
-        "Price": "$30\u201350",
-        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
-        "Description": "131 State St, Boston, MA 02109, American restaurant",
-        "Latitude": 42.3591358,
-        "Longitude": -71.05440999999999,
-        "Distance (km)": 0.35
     },
     {
         "Name": "Flavor Boom! Milk Street",
