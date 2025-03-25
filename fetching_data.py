@@ -3,6 +3,8 @@ import os
 import math
 import json
 import traceback
+import datetime
+import uuid  # new import for session id
 from dotenv import load_dotenv
 import serpapi
 
@@ -46,6 +48,10 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * c
 
 def main():
+    # Generate unique session info to tag these results
+    session_id = str(uuid.uuid4())
+    generated_at = datetime.datetime.utcnow().isoformat()
+
     try:
         ll_param = generate_ll_param(latitude, longitude)
         params = {
@@ -59,7 +65,7 @@ def main():
         # Try to get the list of locations from one of the possible keys
         locations = results.get("places_results") or results.get("local_results") or results.get("results") or []
         
-        # Filter locations to only include those within 20km
+        # Filter locations to only include those within 20km and add session info
         filtered_locations = []
         for loc in locations:
             gps = loc.get("gps_coordinates", {})
@@ -81,14 +87,16 @@ def main():
                     "Rating": loc.get("rating"),
                     "Price": loc.get("price"),
                     "Opening Hour": loc.get("hours", loc.get("open_state")),
-                    # NEW: Build Description as "address, type of amenity"
+                    # Build Description as "address, type of amenity"
                     "Description": (loc.get("address", "") + ", " + loc.get("type", "")).strip(),
                     "Latitude": lat_val,
                     "Longitude": lon_val,
-                    "Distance (km)": round(distance, 2)
+                    "Distance (km)": round(distance, 2),
+                    "session_id": session_id,        # Tag with current session id
+                    "generatedAt": generated_at      # Tag with current UTC timestamp
                 })
 
-        # Limit to 10 results if necessary
+        # For example, limit to 10 results
         output_data = filtered_locations[:10]
 
         with open("result.json", "w", encoding="utf-8") as f:
