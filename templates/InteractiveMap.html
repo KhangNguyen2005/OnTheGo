@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Azure Maps with Filters</title>
+  <title>Azure Maps Travel Planner</title>
   <!-- Azure Maps CSS/JS -->
   <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" />
   <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
   <style>
-    html,
-    body {
+    html, body {
       height: 100%;
       margin: 0;
       padding: 0;
     }
-
     #topBar {
       position: absolute;
       top: 0;
@@ -29,19 +26,16 @@
       flex-wrap: wrap;
       align-items: center;
     }
-
     #mapDiv {
       position: relative;
       width: 100%;
       height: 100vh;
     }
-
     .inline-block {
       display: inline-block;
       margin-top: 5px;
       margin-right: 20px;
     }
-
     .filter-chip {
       display: inline-block;
       background-color: #eee;
@@ -51,7 +45,6 @@
       font-size: 14px;
       position: relative;
     }
-
     .filter-chip span.close-btn {
       cursor: pointer;
       margin-left: 8px;
@@ -60,61 +53,48 @@
     }
   </style>
 </head>
-
 <body>
-  <!-- Top bar for user inputs -->
+  <!-- Top bar for inputs -->
   <div id="topBar">
-    <!-- Address input and button to set location -->
     <div class="inline-block">
-      <input type="text" id="addressInput" placeholder="Enter an address or city..."
-        style="width: 280px; padding: 5px;" />
+      <input type="text" id="addressInput" placeholder="Enter an address or city..." style="width: 280px; padding: 5px;" />
       <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
     </div>
-    <!-- Buttons for Restaurants, Accommodation, and Recommendations -->
     <div class="inline-block">
       <button onclick="showRestaurants()" style="padding: 5px 10px;">Restaurants</button>
       <button onclick="showHotels()" style="padding: 5px 10px; margin-left:10px;">Accommodation</button>
       <button onclick="showAttractions()" style="padding: 5px 10px; margin-left:10px;">Recommendations</button>
     </div>
-    <!-- Filter Section: input + container for up to 4 filters -->
     <div class="inline-block">
       <input type="text" id="filterInput" placeholder="Add up to 4 filters..." style="width: 200px; padding: 5px;" />
       <button onclick="addFilter()" style="padding: 5px 10px;">Add Filter</button>
     </div>
-    <!-- Button: Show Filter Locations -->
     <div class="inline-block">
       <button onclick="showFilterLocations()" style="padding: 5px 10px;">Show Filter Locations</button>
     </div>
-    <!-- Re-purposed Button: Generate Plan (Saves merged data into location.json on the server) -->
     <div class="inline-block">
       <button id="generatePlan" style="padding: 5px 10px;">Generate Plan</button>
     </div>
-    <!-- Container for filter chips -->
     <div class="inline-block" id="filterContainer"></div>
   </div>
-
   <!-- Map container -->
   <div id="mapDiv"></div>
-
   <script>
-    // Azure Maps key
+    // Replace with your actual Azure Maps key.
     const AZURE_MAPS_KEY = "{{ api_key }}";
 
     let map, datasource, symbolLayer, hoverPopup;
     let restaurantData = [];
     let hotelData = [];
-    let attractionData = []; // Global variable for recommendations
-
-    // filterData maps filter names to their fetched results.
-    // userFilters holds the active filter names.
+    let attractionData = [];
     let userFilters = [];
     let filterData = {};
 
-    // =========================== INIT MAP ===========================
     function initMap() {
       map = new atlas.Map('mapDiv', {
         authOptions: { authType: 'subscriptionKey', subscriptionKey: AZURE_MAPS_KEY }
       });
+
       map.events.add('ready', () => {
         datasource = new atlas.source.DataSource();
         map.sources.add(datasource);
@@ -140,24 +120,22 @@
         hoverPopup = new atlas.Popup({ closeButton: false, pixelOffset: [0, -30] });
         map.popups.add(hoverPopup);
 
-        // Allow user to set location by clicking on map.
         map.events.add('click', function (e) {
           const coords = map.pixelToGeo(e.position);
           clearAllMarkers();
           hoverPopup.close();
-          // Add a "selected" marker (blue)
+
+          // Add a "selected" marker
           datasource.add(new atlas.data.Feature(
             new atlas.data.Point(coords),
             { markerType: 'selected', title: 'Selected Location' }
           ));
+
           map.setCamera({ center: coords, zoom: 14 });
-          // Clear existing filters and refresh results on new location.
           clearFilters();
-          // Pass latitude and longitude to fetch function.
           fetchAndStoreRestaurantsHotels(coords[1], coords[0]);
         });
 
-        // Show popup on hover.
         map.events.add('mouseenter', symbolLayer, (e) => {
           if (e.shapes && e.shapes.length > 0) {
             const shape = e.shapes[0];
@@ -176,11 +154,11 @@
             }
           }
         });
+
         map.events.add('mouseleave', symbolLayer, () => { hoverPopup.close(); });
       });
     }
 
-    // =========================== CLEAR MARKERS & VIEW ===========================
     function clearAllMarkers() {
       datasource.clear();
     }
@@ -207,7 +185,6 @@
       }
     }
 
-    // =========================== GEOCODING ===========================
     function getCoordinates(query) {
       const url = `https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&subscription-key=${AZURE_MAPS_KEY}&query=${encodeURIComponent(query)}&limit=1`;
       return fetch(url)
@@ -238,28 +215,25 @@
         }
         clearAllMarkers();
         hoverPopup.close();
-        // Clear filters so that results are refreshed.
         clearFilters();
-        const { lat, lon } = result, coords = [lon, lat];
+
+        const { lat, lon } = result;
+        const coords = [lon, lat];
         datasource.add(new atlas.data.Feature(
           new atlas.data.Point(coords),
           { markerType: 'selected', title: 'Selected Location' }
         ));
         map.setCamera({ center: coords, zoom: 14 });
-        // Fetch data for new location.
         fetchAndStoreRestaurantsHotels(lat, lon);
       });
     }
 
-    // =========================== CLEAR FILTERS ===========================
     function clearFilters() {
       userFilters = [];
       filterData = {};
       document.getElementById('filterContainer').innerHTML = '';
-      // Note: Global arrays (restaurantData, hotelData, attractionData) are not cleared.
     }
 
-    // =========================== FETCH RESTAURANT/HOTEL DATA ===========================
     function fetchAndStoreRestaurantsHotels(lat, lon) {
       fetch('http://127.0.0.1:5000/search_location', {
         method: 'POST',
@@ -278,7 +252,6 @@
         .catch(err => console.error("Error calling /search_location:", err));
     }
 
-    // Modified to return a promise so that data is freshly fetched on each click.
     function loadRestaurantData() {
       return fetch('http://127.0.0.1:5000/restaurant_data')
         .then(resp => resp.json())
@@ -313,7 +286,6 @@
         .catch(err => console.error("Error loading hotel data:", err));
     }
 
-    // =========================== MARKER FUNCTIONS ===========================
     function addMarkersToMap(dataArray, markerType) {
       if (!Array.isArray(dataArray) || dataArray.length === 0) {
         console.warn(`No data for markerType=${markerType}.`);
@@ -338,7 +310,6 @@
       });
     }
 
-    // Modified to re-fetch restaurant data each time.
     function showRestaurants() {
       clearNonSelectedMarkers();
       loadRestaurantData().then(() => {
@@ -379,7 +350,6 @@
             return;
           }
           console.log("Attraction data:", data);
-          // Store recommendations globally.
           attractionData = data.recommendations;
           addMarkersToMap(attractionData, 'attraction');
           autoAdjustMapView();
@@ -387,7 +357,6 @@
         .catch(err => console.error("Error fetching attraction data:", err));
     }
 
-    // =========================== FILTER SYSTEM ===========================
     function addFilter() {
       const filterName = document.getElementById('filterInput').value.trim();
       if (!filterName) {
@@ -422,11 +391,9 @@
             console.error("Error from /fetching_data for filter:", filterName, data.error);
             return;
           }
-          // Append new filter data to filterData without removing existing filters.
           filterData[filterName] = data;
           addMarkersToMap(data, 'filter');
           autoAdjustMapView();
-          // Update the saved result.json (union of all active filters).
           updateResultJSON();
         })
         .catch(err => console.error("Error fetching data for filter:", filterName, err));
@@ -442,7 +409,6 @@
       container.appendChild(chip);
     }
 
-    // When a filter is removed, update the saved JSON and remove its markers.
     function removeFilter(filterName) {
       userFilters = userFilters.filter(f => f !== filterName);
       const chip = document.getElementById(`chip-${filterName}`);
@@ -451,7 +417,6 @@
       }
       delete filterData[filterName];
       removeMarkersByFilter(filterName);
-      // Update the saved result.json with the remaining filters.
       updateResultJSON();
     }
 
@@ -465,7 +430,6 @@
       });
     }
 
-    // Update result.json on the server with the union of active filter data.
     function updateResultJSON() {
       let merged = [];
       for (let fName in filterData) {
@@ -481,7 +445,6 @@
         .then(resp => resp.json())
         .then(data => {
           console.log("Updated filter results on server:", data);
-          // Refresh the filter markers.
           clearNonSelectedMarkers();
           if (merged.length > 0) {
             addMarkersToMap(merged, 'filter');
@@ -491,15 +454,20 @@
         .catch(err => console.error("Error updating filter results:", err));
     }
 
-    // ==================== GENERATE PLAN BUTTON (Saves merged data into location.json on the server) ====================
+    // Generate Plan button event
     document.getElementById("generatePlan").addEventListener("click", function () {
+      let address = document.getElementById("addressInput").value.trim();
+      if (!address) {
+        alert("Please enter an address before generating a plan.");
+        return;
+      }
+      let activeFilters = userFilters;
       let filterResults = [];
       for (let fName in filterData) {
         if (Array.isArray(filterData[fName])) {
           filterResults = filterResults.concat(filterData[fName]);
         }
       }
-      // Combine data from restaurants, hotels, filters, and recommendations.
       let combinedData = [].concat(restaurantData, hotelData, filterResults, attractionData);
 
       if (combinedData.length === 0) {
@@ -507,39 +475,39 @@
         return;
       }
 
-      // First, save the merged data on the server (e.g., to location.json)
+      // Pick 7 places from the combined data
+      let selectedPlaces = combinedData.slice(0, 7);
+
+      // First, save the merged data (uploads JSON to Cosmos DB)
       fetch('http://127.0.0.1:5000/save_location', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ results: combinedData })
+        body: JSON.stringify({ address: address, filters: activeFilters, results: selectedPlaces })
       })
         .then(resp => resp.json())
         .then(data => {
           console.log("Server response:", data);
-          // Now automatically trigger the upload to Cosmos DB
+          // Now trigger the Cosmos DB query to filter the uploaded files
           fetch('http://127.0.0.1:5000/upload_cosmos', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({}) // Include any necessary parameters here
+            body: JSON.stringify({ address: address, filters: activeFilters, limit: 7 })
           })
-          .then(resp => resp.json())
-          .then(uploadData => {
-            console.log("Cosmos upload response:", uploadData);
-            alert("Merged recommendations have been saved and uploaded to Cosmos DB.");
-          })
-          .catch(err => console.error("Error uploading to Cosmos DB:", err));
+            .then(resp => resp.json())
+            .then(uploadData => {
+              console.log("Cosmos upload response:", uploadData);
+              alert("Merged recommendations have been saved and uploaded to Cosmos DB. Query result:\n" + JSON.stringify(uploadData.places, null, 2));
+            })
+            .catch(err => console.error("Error uploading to Cosmos DB:", err));
         })
         .catch(err => console.error("Error saving merged recommendations:", err));
     });
 
-    // Dummy implementation for showFilterLocations.
     function showFilterLocations() {
       alert("Show Filter Locations function is not implemented yet.");
     }
 
-    // Initialize map on page load.
     window.onload = initMap;
   </script>
 </body>
-
 </html>

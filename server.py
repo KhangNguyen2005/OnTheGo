@@ -5,12 +5,33 @@ import os
 import time
 import sys
 import traceback
+import uuid
 from dotenv import load_dotenv
+from azure.cosmos import CosmosClient, exceptions
 
 # Load environment variables
 BASE_DIR = os.environ.get("MY_APP_BASE_DIR", os.path.abspath(os.path.dirname(__file__)))
 dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
+
+# Cosmos DB configuration
+COSMOS_ENDPOINT = os.environ.get("COSMOS_ENDPOINT")
+COSMOS_KEY = os.environ.get("COSMOS_KEY")
+DATABASE_NAME = os.environ.get("COSMOS_DATABASE", "MyDatabase")
+CONTAINER_NAME = os.environ.get("COSMOS_CONTAINER", "MyContainer")
+
+if not (COSMOS_ENDPOINT and COSMOS_KEY):
+    raise Exception("COSMOS_ENDPOINT and COSMOS_KEY must be set in environment variables.")
+
+client = CosmosClient(COSMOS_ENDPOINT, COSMOS_KEY)
+database = client.get_database_client(DATABASE_NAME)
+container = database.get_container_client(CONTAINER_NAME)
+
+try:
+    # Confirm the container exists
+    container.read()
+except exceptions.CosmosResourceNotFoundError:
+    raise Exception(f"Container '{CONTAINER_NAME}' not found in database '{DATABASE_NAME}'. Please verify that the resource exists.")
 
 app = Flask(__name__)
 
@@ -37,8 +58,6 @@ def wait_for_file(filepath, timeout=5):
             return False
         time.sleep(0.5)
     return True
-
-# ... (other routes unchanged)
 
 @app.route('/search_location', methods=['POST'])
 def search_location():
@@ -74,7 +93,6 @@ def search_location():
             return jsonify({"error": f"Error reading {outfile}: {str(ex)}"}), 500
 
     return jsonify({"message": "Location search completed", "results": results})
-
 
 @app.route('/fetching_data', methods=['POST'])
 def run_fetching_data():
@@ -114,7 +132,6 @@ def run_fetching_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
 
-
 @app.route('/restaurant_data', methods=['GET'])
 def restaurant_data():
     try:
@@ -123,7 +140,6 @@ def restaurant_data():
     except FileNotFoundError:
         return jsonify({"error": "restaurant.json not found"}), 404
 
-
 @app.route('/hotel_data', methods=['GET'])
 def hotel_data():
     try:
@@ -131,7 +147,6 @@ def hotel_data():
             return jsonify(json.load(f))
     except FileNotFoundError:
         return jsonify({"error": "hotel.json not found"}), 404
-
 
 @app.route('/get_recommendations', methods=['POST'])
 def get_recommendations():
@@ -161,7 +176,6 @@ def get_recommendations():
         return jsonify({"message": "Recommendations fetched", "recommendations": recommendations})
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
-
 
 @app.route('/attraction_data', methods=['POST'])
 def attraction_data():
@@ -220,40 +234,51 @@ def save_location():
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. New endpoint to upload data to Cosmos DB using upload_cosmos.py.
+# 10. UPDATED: /upload_cosmos now directly queries Cosmos DB using address, filters,
+# and a limit. Note that the filter clause now checks against c.description.
 @app.route('/upload_cosmos', methods=['POST'])
 def upload_cosmos():
+    data = request.get_json() or {}
+    address = data.get("address", "")
+    filters = data.get("filters", [])
+    limit = data.get("limit", 7)
+
+    # Build the filter clause if filters are provided, using c.description.
+    filters_clause = ""
+    if filters:
+        filters_clause = " OR ".join([f"CONTAINS(c.description, '{flt}')" for flt in filters])
+
+    # Construct the query.
+    query = f"SELECT TOP {limit} * FROM c WHERE c.address = '{address}' AND (c.type IN ('hotel','restaurant','attraction')"
+    if filters_clause:
+        query += f" OR {filters_clause}"
+    query += ")"
+
     try:
-        if not os.path.exists(UPLOAD_COSMOS_SCRIPT):
-            return jsonify({"error": f"{UPLOAD_COSMOS_SCRIPT} not found"}), 500
-        cmd = [sys.executable, UPLOAD_COSMOS_SCRIPT]
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        return jsonify({"message": "Upload to Cosmos DB successful", "output": result.stdout})
-    except subprocess.CalledProcessError as e:
-        return jsonify({"error": f"Error uploading to Cosmos DB: {e.stderr}"}), 500
-    except Exception as ex:
-        return jsonify({"error": str(ex)}), 500
+        items = list(container.query_items(
+            query=query,
+            enable_cross_partition_query=True
+        ))
+        return jsonify({"places": items, "query": query})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 # 11. New endpoint to process the location file with Azure OpenAI.
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
-        # Get the location data from the client
         location_data = request.get_json()
         if not location_data:
             return jsonify({"error": "No location data provided"}), 400
 
-        # Import AzureOpenAI from openai package.
         from openai import AzureOpenAI
 
-        # Instantiate the AzureOpenAI client with endpoint, api_key, and api_version.
-        client = AzureOpenAI(
+        client_ai = AzureOpenAI(
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2024-03-01-preview"
         )
 
-        # Prepare messages with a system instruction and the location data as user content.
         messages = [
             {
                 "role": "system",
@@ -265,20 +290,40 @@ def process_locations():
             }
         ]
 
-        # Send the chat request with response_format set to JSON mode.
-        response = client.chat.completions.create(
+        response = client_ai.chat.completions.create(
             model="gpt-4o",
             response_format={"type": "json_object"},
             messages=messages
         )
-
-        # Get the output from the model.
         output = response.choices[0].message.content
         return jsonify({"message": "Processing complete", "result": output})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
-# 12. Start the Flask server with the correct host & port.
+# 12. New endpoint to save user input (address and filter) into Cosmos DB.
+@app.route('/save_user_input', methods=['POST'])
+def save_user_input():
+    data = request.get_json()
+    user_address = data.get('user_address')
+    user_filter = data.get('user_filter')
+    if not user_address:
+        return jsonify({"error": "User address is required."}), 400
+
+    document = {
+        'id': str(uuid.uuid4()),
+        'user_address': user_address,
+        'user_filter': user_filter,
+        'type': 'user_input'
+    }
+
+    try:
+        container.create_item(document)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    return jsonify({"message": "User input saved successfully."})
+
+# 13. Start the Flask server with the correct host & port.
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

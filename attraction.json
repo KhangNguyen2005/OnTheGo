@@ -1,5 +1,30 @@
 [
     {
+<<<<<<< HEAD
+        "Name": "Plaza Del Gral. Vara De Rey",
+        "Rating": 4.5,
+        "Name": "Ocean Cleanup C\u1ea7n Th\u01a1",
+        "Address": "233duong Nguy\u1ec5n Th\u1ecb Minh Khai, Xu\u00e2n Kh\u00e1nh, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "Plaza del Gral. Vara de Rey, Centro, 28005 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4096045,
+        "Longitude": -3.7080911999999997
+        "Opening Hour": null,
+        "Description": "233duong Nguy\u1ec5n Th\u1ecb Minh Khai, Xu\u00e2n Kh\u00e1nh, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.024859,
+        "Longitude": 105.7790802,
+        "Distance (km)": 1.6,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "calle de la sal",
+        "Rating": 4.8,
+        "Name": "Linh Mekong Tour Can Tho",
+        "Address": "14/32 \u0110. L\u00fd T\u1ef1 Tr\u1ecdng, An C\u01b0, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+=======
         "Name": "H\u1ea3i Ph\u00f2ng Graffiti Check-in",
         "Address": "P. Th\u1ebf L\u1eef, H\u1ea1 L\u00fd, H\u1ed3ng B\u00e0ng, H\u1ea3i Ph\u00f2ng, Vietnam",
         "Rating": 4.5,
@@ -15,8 +40,13 @@
     {
         "Name": "TIMES TOUR",
         "Address": "16 P. Nguy\u1ec5n Tr\u00e3i, M\u00e1y T\u01a1, Ng\u00f4 Quy\u1ec1n, H\u1ea3i Ph\u00f2ng, Vietnam",
+>>>>>>> 14e86e199c182df81e67e6dc507d4d772375056a
         "Rating": 5,
         "Price": null,
+        "Opening Hour": null,
+        "Description": "C. de la Sal, 1, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4157394,
+        "Longitude": -3.7062564
         "Opening Hour": "Open 24 hours",
         "Description": "16 P. Nguy\u1ec5n Tr\u00e3i, M\u00e1y T\u01a1, Ng\u00f4 Quy\u1ec1n, H\u1ea3i Ph\u00f2ng, Vietnam, Tourist attraction",
         "Latitude": 20.8654705,
@@ -26,10 +56,79 @@
         "generatedAt": "2025-03-25T02:35:16.742706"
     },
     {
+<<<<<<< HEAD
+        "Name": "TU TUK TUK Madrid",
+        "Rating": 4.9,
+        "Name": "Mekong Delta River",
+        "Address": "2QPV+6FV, H\u01b0ng Ph\u00fa, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.5,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Description": "Pl. de Isabel II, 4, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4181348,
+        "Longitude": -3.7099469
+        "Opening Hour": "Open 24 hours",
+        "Description": "2QPV+6FV, H\u01b0ng Ph\u00fa, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.035617,
+        "Longitude": 105.7936838,
+        "Distance (km)": 0.62,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "Mural \"Calle Invisible\"",
+        "Rating": 4.1,
+        "Name": "Can Tho Museum",
+        "Address": "1 \u0110. Ho\u00e0 B\u00ecnh, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.2,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "C. de Espoz y Mina, 27, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4150588,
+        "Longitude": -3.7022057999999998
+        "Opening Hour": "Open \u22c5 Closes 11\u202fAM \u22c5 Reopens 2\u202fPM",
+        "Description": "1 \u0110. Ho\u00e0 B\u00ecnh, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.0351656,
+        "Longitude": 105.78681569999999,
+        "Distance (km)": 0.18,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "T\u00edo Pepe",
+        "Rating": 4.6,
+        "Name": "Munirensay Khmer Buddhist Temple",
+        "Address": "2QMM+CH7, 36 \u0110. Ho\u00e0 B\u00ecnh, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.4,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "Prta del Sol, 11, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4172158,
+        "Longitude": -3.7037518
+        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
+        "Description": "2QMM+CH7, 36 \u0110. Ho\u00e0 B\u00ecnh, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.0337028,
+        "Longitude": 105.78387839999999,
+        "Distance (km)": 0.53,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "Leyenda de la Cabeza",
+        "Rating": 5,
+        "Name": "B\u1ebfn ninh ki\u1ec1u",
+        "Address": "31 \u0110\u01b0\u1eddng Ch\u00e2u V\u0103n Li\u00eam, An L\u1ea1c, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.5,
+=======
         "Name": "LAC HONG TOUR",
         "Address": "VM4C+X96, Th\u1ebf L\u1eef, H\u1ed3ng B\u00e0ng, H\u1ea3i Ph\u00f2ng, Vietnam",
         "Rating": 5,
+>>>>>>> 14e86e199c182df81e67e6dc507d4d772375056a
         "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "C. de la Cabeza, Centro, 28012, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4119293,
+        "Longitude": -3.7021352999999997
         "Opening Hour": null,
         "Description": "VM4C+X96, Th\u1ebf L\u1eef, H\u1ed3ng B\u00e0ng, H\u1ea3i Ph\u00f2ng, Vietnam, Tourist attraction",
         "Latitude": 20.8574065,
@@ -39,6 +138,81 @@
         "generatedAt": "2025-03-25T02:35:16.742706"
     },
     {
+<<<<<<< HEAD
+        "Name": "main plaza",
+        "Rating": null,
+        "Name": "Ch\u00e2n c\u1ea7u C\u1ea7n Th\u01a1",
+        "Address": "111 QL1A, H\u01b0ng Ph\u00fa, C\u00e1i R\u0103ng, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.7,
+        "Price": null,
+        "Opening Hour": null,
+        "Description": "Prta del Sol, 4, 6\u00baA, Centro, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.416592699999995,
+        "Longitude": -3.7030920999999997
+        "Opening Hour": null,
+        "Description": "111 QL1A, H\u01b0ng Ph\u00fa, C\u00e1i R\u0103ng, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.023142199999999,
+        "Longitude": 105.7981437,
+        "Distance (km)": 1.83,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "Clock Tower of Sun Gate",
+        "Rating": 4.7,
+        "Name": "Gameclup",
+        "Address": "A1 \u0110. Tr\u1ea7n Ph\u00fa, C\u00e1i Kh\u1ebf, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "Prta del Sol, 7, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4165583,
+        "Longitude": -3.7037845999999996
+        "Description": "A1 \u0110. Tr\u1ea7n Ph\u00fa, C\u00e1i Kh\u1ebf, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.0430647,
+        "Longitude": 105.7896981,
+        "Distance (km)": 0.78,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "Vamostuktour",
+        "Rating": 5,
+        "Name": "Ch\u00f9a \u00d4ng",
+        "Address": "32 \u0110\u01b0\u1eddng Hai B\u00e0 Tr\u01b0ng, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": 4.6,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
+        "Description": "Pl. de San Miguel, Centro, 28005 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.415582799999996,
+        "Longitude": -3.7087803
+        "Opening Hour": "Open \u22c5 Closes 8\u202fPM",
+        "Description": "32 \u0110\u01b0\u1eddng Hai B\u00e0 Tr\u01b0ng, T\u00e2n An, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.0341863,
+        "Longitude": 105.7884421,
+        "Distance (km)": 0.23,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+    },
+    {
+        "Name": "Arco de Cuchilleros",
+        "Rating": 4.2,
+        "Name": "H\u00e0ng D\u01b0\u01a1ng",
+        "Address": "45 L\u00ea L\u1ee3i, C\u00e1i Kh\u1ebf, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": "Open 24 hours",
+        "Description": "Escalerilla de piedra, Pl. Mayor, 2, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4148334,
+        "Longitude": -3.7080583999999996
+        "Opening Hour": null,
+        "Description": "45 L\u00ea L\u1ee3i, C\u00e1i Kh\u1ebf, Ninh Ki\u1ec1u, C\u1ea7n Th\u01a1, Vietnam, Tourist attraction",
+        "Latitude": 10.0408683,
+        "Longitude": 105.79276999999999,
+        "Distance (km)": 0.73,
+        "session_id": "a28d0beb-93d5-43d4-9674-fdcc079956f0",
+        "generatedAt": "2025-03-25T01:59:49.892851"
+=======
         "Name": "HaiPhong Neon Logo - HighPhong",
         "Address": "81 P. Quang Trung, Phan B\u1ed9i Ch\u00e2u, H\u1ed3ng B\u00e0ng, H\u1ea3i Ph\u00f2ng 35000, Vietnam",
         "Rating": 4.7,
@@ -128,5 +302,6 @@
         "Distance (km)": 4.98,
         "session_id": "68da3900-20c7-4a80-80bf-7be3b7f88b43",
         "generatedAt": "2025-03-25T02:35:16.742706"
+>>>>>>> 14e86e199c182df81e67e6dc507d4d772375056a
     }
 ]
