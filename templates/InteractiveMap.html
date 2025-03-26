@@ -454,7 +454,7 @@
         .catch(err => console.error("Error updating filter results:", err));
     }
 
-    // Generate Plan button event
+    // Generate Plan button event handler: This directly uploads merged data to Cosmos DB.
     document.getElementById("generatePlan").addEventListener("click", function () {
       let address = document.getElementById("addressInput").value.trim();
       if (!address) {
@@ -475,10 +475,10 @@
         return;
       }
 
-      // Pick 7 places from the combined data
+      // Pick 7 places from the combined data.
       let selectedPlaces = combinedData.slice(0, 7);
 
-      // First, save the merged data (uploads JSON to Cosmos DB)
+      // Call the /save_location endpoint directly.
       fetch('http://127.0.0.1:5000/save_location', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -487,18 +487,7 @@
         .then(resp => resp.json())
         .then(data => {
           console.log("Server response:", data);
-          // Now trigger the Cosmos DB query to filter the uploaded files
-          fetch('http://127.0.0.1:5000/upload_cosmos', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ address: address, filters: activeFilters, limit: 7 })
-          })
-            .then(resp => resp.json())
-            .then(uploadData => {
-              console.log("Cosmos upload response:", uploadData);
-              alert("Merged recommendations have been saved and uploaded to Cosmos DB. Query result:\n" + JSON.stringify(uploadData.places, null, 2));
-            })
-            .catch(err => console.error("Error uploading to Cosmos DB:", err));
+          alert("Merged recommendations have been saved and uploaded to Cosmos DB. " + data.message);
         })
         .catch(err => console.error("Error saving merged recommendations:", err));
     });

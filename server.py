@@ -21,7 +21,7 @@ DATABASE_NAME = os.environ.get("COSMOS_DATABASE", "MyDatabase")
 CONTAINER_NAME = os.environ.get("COSMOS_CONTAINER", "MyContainer")
 
 if not (COSMOS_ENDPOINT and COSMOS_DB_KEY):
-    raise Exception("COSMOS_ENDPOINT and COSMOS_KEY must be set in environment variables.")
+    raise Exception("COSMOS_ENDPOINT and COSMOS_DB_KEY must be set in environment variables.")
 
 client = CosmosClient(COSMOS_ENDPOINT, COSMOS_DB_KEY)
 database = client.get_database_client(DATABASE_NAME)
@@ -37,7 +37,6 @@ app = Flask(__name__)
 
 # File and script names using absolute paths.
 FETCHING_DATA_SCRIPT = os.path.join(BASE_DIR, "fetching_data.py")
-UPLOAD_COSMOS_SCRIPT = os.path.join(BASE_DIR, "upload_cosmos.py")
 RESTAURANT_JSON = os.path.join(BASE_DIR, "restaurant.json")
 HOTEL_JSON = os.path.join(BASE_DIR, "hotel.json")
 RESULT_JSON = os.path.join(BASE_DIR, "result.json")   # Used for filter results only.
@@ -222,46 +221,62 @@ def save_result():
     except Exception as ex:
         return jsonify({"error": f"Error saving result.json: {str(ex)}"}), 500
 
-# 9. New endpoint to save merged recommendation data into a separate file (location.json).
+# 9. New endpoint to save merged recommendation data into a separate file (location.json)
+# and then immediately upload each document to Cosmos DB.
 @app.route('/save_location', methods=['POST'])
 def save_location():
-    data = request.get_json()
-    results = data.get("results", [])
     try:
+        merged = []
+        # Merge data from restaurant.json, hotel.json, and attraction.json if they exist.
+        for file_path in [RESTAURANT_JSON, HOTEL_JSON, ATTRACTION_JSON]:
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    try:
+                        data = json.load(f)
+                        if isinstance(data, list):
+                            merged.extend(data)
+                        else:
+                            merged.append(data)
+                    except json.JSONDecodeError as e:
+                        print(f"[ERROR] Error decoding JSON from {file_path}: {e}")
+
+        # Save the merged recommendations to location.json.
         with open(LOCATION_JSON, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=4)
-        return jsonify({"message": "location.json saved", "results_count": len(results)})
+            json.dump(merged, f, indent=4)
+
+        # Upload the merged recommendations to Cosmos DB.
+        for doc in merged:
+            # If amenity_type is missing, try to extract it from Description.
+            if "amenity_type" not in doc:
+                if "Description" in doc:
+                    parts = doc["Description"].split(',')
+                    if parts:
+                        doc["amenity_type"] = parts[-1].strip().lower()
+                    else:
+                        doc["amenity_type"] = "unknown"
+                else:
+                    doc["amenity_type"] = "unknown"
+
+            # Generate an id from amenity_type and Name (or name) if possible.
+            if "id" not in doc:
+                if "Name" in doc or "name" in doc:
+                    name_field = doc.get("Name") or doc.get("name") or ""
+                    doc["id"] = (doc["amenity_type"] + "_" + name_field).replace(" ", "_")
+                else:
+                    doc["id"] = str(uuid.uuid4())
+            if "ItemID" not in doc:
+                doc["ItemID"] = doc["id"]
+
+            container.upsert_item(doc)
+
+        return jsonify({
+            "message": "location.json saved and data uploaded to Cosmos DB",
+            "results_count": len(merged)
+        })
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. UPDATED: /upload_cosmos now directly queries Cosmos DB using address, filters,
-# and a limit. Note that the filter clause now checks against c.description.
-@app.route('/upload_cosmos', methods=['POST'])
-def upload_cosmos():
-    data = request.get_json() or {}
-    address = data.get("address", "")
-    filters = data.get("filters", [])
-    limit = data.get("limit", 7)
-
-    # Build the filter clause if filters are provided, using c.description.
-    filters_clause = ""
-    if filters:
-        filters_clause = " OR ".join([f"CONTAINS(c.description, '{flt}')" for flt in filters])
-
-    # Construct the query.
-    query = f"SELECT TOP {limit} * FROM c WHERE c.address = '{address}' AND (c.type IN ('hotel','restaurant','attraction')"
-    if filters_clause:
-        query += f" OR {filters_clause}"
-    query += ")"
-
-    try:
-        items = list(container.query_items(
-            query=query,
-            enable_cross_partition_query=True
-        ))
-        return jsonify({"places": items, "query": query})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+# 10. /upload_cosmos endpoint is no longer needed and can be removed.
 
 # 11. New endpoint to process the location file with Azure OpenAI.
 @app.route('/process_locations', methods=['POST'])

@@ -4,11 +4,13 @@ import math
 import json
 import traceback
 import datetime
-import uuid  # new import for session id
+import uuid
 from dotenv import load_dotenv
 import serpapi
 
-dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+# Use absolute path for the current directory.
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 
 if len(sys.argv) < 3:
@@ -22,7 +24,7 @@ except ValueError as ve:
     print("[ERROR] Invalid latitude or longitude:", ve)
     sys.exit(1)
 
-# Join all additional arguments into one query string to support both address and description.
+# Combine any additional arguments into one query string.
 query = " ".join(sys.argv[3:]) if len(sys.argv) >= 4 else "restaurant"
 
 serp_api_key = os.getenv('SERPAPI_KEY')
@@ -36,8 +38,6 @@ def generate_ll_param(lat, lon, zoom=16):
     return f"@{lat},{lon},{zoom}z"
 
 def haversine(lat1, lon1, lat2, lon2):
-    """Calculate the great circle distance between two points 
-    on the earth (specified in decimal degrees)."""
     R = 6371  # Earth radius in kilometers
     phi1 = math.radians(lat1)
     phi2 = math.radians(lat2)
@@ -48,7 +48,6 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * c
 
 def main():
-    # Generate unique session info to tag these results
     session_id = str(uuid.uuid4())
     generated_at = datetime.datetime.utcnow().isoformat()
 
@@ -62,10 +61,8 @@ def main():
         }
 
         results = client.search(params)
-        # Try to get the list of locations from one of the possible keys
         locations = results.get("places_results") or results.get("local_results") or results.get("results") or []
         
-        # Filter locations to only include those within 20km and add session info
         filtered_locations = []
         for loc in locations:
             gps = loc.get("gps_coordinates", {})
@@ -75,7 +72,6 @@ def main():
                 geo = loc.get("geometry", {}).get("location", {})
                 lat_val = geo.get("lat")
                 lon_val = geo.get("lng")
-            # If we still don't have coordinates, skip the result
             if lat_val is None or lon_val is None:
                 continue
 
@@ -83,22 +79,23 @@ def main():
             if distance <= 20:
                 filtered_locations.append({
                     "Name": loc.get("title"),
+                    "address": loc.get("address", ""),
                     "Rating": loc.get("rating"),
                     "Price": loc.get("price"),
                     "Opening Hour": loc.get("hours", loc.get("open_state")),
-                    # Build Description as "address, type of amenity"
                     "Description": (loc.get("address", "") + ", " + loc.get("type", "")).strip(),
                     "Latitude": lat_val,
                     "Longitude": lon_val,
                     "Distance (km)": round(distance, 2),
-                    "session_id": session_id,        # Tag with current session id
-                    "generatedAt": generated_at      # Tag with current UTC timestamp
+                    "session_id": session_id,
+                    "generatedAt": generated_at
                 })
 
-        # For example, limit to 10 results
         output_data = filtered_locations[:10]
 
-        with open("result.json", "w", encoding="utf-8") as f:
+        # Write result.json using an absolute path.
+        result_json_path = os.path.join(BASE_DIR, "result.json")
+        with open(result_json_path, "w", encoding="utf-8") as f:
             json.dump(output_data, f, indent=4)
 
         print(f"[INFO] result.json saved with {len(output_data)} results within 20km radius.")
