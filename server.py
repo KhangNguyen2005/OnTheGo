@@ -16,14 +16,14 @@ load_dotenv(dotenv_path)
 
 # Cosmos DB configuration
 COSMOS_ENDPOINT = os.environ.get("COSMOS_ENDPOINT")
-COSMOS_KEY = os.environ.get("COSMOS_KEY")
+COSMOS_DB_KEY = os.environ.get("COSMOS_DB_KEY")
 DATABASE_NAME = os.environ.get("COSMOS_DATABASE", "MyDatabase")
 CONTAINER_NAME = os.environ.get("COSMOS_CONTAINER", "MyContainer")
 
-if not (COSMOS_ENDPOINT and COSMOS_KEY):
+if not (COSMOS_ENDPOINT and COSMOS_DB_KEY):
     raise Exception("COSMOS_ENDPOINT and COSMOS_KEY must be set in environment variables.")
 
-client = CosmosClient(COSMOS_ENDPOINT, COSMOS_KEY)
+client = CosmosClient(COSMOS_ENDPOINT, COSMOS_DB_KEY)
 database = client.get_database_client(DATABASE_NAME)
 container = database.get_container_client(CONTAINER_NAME)
 
