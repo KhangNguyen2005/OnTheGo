@@ -22,7 +22,7 @@ def invoke_ai(query: str, stream: bool = False):
     )
 
     # --- Load your JSON file here ---
-    with open("restaurant.json", "r", encoding="utf-8-sig") as f:
+    with open("top_places_by_amenity.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
 
     # Convert JSON to a string for the prompt
@@ -52,8 +52,8 @@ def invoke_ai(query: str, stream: bool = False):
     completion = client.chat.completions.create(
         model=deployment,
         messages=messages,
-        max_tokens=8000,
-        temperature=0.7,
+        max_tokens=3000,
+        temperature=.7,
         top_p=0.95,
         frequency_penalty=0,
         presence_penalty=0,
