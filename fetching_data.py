@@ -77,7 +77,6 @@ def main():
             if distance <= 20:
                 filtered_locations.append({
                     "Name": loc.get("title"),
-                    "Address": loc.get("address"),
                     "Rating": loc.get("rating"),
                     "Price": loc.get("price"),
                     "Opening Hour": loc.get("hours", loc.get("open_state")),
@@ -85,7 +84,7 @@ def main():
                     "Description": (loc.get("address", "") + ", " + loc.get("type", "")).strip(),
                     "Latitude": lat_val,
                     "Longitude": lon_val,
-                    "Distance (km)": round(distance, 2)
+                   
                 })
 
         # Limit to 10 results if necessary

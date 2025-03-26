@@ -1,112 +1,92 @@
 [
     {
-        "Name": "The Bostonian Hotel Boston",
-        "Address": "26 North St, Boston, MA 02109",
+        "Name": "Thompson Madrid, by Hyatt",
+        "Rating": 4.6,
+        "Price": "$256",
+        "Opening Hour": null,
+        "Description": "Pl. del Carmen, Centro, 28013 Madrid, Spain, Hotel",
+        "Latitude": 40.4185629,
+        "Longitude": -3.7028922
+    },
+    {
+        "Name": "The Hat Madrid",
+        "Rating": 4.3,
+        "Price": "$60",
+        "Opening Hour": null,
+        "Description": "C. Imperial, 9, Centro, 28012 Madrid, Spain, Hotel",
+        "Latitude": 40.41431,
+        "Longitude": -3.70707
+    },
+    {
+        "Name": "UMusic Hotel Madrid",
+        "Rating": 4.6,
+        "Price": "$169",
+        "Opening Hour": null,
+        "Description": "C. de la Paz, 11, Centro, 28012 Madrid, Spain, Hotel",
+        "Latitude": 40.4153449,
+        "Longitude": -3.7041017
+    },
+    {
+        "Name": "Only YOU Boutique Hotel",
+        "Rating": 4.6,
+        "Price": "$281",
+        "Opening Hour": null,
+        "Description": "C. del Barquillo, 21, Centro, 28004 Madrid, Spain, Hotel",
+        "Latitude": 40.422255799999995,
+        "Longitude": -3.6957491
+    },
+    {
+        "Name": "Hotel \u00d3pera",
         "Rating": 4.2,
-        "Price": "$177",
+        "Price": "$155",
         "Opening Hour": null,
-        "Description": "26 North St, Boston, MA 02109, Hotel",
-        "Latitude": 42.3609819,
-        "Longitude": -71.05586439999999,
-        "Distance (km)": 0.32
+        "Description": "Cuesta de Sto. Domingo, 2, Centro, 28013 Madrid, Spain, Hotel",
+        "Latitude": 40.418905099999996,
+        "Longitude": -3.7101219
     },
     {
-        "Name": "Meco Hotels",
-        "Address": "234 Friend St, Boston, MA 02114",
+        "Name": "The Principal Madrid Hotel",
         "Rating": 4.5,
-        "Price": "$110",
+        "Price": "$302",
         "Opening Hour": null,
-        "Description": "234 Friend St, Boston, MA 02114, Hotel",
-        "Latitude": 42.364340399999996,
-        "Longitude": -71.0611284,
-        "Distance (km)": 0.63
+        "Description": "C. del Marqu\u00e9s de Valdeiglesias, 1, Centro, 28004 Madrid, Spain, Hotel",
+        "Latitude": 40.419306399999996,
+        "Longitude": -3.6972346
     },
     {
-        "Name": "citizenM Boston North Station hotel",
-        "Address": "70 Causeway St, Boston, MA 02114",
-        "Rating": 4.3,
-        "Price": "$177",
+        "Name": "The Palace, a Luxury Collection Hotel",
+        "Rating": 4.6,
+        "Price": "$539",
         "Opening Hour": null,
-        "Description": "70 Causeway St, Boston, MA 02114, Hotel",
-        "Latitude": 42.365561799999995,
-        "Longitude": -71.0618501,
-        "Distance (km)": 0.78
+        "Description": "Pl. de las Cortes, 7, Centro, 28014 Madrid, Spain, Hotel",
+        "Latitude": 40.4154461,
+        "Longitude": -3.6958159
     },
     {
-        "Name": "Harborside Inn",
-        "Address": "185 State St, Boston, MA 02109",
-        "Rating": 4.3,
-        "Price": "$167",
+        "Name": "Hyatt Centric Gran Via Madrid",
+        "Rating": 4.6,
+        "Price": "$319",
         "Opening Hour": null,
-        "Description": "185 State St, Boston, MA 02109, Hotel",
-        "Latitude": 42.359238399999995,
-        "Longitude": -71.0528824,
-        "Distance (km)": 0.47
+        "Description": "Gran V\u00eda, 31, Centro, 28013 Madrid, Spain, Hotel",
+        "Latitude": 40.4200081,
+        "Longitude": -3.7036914
     },
     {
-        "Name": "Wyndham Boston Beacon Hill",
-        "Address": "5 Blossom St, Boston, MA 02114",
-        "Rating": 3.8,
-        "Price": "$178",
+        "Name": "Hotel Montera Madrid, Curio Collection By Hilton",
+        "Rating": 4.8,
+        "Price": "$309",
         "Opening Hour": null,
-        "Description": "5 Blossom St, Boston, MA 02114, Hotel",
-        "Latitude": 42.361719,
-        "Longitude": -71.0667014,
-        "Distance (km)": 0.73
+        "Description": "C. de la Montera, 47, Centro, 28013 Madrid, Spain, Hotel",
+        "Latitude": 40.419644999999996,
+        "Longitude": -3.7018999999999997
     },
     {
-        "Name": "Omni Parker House",
-        "Address": "60 School St, Boston, MA 02108",
-        "Rating": 4.1,
-        "Price": "$214",
-        "Opening Hour": null,
-        "Description": "60 School St, Boston, MA 02108, Hotel",
-        "Latitude": 42.3577637,
-        "Longitude": -71.06010599999999,
-        "Distance (km)": 0.18
-    },
-    {
-        "Name": "The Boxer Boston",
-        "Address": "107 Merrimac St, Boston, MA 02114",
-        "Rating": 4.1,
-        "Price": "$166",
-        "Opening Hour": null,
-        "Description": "107 Merrimac St, Boston, MA 02114, Hotel",
-        "Latitude": 42.3638797,
-        "Longitude": -71.06251569999999,
-        "Distance (km)": 0.63
-    },
-    {
-        "Name": "The Godfrey Hotel Boston",
-        "Address": "505 Washington St, Boston, MA 02111",
-        "Rating": 4.5,
-        "Price": "$206",
-        "Opening Hour": null,
-        "Description": "505 Washington St, Boston, MA 02111, Hotel",
-        "Latitude": 42.354720199999996,
-        "Longitude": -71.06152039999999,
-        "Distance (km)": 0.53
-    },
-    {
-        "Name": "Hotel Indigo Boston Garden, an IHG Hotel",
-        "Address": "280 Friend St, Boston, MA 02114",
-        "Rating": 4.1,
-        "Price": "$199",
-        "Opening Hour": null,
-        "Description": "280 Friend St, Boston, MA 02114, Hotel",
-        "Latitude": 42.3647851,
-        "Longitude": -71.0615984,
-        "Distance (km)": 0.69
-    },
-    {
-        "Name": "Boston Marriott Long Wharf",
-        "Address": "296 State St, Boston, MA 02109",
+        "Name": "Hotel Vincci Soho",
         "Rating": 4.4,
-        "Price": "$366",
+        "Price": "$181",
         "Opening Hour": null,
-        "Description": "296 State St, Boston, MA 02109, Hotel",
-        "Latitude": 42.3599928,
-        "Longitude": -71.0510743,
-        "Distance (km)": 0.63
+        "Description": "C. del Prado, 18, Centro, 28014 Madrid, Spain, Hotel",
+        "Latitude": 40.4148722,
+        "Longitude": -3.6984038
     }
 ]

@@ -1,112 +1,92 @@
 [
     {
-        "Name": "The Innovation Trail",
-        "Address": "30 School St, Boston, MA 02108",
-        "Rating": 5,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Description": "30 School St, Boston, MA 02108, Tourist attraction",
-        "Latitude": 42.3575947,
-        "Longitude": -71.0592341,
-        "Distance (km)": 0.16
-    },
-    {
-        "Name": "Fan Pier Park",
-        "Address": "1 Courthouse Wy, Boston, MA 02210",
-        "Rating": 4.8,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Description": "1 Courthouse Wy, Boston, MA 02210, Tourist attraction",
-        "Latitude": 42.354875299999996,
-        "Longitude": -71.0462482,
-        "Distance (km)": 1.12
-    },
-    {
-        "Name": "Black Heritage Trail",
-        "Address": "46 Joy St, Boston, MA 02114",
+        "Name": "Plaza Del Gral. Vara De Rey",
         "Rating": 4.5,
         "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM Tue",
-        "Description": "46 Joy St, Boston, MA 02114, Tourist attraction",
-        "Latitude": 42.3599907,
-        "Longitude": -71.065214,
-        "Distance (km)": 0.55
+        "Opening Hour": "Open 24 hours",
+        "Description": "Plaza del Gral. Vara de Rey, Centro, 28005 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4096045,
+        "Longitude": -3.7080911999999997
     },
     {
-        "Name": "Boston Sign",
-        "Address": "28 State St, Boston, MA 02109",
-        "Rating": 4.7,
+        "Name": "calle de la sal",
+        "Rating": 4.8,
+        "Price": null,
+        "Opening Hour": null,
+        "Description": "C. de la Sal, 1, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4157394,
+        "Longitude": -3.7062564
+    },
+    {
+        "Name": "TU TUK TUK Madrid",
+        "Rating": 4.9,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
+        "Description": "Pl. de Isabel II, 4, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4181348,
+        "Longitude": -3.7099469
+    },
+    {
+        "Name": "Mural \"Calle Invisible\"",
+        "Rating": 4.1,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Description": "28 State St, Boston, MA 02109, Tourist attraction",
-        "Latitude": 42.359769899999996,
-        "Longitude": -71.0576758,
-        "Distance (km)": 0.12
+        "Description": "C. de Espoz y Mina, 27, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4150588,
+        "Longitude": -3.7022057999999998
     },
     {
-        "Name": "Boston Irish Famine Memorial",
-        "Address": "Boston, MA 02108",
+        "Name": "T\u00edo Pepe",
         "Rating": 4.6,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Description": "Boston, MA 02108, Tourist attraction",
-        "Latitude": 42.357357,
-        "Longitude": -71.0586014,
-        "Distance (km)": 0.18
+        "Description": "Prta del Sol, 11, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4172158,
+        "Longitude": -3.7037518
     },
     {
-        "Name": "Harborwalk Lookout Terrace",
-        "Address": "25 Fan Pier Boulevard, Boston, MA 02210",
-        "Rating": 4.8,
+        "Name": "Leyenda de la Cabeza",
+        "Rating": 5,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Description": "25 Fan Pier Boulevard, Boston, MA 02210, Tourist attraction",
-        "Latitude": 42.354721999999995,
-        "Longitude": -71.044459,
-        "Distance (km)": 1.26
+        "Description": "C. de la Cabeza, Centro, 28012, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4119293,
+        "Longitude": -3.7021352999999997
     },
     {
-        "Name": "Boston Waterfront",
-        "Address": "1 Marina Park Drive, Boston, MA 02210",
-        "Rating": 4.9,
+        "Name": "main plaza",
+        "Rating": null,
+        "Price": null,
+        "Opening Hour": null,
+        "Description": "Prta del Sol, 4, 6\u00baA, Centro, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.416592699999995,
+        "Longitude": -3.7030920999999997
+    },
+    {
+        "Name": "Clock Tower of Sun Gate",
+        "Rating": 4.7,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Description": "1 Marina Park Drive, Boston, MA 02210, Tourist attraction",
-        "Latitude": 42.354529,
-        "Longitude": -71.043897,
-        "Distance (km)": 1.31
+        "Description": "Prta del Sol, 7, Centro, 28013 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4165583,
+        "Longitude": -3.7037845999999996
     },
     {
-        "Name": "Harborwalk",
-        "Address": "Boston, MA 02128",
-        "Rating": 4.8,
+        "Name": "Vamostuktour",
+        "Rating": 5,
+        "Price": null,
+        "Opening Hour": "Closed \u22c5 Opens 9\u202fAM",
+        "Description": "Pl. de San Miguel, Centro, 28005 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.415582799999996,
+        "Longitude": -3.7087803
+    },
+    {
+        "Name": "Arco de Cuchilleros",
+        "Rating": 4.2,
         "Price": null,
         "Opening Hour": "Open 24 hours",
-        "Description": "Boston, MA 02128, Tourist attraction",
-        "Latitude": 42.3622229,
-        "Longitude": -71.0508712,
-        "Distance (km)": 0.73
-    },
-    {
-        "Name": "Chinatown Gate",
-        "Address": "John F Fitzgerald Surface Rd &, Beach St, Boston, MA 02111",
-        "Rating": 4.4,
-        "Price": null,
-        "Opening Hour": "Open 24 hours",
-        "Description": "John F Fitzgerald Surface Rd &, Beach St, Boston, MA 02111, Tourist attraction",
-        "Latitude": 42.3512193,
-        "Longitude": -71.05976179999999,
-        "Distance (km)": 0.87
-    },
-    {
-        "Name": "Revolutionary Spaces",
-        "Address": "310 Washington St, Boston, MA 02109",
-        "Rating": 4.4,
-        "Price": null,
-        "Opening Hour": "Closed \u22c5 Opens 10\u202fAM",
-        "Description": "310 Washington St, Boston, MA 02109, Tourist attraction",
-        "Latitude": 42.358705099999995,
-        "Longitude": -71.05757129999999,
-        "Distance (km)": 0.09
+        "Description": "Escalerilla de piedra, Pl. Mayor, 2, Centro, 28012 Madrid, Spain, Tourist attraction",
+        "Latitude": 40.4148334,
+        "Longitude": -3.7080583999999996
     }
 ]
