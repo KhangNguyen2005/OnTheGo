@@ -1,9 +1,9 @@
 import os
 import json
-import argparse
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 
+# Load .env file
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
@@ -21,17 +21,14 @@ def invoke_ai(query: str, stream: bool = False):
         api_version=api_version,
     )
 
-    # --- Load your JSON file here ---
+    # Load the JSON data
     with open("top_places_by_amenity.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
 
-    # Convert JSON to a string for the prompt
+    # Convert JSON to string for context
     data_str = json.dumps(data, indent=2)
 
-    # Prepare the chat messages in the required format.
-    # You can place the data in a "system" message to instruct the model
-    # to use only the provided data. Alternatively, you can place it in
-    # a "user" message. This example uses a system message to set context.
+    # Messages for the model
     messages = [
         {
             "role": "system",
@@ -48,7 +45,7 @@ def invoke_ai(query: str, stream: bool = False):
         }
     ]
 
-    # Generate the chat completion using the deployment name as the model.
+    # Generate chat completion
     completion = client.chat.completions.create(
         model=deployment,
         messages=messages,
@@ -65,29 +62,16 @@ def invoke_ai(query: str, stream: bool = False):
         for chunk in completion:
             print(chunk)
     else:
-        return completion.to_json()
+        return completion.choices[0].message.content
 
 if __name__ == "__main__":
-    # Parse command-line arguments.
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--query",
-        help=(
-            "Pass the query to test the chat model "
-            "(e.g., 'Give me recommendation spots in California with location, name, "
-            "price and ratings to a JSON file')"
-        ),
-        type=str
+    # Hard-coded query
+    query = (
+        "Generate an optimal travel plan based on all the JSON data to a JSON file. "
+        "Include destination names, locations, top-rated amenities, and an ideal sequence for visiting them. "
+        "Assume the traveler wants to minimize travel time while maximizing experience. Include morning , afternoon and evening activities."
     )
-    parser.add_argument("--stream", help="Stream the output", action="store_true")
-    args = parser.parse_args()
 
-    # If query is not provided as an argument, prompt the user.
-    if args.query:
-        query = args.query
-    else:
-        query = input("Please enter your query: ")
-
-    response = invoke_ai(query, stream=args.stream)
-    if not args.stream:
-        print(response)
+    # Call the function with the hardcoded query
+    response = invoke_ai(query)
+    print(response)
