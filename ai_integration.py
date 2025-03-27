@@ -22,7 +22,7 @@ def invoke_ai(query: str, stream: bool = False):
     )
 
     # --- Load your JSON file here ---
-    with open("result.json", "r", encoding="utf-8-sig") as f:
+    with open("top_places_by_amenity.json", "r", encoding="utf-8-sig") as f:
         data = json.load(f)
 
     # Convert JSON to a string for the prompt

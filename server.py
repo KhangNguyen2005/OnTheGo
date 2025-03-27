@@ -5,18 +5,38 @@ import os
 import time
 import sys
 import traceback
+import uuid
 from dotenv import load_dotenv
+from azure.cosmos import CosmosClient, exceptions
 
 # Load environment variables
 BASE_DIR = os.environ.get("MY_APP_BASE_DIR", os.path.abspath(os.path.dirname(__file__)))
 dotenv_path = os.path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)
 
+# Cosmos DB configuration
+COSMOS_ENDPOINT = os.environ.get("COSMOS_ENDPOINT")
+COSMOS_DB_KEY = os.environ.get("COSMOS_DB_KEY")
+DATABASE_NAME = os.environ.get("COSMOS_DATABASE", "MyDatabase")
+CONTAINER_NAME = os.environ.get("COSMOS_CONTAINER", "MyContainer")
+
+if not (COSMOS_ENDPOINT and COSMOS_DB_KEY):
+    raise Exception("COSMOS_ENDPOINT and COSMOS_DB_KEY must be set in environment variables.")
+
+client = CosmosClient(COSMOS_ENDPOINT, COSMOS_DB_KEY)
+database = client.get_database_client(DATABASE_NAME)
+container = database.get_container_client(CONTAINER_NAME)
+
+try:
+    # Confirm the container exists
+    container.read()
+except exceptions.CosmosResourceNotFoundError:
+    raise Exception(f"Container '{CONTAINER_NAME}' not found in database '{DATABASE_NAME}'. Please verify that the resource exists.")
+
 app = Flask(__name__)
 
 # File and script names using absolute paths.
 FETCHING_DATA_SCRIPT = os.path.join(BASE_DIR, "fetching_data.py")
-UPLOAD_COSMOS_SCRIPT = os.path.join(BASE_DIR, "upload_cosmos.py")
 RESTAURANT_JSON = os.path.join(BASE_DIR, "restaurant.json")
 HOTEL_JSON = os.path.join(BASE_DIR, "hotel.json")
 RESULT_JSON = os.path.join(BASE_DIR, "result.json")   # Used for filter results only.
@@ -37,8 +57,6 @@ def wait_for_file(filepath, timeout=5):
             return False
         time.sleep(0.5)
     return True
-
-# ... (other routes unchanged)
 
 @app.route('/search_location', methods=['POST'])
 def search_location():
@@ -74,7 +92,6 @@ def search_location():
             return jsonify({"error": f"Error reading {outfile}: {str(ex)}"}), 500
 
     return jsonify({"message": "Location search completed", "results": results})
-
 
 @app.route('/fetching_data', methods=['POST'])
 def run_fetching_data():
@@ -114,7 +131,6 @@ def run_fetching_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
 
-
 @app.route('/restaurant_data', methods=['GET'])
 def restaurant_data():
     try:
@@ -123,7 +139,6 @@ def restaurant_data():
     except FileNotFoundError:
         return jsonify({"error": "restaurant.json not found"}), 404
 
-
 @app.route('/hotel_data', methods=['GET'])
 def hotel_data():
     try:
@@ -131,7 +146,6 @@ def hotel_data():
             return jsonify(json.load(f))
     except FileNotFoundError:
         return jsonify({"error": "hotel.json not found"}), 404
-
 
 @app.route('/get_recommendations', methods=['POST'])
 def get_recommendations():
@@ -161,7 +175,6 @@ def get_recommendations():
         return jsonify({"message": "Recommendations fetched", "recommendations": recommendations})
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in result.json"}), 500
-
 
 @app.route('/attraction_data', methods=['POST'])
 def attraction_data():
@@ -208,52 +221,79 @@ def save_result():
     except Exception as ex:
         return jsonify({"error": f"Error saving result.json: {str(ex)}"}), 500
 
-# 9. New endpoint to save merged recommendation data into a separate file (location.json).
+# 9. New endpoint to save merged recommendation data into a separate file (location.json)
+# and then immediately upload each document to Cosmos DB.
 @app.route('/save_location', methods=['POST'])
 def save_location():
-    data = request.get_json()
-    results = data.get("results", [])
     try:
+        merged = []
+        # Merge data from restaurant.json, hotel.json, and attraction.json if they exist.
+        for file_path in [RESTAURANT_JSON, HOTEL_JSON, ATTRACTION_JSON]:
+            if os.path.exists(file_path):
+                with open(file_path, "r", encoding="utf-8") as f:
+                    try:
+                        data = json.load(f)
+                        if isinstance(data, list):
+                            merged.extend(data)
+                        else:
+                            merged.append(data)
+                    except json.JSONDecodeError as e:
+                        print(f"[ERROR] Error decoding JSON from {file_path}: {e}")
+
+        # Save the merged recommendations to location.json.
         with open(LOCATION_JSON, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=4)
-        return jsonify({"message": "location.json saved", "results_count": len(results)})
+            json.dump(merged, f, indent=4)
+
+        # Upload the merged recommendations to Cosmos DB.
+        for doc in merged:
+            # If amenity_type is missing, try to extract it from Description.
+            if "amenity_type" not in doc:
+                if "Description" in doc:
+                    parts = doc["Description"].split(',')
+                    if parts:
+                        doc["amenity_type"] = parts[-1].strip().lower()
+                    else:
+                        doc["amenity_type"] = "unknown"
+                else:
+                    doc["amenity_type"] = "unknown"
+
+            # Generate an id from amenity_type and Name (or name) if possible.
+            if "id" not in doc:
+                if "Name" in doc or "name" in doc:
+                    name_field = doc.get("Name") or doc.get("name") or ""
+                    doc["id"] = (doc["amenity_type"] + "_" + name_field).replace(" ", "_")
+                else:
+                    doc["id"] = str(uuid.uuid4())
+            if "ItemID" not in doc:
+                doc["ItemID"] = doc["id"]
+
+            container.upsert_item(doc)
+
+        return jsonify({
+            "message": "location.json saved and data uploaded to Cosmos DB",
+            "results_count": len(merged)
+        })
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. New endpoint to upload data to Cosmos DB using upload_cosmos.py.
-@app.route('/upload_cosmos', methods=['POST'])
-def upload_cosmos():
-    try:
-        if not os.path.exists(UPLOAD_COSMOS_SCRIPT):
-            return jsonify({"error": f"{UPLOAD_COSMOS_SCRIPT} not found"}), 500
-        cmd = [sys.executable, UPLOAD_COSMOS_SCRIPT]
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        return jsonify({"message": "Upload to Cosmos DB successful", "output": result.stdout})
-    except subprocess.CalledProcessError as e:
-        return jsonify({"error": f"Error uploading to Cosmos DB: {e.stderr}"}), 500
-    except Exception as ex:
-        return jsonify({"error": str(ex)}), 500
+# 10. /upload_cosmos endpoint is no longer needed and can be removed.
 
 # 11. New endpoint to process the location file with Azure OpenAI.
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
-        # Get the location data from the client
         location_data = request.get_json()
         if not location_data:
             return jsonify({"error": "No location data provided"}), 400
 
-        # Import AzureOpenAI from openai package.
         from openai import AzureOpenAI
 
-        # Instantiate the AzureOpenAI client with endpoint, api_key, and api_version.
-        client = AzureOpenAI(
+        client_ai = AzureOpenAI(
             azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
             api_key=os.getenv("AZURE_OPENAI_API_KEY"),
             api_version="2024-03-01-preview"
         )
 
-        # Prepare messages with a system instruction and the location data as user content.
         messages = [
             {
                 "role": "system",
@@ -265,20 +305,40 @@ def process_locations():
             }
         ]
 
-        # Send the chat request with response_format set to JSON mode.
-        response = client.chat.completions.create(
+        response = client_ai.chat.completions.create(
             model="gpt-4o",
             response_format={"type": "json_object"},
             messages=messages
         )
-
-        # Get the output from the model.
         output = response.choices[0].message.content
         return jsonify({"message": "Processing complete", "result": output})
     except Exception as e:
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
-# 12. Start the Flask server with the correct host & port.
+# 12. New endpoint to save user input (address and filter) into Cosmos DB.
+@app.route('/save_user_input', methods=['POST'])
+def save_user_input():
+    data = request.get_json()
+    user_address = data.get('user_address')
+    user_filter = data.get('user_filter')
+    if not user_address:
+        return jsonify({"error": "User address is required."}), 400
+
+    document = {
+        'id': str(uuid.uuid4()),
+        'user_address': user_address,
+        'user_filter': user_filter,
+        'type': 'user_input'
+    }
+
+    try:
+        container.create_item(document)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    return jsonify({"message": "User input saved successfully."})
+
+# 13. Start the Flask server with the correct host & port.
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

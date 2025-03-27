@@ -33,7 +33,7 @@ try:
 except Exception as e:
     raise Exception(f"Error querying distinct amenities: {e}")
 
-allowed_amenities = ["accomodation", "attraction", "location", "restaurant", "result"]
+allowed_amenities = ["accommodation", "attraction", "location", "restaurant", "result"]
 
 # Extract amenity types from results (filtering out empty values)
 amenities = [
