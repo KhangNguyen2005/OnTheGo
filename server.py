@@ -276,9 +276,7 @@ def save_location():
     except Exception as ex:
         return jsonify({"error": f"Error saving location.json: {str(ex)}"}), 500
 
-# 10. /upload_cosmos endpoint is no longer needed and can be removed.
-
-# 11. New endpoint to process the location file with Azure OpenAI.
+# 10. New endpoint to process the location file with Azure OpenAI.
 @app.route('/process_locations', methods=['POST'])
 def process_locations():
     try:
@@ -316,7 +314,7 @@ def process_locations():
         traceback.print_exc()
         return jsonify({"error": f"Processing failed: {str(e)}"}), 500
 
-# 12. New endpoint to save user input (address and filter) into Cosmos DB.
+# 11. New endpoint to save user input (address and filter) into Cosmos DB.
 @app.route('/save_user_input', methods=['POST'])
 def save_user_input():
     data = request.get_json()
@@ -339,6 +337,82 @@ def save_user_input():
 
     return jsonify({"message": "User input saved successfully."})
 
-# 13. Start the Flask server with the correct host & port.
+@app.route('/generate_plan', methods=['POST'])
+def generate_plan():
+    try:
+        # Step 1: Push the latest recommendations to Cosmos DB.
+        UPLOAD_COSMOS_SCRIPT = os.path.join(BASE_DIR, "upload_cosmos.py")
+        subprocess.run(
+            [sys.executable, UPLOAD_COSMOS_SCRIPT],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print("[INFO] upload_cosmos.py executed successfully.")
+
+        # Step 2: Run query_top_places.py to generate top_places_by_amenity.json.
+        QUERY_TOP_PLACES_SCRIPT = os.path.join(BASE_DIR, "query_top_places.py")
+        subprocess.run(
+            [sys.executable, QUERY_TOP_PLACES_SCRIPT],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print("[INFO] query_top_places.py executed successfully.")
+
+        # Step 3: Run ai_integration.py to generate the travel plan.
+        AI_INTEGRATION_SCRIPT = os.path.join(BASE_DIR, "ai_integration.py")
+        subprocess.run(
+            [sys.executable, AI_INTEGRATION_SCRIPT],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        print("[INFO] ai_integration.py executed successfully.")
+
+        # Step 4: Read plan.json from disk and extract locations.
+        plan_file = os.path.join(BASE_DIR, "plan.json")
+        if not os.path.exists(plan_file):
+            return jsonify({"error": "plan.json not found."}), 500
+
+        with open(plan_file, "r", encoding="utf-8") as f:
+            plan_data = json.load(f)
+
+        # If plan_data is a string (i.e. double-encoded), parse it again.
+        if isinstance(plan_data, str):
+            plan_data = json.loads(plan_data)
+
+        # Extract all "Location" values from the travel plan.
+        locations = []
+        if isinstance(plan_data, dict) and "travel_plan" in plan_data:
+            for period, activities in plan_data["travel_plan"].items():
+                for activity in activities:
+                    # Ensure activity is a dictionary; if it's a string, try to parse it.
+                    if isinstance(activity, dict):
+                        location = activity.get("Location")
+                        if location:
+                            locations.append(location)
+                    elif isinstance(activity, str):
+                        try:
+                            activity_obj = json.loads(activity)
+                        except Exception:
+                            activity_obj = {}
+                        location = activity_obj.get("Location")
+                        if location:
+                            locations.append(location)
+
+        if not locations:
+            # Optionally, include the plan_data in the error response for debugging.
+            return jsonify({"error": "No locations found in plan.json.", "plan_data": plan_data}), 500
+
+        return jsonify({"message": "Plan generated successfully", "locations": locations})
+    except subprocess.CalledProcessError as e:
+        print("Subprocess error:", e.stderr)
+        return jsonify({"error": f"Subprocess error: {e.stderr}"}), 500
+    except Exception as ex:
+        print("General error:", str(ex))
+        return jsonify({"error": str(ex)}), 500
+
+# Start the Flask server with the correct host & port.
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

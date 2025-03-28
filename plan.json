@@ -1,0 +1,82 @@
+{
+  "travel_plan": {
+    "morning": [
+      {
+        "Activity": "Visit Oasis d'Aboukir",
+        "Location": {
+          "Name": "Oasis d'Aboukir",
+          "Address": "83 Rue d'Aboukir, 75002 Paris, France",
+          "Rating": 4.5,
+          "Price": null,
+          "Opening Hour": "Open 24 hours",
+          "Latitude": 48.8681096,
+          "Longitude": 2.3476217999999998
+        }
+      },
+      {
+        "Activity": "Coffee break at Minicafé - coffeeshop, matcha and cookies",
+        "Location": {
+          "Name": "Minicafé - coffeeshop, matcha and cookies",
+          "Address": "1 Rue des Deux Ponts, 75004 Paris, France",
+          "Rating": 4.9,
+          "Price": "€1–10",
+          "Opening Hour": "Open ∙ Closes 6 PM",
+          "Latitude": 48.8512798,
+          "Longitude": 2.3559197
+        }
+      }
+    ],
+    "afternoon": [
+      {
+        "Activity": "Lunch at Patang",
+        "Location": {
+          "Name": "Patang",
+          "Address": "15 Rue Gît-le-Cœur, 75006 Paris, France",
+          "Rating": 4.9,
+          "Price": "€20–30",
+          "Opening Hour": "Open ∙ Closes 3 PM ∙ Reopens 6:30 PM",
+          "Latitude": 48.8535799,
+          "Longitude": 2.3426408
+        }
+      },
+      {
+        "Activity": "Explore La Dame En Rouge",
+        "Location": {
+          "Name": "La Dame En Rouge",
+          "Address": "93 Rue Vieille du Temple, 75003 Paris, France",
+          "Rating": 5,
+          "Price": null,
+          "Opening Hour": "Open 24 hours",
+          "Latitude": 48.8601214,
+          "Longitude": 2.3608683
+        }
+      }
+    ],
+    "evening": [
+      {
+        "Activity": "Dinner at Le Beef",
+        "Location": {
+          "Name": "Le Beef",
+          "Address": "33 Rue des Rosiers, 75004 Paris, France",
+          "Rating": 4.3,
+          "Price": "$$",
+          "Opening Hour": "Open ∙ Closes 3 PM ∙ Reopens 6 PM",
+          "Latitude": 48.8578049,
+          "Longitude": 2.3579982
+        }
+      },
+      {
+        "Activity": "Relax at The Coffee",
+        "Location": {
+          "Name": "The Coffee",
+          "Address": "40 Rue des Gravilliers, 75003 Paris, France",
+          "Rating": 4.6,
+          "Price": "€1–10",
+          "Opening Hour": "Open ∙ Closes 7 PM",
+          "Latitude": 48.8640506,
+          "Longitude": 2.3560901999999997
+        }
+      }
+    ]
+  }
+}

@@ -67,11 +67,22 @@ def invoke_ai(query: str, stream: bool = False):
 if __name__ == "__main__":
     # Hard-coded query
     query = (
-        "Generate an optimal travel plan based on all the JSON data to a JSON file. "
-        "Include destination names, locations, top-rated amenities, and an ideal sequence for visiting them. "
-        "Assume the traveler wants to minimize travel time while maximizing experience. Include morning , afternoon and evening activities."
+        "Generate an optimal travel plan for one day based solely on the provided JSON data from top places amenities (Only within the State of my origin location). "
+        "Your response must be a valid JSON object saved to a file, and include a key 'travel_plan' with sub-keys 'morning', 'afternoon', and 'evening'. "
+        "Each time period should be an array of activity objects. Each activity object must include at least the keys 'Activity' and 'Location'. "
+        "The 'Location' value must be an object with 'Name', 'Address', 'Rating', 'Price', 'Opening Hour', 'Latitude', and 'Longitude' derived from the JSON data. "
+        "Ensure the plan is viable and optimal, minimizing travel time and maximizing experience. "
+        "Do not include any additional text outside of the JSON structure."
+        
     )
 
     # Call the function with the hardcoded query
     response = invoke_ai(query)
-    print(response)
+    lines = response.splitlines()
+    # Remove lines that start with ``` if they exist
+    clean_lines = [line for line in lines if not line.strip().startswith("```")]
+    clean_response = "\n".join(clean_lines)
+
+    with open("plan.json", "w", encoding="utf-8") as f:
+        f.write(clean_response)   
+        
