@@ -1,56 +1,68 @@
 {
   "travel_plan": {
-    "morning": [
+    "Morning": [
       {
-        "Activity": "Visit tourist attraction",
+        "Activity": "Visit the Oasis d'Aboukir to explore the greenery and unique urban oasis",
         "Location": {
-          "Name": "khu vui chơi NOBITA KID",
-          "Address": "132 Đường số 13, Ninh Sơn, Tây Ninh, Vietnam",
-          "Rating": 4.8,
+          "Name": "Oasis d'Aboukir",
+          "Address": "83 Rue d'Aboukir, 75002 Paris, France",
+          "Rating": 4.5,
           "Price": null,
-          "Opening Hour": "Open · Closes 10 PM",
-          "Latitude": 11.3293178,
-          "Longitude": 106.1237625
-        }
-      }
-    ],
-    "afternoon": [
-      {
-        "Activity": "Lunch at a restaurant",
-        "Location": {
-          "Name": "Bình Minh Restaurant",
-          "Address": "3 Nguyễn Trãi, Phường 4, Tây Ninh, Vietnam",
-          "Rating": 4.2,
-          "Price": "$$",
-          "Opening Hour": "Open · Closes 10 PM",
-          "Latitude": 11.307578399999999,
-          "Longitude": 106.1162537
+          "Opening Hour": "Open 24 hours",
+          "Latitude": 48.8681096,
+          "Longitude": 2.3476217999999998
         }
       },
       {
-        "Activity": "Visit tourist attraction",
+        "Activity": "Explore La Dame En Rouge for its artistic and cultural value",
         "Location": {
-          "Name": "Hương Sen Quán - Tây Ninh",
-          "Address": "Cầu K21, Trần Phú, Khu phố Ninh Bình, Tây Ninh, Vietnam",
-          "Rating": 4.7,
+          "Name": "La Dame En Rouge",
+          "Address": "93 Rue Vieille du Temple, 75003 Paris, France",
+          "Rating": 5,
           "Price": null,
-          "Opening Hour": null,
-          "Latitude": 11.361511199999999,
-          "Longitude": 106.12735389999999
+          "Opening Hour": "Open 24 hours",
+          "Latitude": 48.8601214,
+          "Longitude": 2.3608683
         }
       }
     ],
-    "evening": [
+    "Afternoon": [
       {
-        "Activity": "Dinner at a restaurant",
+        "Activity": "Enjoy a delicious French meal at La Réserve Du Terroir",
         "Location": {
-          "Name": "Đại Dương Restaurant",
-          "Address": "72 Nguyễn Trãi, Khu Phố 7, Tây Ninh, Vietnam",
-          "Rating": 3.6,
-          "Price": null,
-          "Opening Hour": "Open now",
-          "Latitude": 11.305288599999999,
-          "Longitude": 106.1122674
+          "Name": "La Réserve Du Terroir - Restaurant Paris 4",
+          "Address": "13 R. Quincampoix, 75004 Paris, France",
+          "Rating": 4.6,
+          "Price": "€20–30",
+          "Opening Hour": "Open ∙ Closes 12 AM",
+          "Latitude": 48.859702999999996,
+          "Longitude": 2.349799
+        }
+      },
+      {
+        "Activity": "Relax and unwind at Jardin Notre-Dame with a view of Notre-Dame Cathedral",
+        "Location": {
+          "Name": "Jardin Notre-Dame",
+          "Address": "2 Rue du Petit Pont, 75005 Paris, France",
+          "Rating": 4.1,
+          "Price": "€20–30",
+          "Opening Hour": "Open ∙ Closes 11:30 PM",
+          "Latitude": 48.8527553,
+          "Longitude": 2.3464660999999998
+        }
+      }
+    ],
+    "Evening": [
+      {
+        "Activity": "Check-in and relax at Hôtel Esmeralda for the night",
+        "Location": {
+          "Name": "Hôtel Esmeralda",
+          "Address": "4 Rue Saint-Julien le Pauvre, 75005 Paris, France",
+          "Rating": 4.1,
+          "Price": "$143",
+          "Opening Hour": null,
+          "Latitude": 48.852454699999996,
+          "Longitude": 2.3472063999999997
         }
       }
     ]

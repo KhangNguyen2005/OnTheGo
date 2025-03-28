@@ -12,6 +12,7 @@
       height: 100%;
       margin: 0;
       padding: 0;
+      font-family: Arial, sans-serif;
     }
     #topBar {
       position: absolute;
@@ -21,10 +22,24 @@
       background-color: rgba(255, 255, 255, 0.9);
       padding: 8px;
       z-index: 9999;
-      font-family: Arial, sans-serif;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+    }
+    /* Small fixed container at the bottom left for the plan */
+    #planTableContainer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      max-height: 200px;
+      overflow-y: auto;
+      width: 300px;
+      font-size: 14px;
+      z-index: 10000;
     }
     #mapDiv {
       position: relative;
@@ -51,6 +66,23 @@
       color: #999;
       font-weight: bold;
     }
+    .plan-section {
+      margin-bottom: 10px;
+    }
+    .plan-section h3 {
+      margin: 0 0 5px 0;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3px;
+    }
+    .plan-activity {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .plan-activity li {
+      margin: 3px 0;
+    }
   </style>
 </head>
 <body>
@@ -58,7 +90,7 @@
   <div id="topBar">
     <div class="inline-block">
       <input type="text" id="addressInput" placeholder="Enter an address or city..." style="width: 280px; padding: 5px;" />
-      <button onclick="setLocation()" style="padding: 5px 10px;">Set Location</button>
+      <button onclick="setLocation().catch(err => console.error(err))" style="padding: 5px 10px;">Set Location</button>
     </div>
     <div class="inline-block">
       <button onclick="showRestaurants()" style="padding: 5px 10px;">Restaurants</button>
@@ -74,8 +106,13 @@
     </div>
     <div class="inline-block" id="filterContainer"></div>
   </div>
+
+  <!-- Fixed small container for the travel plan (bottom left corner) -->
+  <div id="planTableContainer"></div>
+
   <!-- Map container -->
   <div id="mapDiv"></div>
+
   <script>
     // Replace with your actual Azure Maps key.
     const AZURE_MAPS_KEY = "{{ api_key }}";
@@ -106,7 +143,7 @@
               ['==', ['get', 'markerType'], 'attraction'], 'pin-round-red',
               ['==', ['get', 'markerType'], 'custom'], 'pin-round-red',
               ['==', ['get', 'markerType'], 'filter'], 'pin-round-red',
-              'pin-round-yellow'
+              'pin-round-darkblue'
             ],
             allowOverlap: true
           },
@@ -130,6 +167,8 @@
 
           map.setCamera({ center: coords, zoom: 14 });
           clearFilters();
+          // Clear the plan table when a new location is chosen via map click.
+          document.getElementById('planTableContainer').innerHTML = '';
           fetchAndStoreRestaurantsHotels(coords[1], coords[0]);
         });
 
@@ -199,20 +238,23 @@
         });
     }
 
+    // Refactored setLocation to return a Promise.
     function setLocation() {
       const address = document.getElementById('addressInput').value.trim();
       if (!address) {
         alert("Please enter an address or city.");
-        return;
+        return Promise.reject("No address provided");
       }
-      getCoordinates(address).then(result => {
+      return getCoordinates(address).then(result => {
         if (!result) {
           alert("No matching address found. Please refine your input.");
-          return;
+          return Promise.reject("No matching address found");
         }
         clearAllMarkers();
         hoverPopup.close();
         clearFilters();
+        // Clear the plan table when a new location is chosen.
+        document.getElementById('planTableContainer').innerHTML = '';
 
         const { lat, lon } = result;
         const coords = [lon, lat];
@@ -222,6 +264,7 @@
         ));
         map.setCamera({ center: coords, zoom: 14 });
         fetchAndStoreRestaurantsHotels(lat, lon);
+        return result;
       });
     }
 
@@ -231,6 +274,7 @@
       document.getElementById('filterContainer').innerHTML = '';
     }
 
+    // Updated function to fetch restaurant, hotel, and attraction data when a location is set.
     function fetchAndStoreRestaurantsHotels(lat, lon) {
       fetch('http://127.0.0.1:5000/search_location', {
         method: 'POST',
@@ -245,6 +289,7 @@
           }
           loadRestaurantData();
           loadHotelData();
+          loadAttractionData(lat, lon);
         })
         .catch(err => console.error("Error calling /search_location:", err));
     }
@@ -283,7 +328,33 @@
         .catch(err => console.error("Error loading hotel data:", err));
     }
 
-    // Updated addMarkersToMap function to support plan markers (checking for both uppercase and lowercase keys)
+    // New function: Load attraction data immediately after a location is set.
+    function loadAttractionData(lat, lon) {
+      return fetch('http://127.0.0.1:5000/attraction_data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ latitude: lat, longitude: lon })
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error from /attraction_data:", data.error);
+            attractionData = [];
+          } else {
+            // Assuming the server returns an object with a "recommendations" key.
+            attractionData = data.recommendations || [];
+            console.log("Attraction Data:", attractionData);
+          }
+          return attractionData;
+        })
+        .catch(err => {
+          console.error("Error loading attraction data:", err);
+          attractionData = [];
+          return attractionData;
+        });
+    }
+
+    // General purpose function to add markers on the map.
     function addMarkersToMap(dataArray, markerType) {
       if (!Array.isArray(dataArray) || dataArray.length === 0) {
         console.warn(`No data for markerType=${markerType}.`);
@@ -292,7 +363,6 @@
       dataArray.forEach(item => {
         let lon, lat, title;
         if (markerType === 'plan') {
-          // For plan markers, check for both 'Longitude' or 'longitude' and 'Latitude' or 'latitude'
           lon = item.Longitude || item.longitude;
           lat = item.Latitude || item.latitude;
           title = item.Name || item.name || 'N/A';
@@ -339,31 +409,16 @@
       autoAdjustMapView();
     }
 
+    // Modified showAttractions: simply display the already fetched attraction data.
     function showAttractions() {
       clearNonSelectedMarkers();
-      const selectedFeature = datasource.getShapes().find(shape => shape.getProperties().markerType === 'selected');
-      if (!selectedFeature) {
-        alert("Please pick or set a location first.");
+      if (attractionData.length === 0) {
+        console.warn("No attraction data available.");
+        alert("No attraction data available.");
         return;
       }
-      const [lng, lat] = selectedFeature.getCoordinates();
-      fetch('http://127.0.0.1:5000/attraction_data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ latitude: lat, longitude: lng })
-      })
-        .then(resp => resp.json())
-        .then(data => {
-          if (data.error) {
-            console.error("Error from /attraction_data:", data.error);
-            return;
-          }
-          console.log("Attraction data:", data);
-          attractionData = data.recommendations;
-          addMarkersToMap(attractionData, 'attraction');
-          autoAdjustMapView();
-        })
-        .catch(err => console.error("Error fetching attraction data:", err));
+      addMarkersToMap(attractionData, 'attraction');
+      autoAdjustMapView();
     }
 
     function addFilter() {
@@ -472,40 +527,70 @@
       }
     }
 
+    // Function to render the plan in a fixed order: Morning → Afternoon → Evening.
+    // Note: Updated to use the exact keys from the plan file.
+    function renderPlanTable(plan) {
+      const container = document.getElementById('planTableContainer');
+      container.innerHTML = ''; // Clear previous content
+
+      const timeOrder = ["Morning", "Afternoon", "Evening"];
+      timeOrder.forEach(period => {
+        if (plan[period] && Array.isArray(plan[period])) {
+          let sectionHTML = `<div class="plan-section">
+                               <h3>${period}</h3>
+                               <ul class="plan-activity">`;
+          plan[period].forEach(item => {
+            sectionHTML += `<li>${item.Activity}</li>`;
+          });
+          sectionHTML += `</ul></div>`;
+          container.innerHTML += sectionHTML;
+        }
+      });
+    }
+
     // Generate Plan button event handler:
     document.getElementById("generatePlan").addEventListener("click", function () {
-      let address = document.getElementById("addressInput").value.trim();
+      const address = document.getElementById("addressInput").value.trim();
       if (!address) {
         alert("Please enter an address before generating a plan.");
         return;
       }
-      fetch('http://127.0.0.1:5000/generate_plan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address: address })
-      })
-        .then(resp => resp.json())
-        .then(data => {
-          console.log("Generate Plan response:", data);
-          if (data.error) {
-            alert("Error generating plan: " + data.error);
-          } else {
-            // Clear all markers except the original (selected) marker.
-            clearNonSelectedMarkers();
-            // Check if plan locations are provided and add them as markers.
-            if (data.locations && data.locations.length > 0) {
-              addMarkersToMap(data.locations, 'plan');
-              autoAdjustMapView();
-              zoomToPlanMarkers();
-            } else {
-              alert("Plan generated but no valid locations found.");
-            }
-          }
+      // First update the selected location (and markers) using setLocation.
+      setLocation().then(() => {
+        // Clear the plan table content to prepare for the new plan.
+        document.getElementById('planTableContainer').innerHTML = '';
+        fetch('http://127.0.0.1:5000/generate_plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ address: address })
         })
-        .catch(err => {
-          console.error("Error generating plan:", err);
-          alert("Error generating plan: " + err);
-        });
+          .then(resp => resp.json())
+          .then(data => {
+            console.log("Generate Plan response:", data);
+            if (data.error) {
+              alert("Error generating plan: " + data.error);
+            } else {
+              // Clear all markers except the original (selected) marker.
+              clearNonSelectedMarkers();
+              // Check if plan locations are provided and add them as markers.
+              if (data.locations && data.locations.length > 0) {
+                addMarkersToMap(data.locations, 'plan');
+                autoAdjustMapView();
+                zoomToPlanMarkers();
+              } else {
+                alert("Plan generated but no valid locations found.");
+              }
+              // Render plan table.
+              if (data.travel_plan) {
+                renderPlanTable(data.travel_plan);
+              }
+            }
+          })
+          .catch(err => {
+            console.error("Error generating plan:", err);
+            alert("Error generating plan: " + err);
+          });
+      }).catch(err => console.error("Error setting location:", err));
     });
 
     window.onload = initMap;

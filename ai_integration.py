@@ -68,12 +68,13 @@ if __name__ == "__main__":
     # Hard-coded query
     query = (
         "Generate an optimal travel plan for one day based solely on the provided JSON data from top places amenities (Only within the State of my origin location). "
-        "Your response must be a valid JSON object saved to a file, and include a key 'travel_plan' with sub-keys 'morning', 'afternoon', and 'evening'. "
+        "Your response must be a valid JSON object saved to a file, and include a key 'travel_plan' with time periods as keys. "
         "Each time period should be an array of activity objects. Each activity object must include at least the keys 'Activity' and 'Location'. "
         "The 'Location' value must be an object with 'Name', 'Address', 'Rating', 'Price', 'Opening Hour', 'Latitude', and 'Longitude' derived from the JSON data. "
         "Ensure the plan is viable and optimal, minimizing travel time and maximizing experience. "
         "Do not include any additional text outside of the JSON structure."
-        
+        "Give me a plan with 2 or 3 activities for each time period, at the end of an evening, remember to include an accomodation for the night, "
+        "be specific about the activities"
     )
 
     # Call the function with the hardcoded query

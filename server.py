@@ -370,7 +370,7 @@ def generate_plan():
         )
         print("[INFO] ai_integration.py executed successfully.")
 
-        # Step 4: Read plan.json from disk and extract locations.
+        # Step 4: Read plan.json from disk.
         plan_file = os.path.join(BASE_DIR, "plan.json")
         if not os.path.exists(plan_file):
             return jsonify({"error": "plan.json not found."}), 500
@@ -402,10 +402,17 @@ def generate_plan():
                             locations.append(location)
 
         if not locations:
-            # Optionally, include the plan_data in the error response for debugging.
-            return jsonify({"error": "No locations found in plan.json.", "plan_data": plan_data}), 500
+            return jsonify({
+                "error": "No locations found in plan.json.",
+                "plan_data": plan_data
+            }), 500
 
-        return jsonify({"message": "Plan generated successfully", "locations": locations})
+        # Return both 'locations' and the entire 'travel_plan'
+        return jsonify({
+            "message": "Plan generated successfully",
+            "locations": locations,
+            "travel_plan": plan_data.get("travel_plan", {})
+        })
     except subprocess.CalledProcessError as e:
         print("Subprocess error:", e.stderr)
         return jsonify({"error": f"Subprocess error: {e.stderr}"}), 500
